@@ -1,0 +1,215 @@
+/*#region banner*/
+.banner {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(180deg, #091D4280 50%, var(--navy) 100%),url(../../images/banner.jpg) no-repeat;
+    background-size: cover;
+    color: white;
+    margin-top: -116px;
+}
+
+    .banner .container, .banner .row {
+        height: 100%;
+    }
+
+.banner_content {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    flex-flow: wrap
+}
+
+    .banner_content h1.first_h1 {
+        display: block;
+        width: 100%;
+        font-size: 50px;
+        font-weight: 700;   
+         margin-top: 70px;
+        line-height: 57px;
+        text-shadow: 0 0 50px #021a32;
+    }
+
+    .banner_content h1.element {
+        display: block;
+        margin-bottom: 15px;
+        font-size: 50px;
+        font-weight: 700;
+        line-height: 57px;
+        text-shadow: 0 0 50px #021a32;
+    }
+    .banner_content .typed-cursor {
+      display:none
+    }
+
+    .banner_content h3 {
+        font-size: 35px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        width: 100%;
+        text-shadow: 0 0 50px #021a32;
+    }
+
+    .banner_content p {
+        font-size: 18px;
+        width: 100%;
+        font-family: 'Josefin Sans', sans-serif;
+        display: flex;
+        align-items: initial;
+    }
+
+        .banner_content p svg {
+            height: 18px;
+            width: 18px;
+            margin-right: 10px;
+        }
+
+    .banner_content span.benner_span {
+        font-size: 18px;
+        margin-bottom: 20px;
+        width: 100%;
+        font-family: 'Josefin Sans', sans-serif;
+    }
+
+    .banner_content .btn_custom {
+        margin-top: 5px;
+    }
+
+/*#endregion banner*/
+/*#region about*/
+.about {
+    background: linear-gradient(rgba(0, 20, 44, 0.5), rgba(0, 20, 44, 0.5)), url(../../images/about_banner.jpg) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 0px 70%;
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+    min-height: 450px;
+}
+
+    .about .section_title {
+        margin-bottom: 35px;
+        font-size: 38px;
+        font-weight: 900
+    }
+
+    .about h3 {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .about p {
+        display: block;
+        margin: 10px auto 0;
+        font-size: 16px;
+        font-weight: 500
+    }
+/*#endregion about*/
+
+/*#region event*/
+.event {
+    padding: 130px 0 100px 0;
+    background-image: linear-gradient(180deg, rgba(0,20,44,0.7) 50%, var(--navy) 100%), url(../../images/map_bg.png);
+    background-position: center 60px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 50px;
+}
+
+    .event .section_title {
+        margin-bottom: 100px;
+    }
+
+.owl-carousel_wrapp {
+    text-align: center;
+}
+
+.owl-carousel .item {
+    padding: 70px 25px;
+    background-color: rgba(1,25,54,0.6);
+    border-radius: 10px;
+    min-height: 258px;
+}
+
+.owl-carousel h3 {
+    font-weight: 600;
+    color: white;
+    font-size: 17px;
+    line-height: 25px;
+    margin-bottom: 0px;
+}
+
+.owl-theme .owl-dots {
+    margin-top: 45px
+}
+
+    .owl-theme .owl-dots .owl-dot span {
+        background: linear-gradient( var(--green),var(--blue));
+    }
+
+.owl-carousel span {
+    display: block;
+    color: var(--gray);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+.owl-carousel .owl-stage-outer {
+    position: relative;
+}
+
+.owl-theme .owl-nav {
+    right: 0;
+    margin: 0 auto;
+    left: 0;
+    top: 36%;
+    position: absolute;
+    width: 100%;
+    background: red;
+    color: white
+}
+
+.owl-prev {
+    position: absolute;
+    left: -60px;
+}
+
+.owl-next {
+    position: absolute;
+    right: -60px;
+}
+
+.owl-carousel .owl-nav button.owl-next,
+.owl-carousel .owl-nav button.owl-prev {
+    display: none;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background: linear-gradient( var(--green),var(--blue));
+}
+
+    .owl-carousel .owl-nav button.owl-next span,
+    .owl-carousel .owl-nav button.owl-prev span {
+        font-size: 40px;
+        color: white;
+    }
+
+.link_custom {
+    color: var(--gray)
+}
+
+    .link_custom::after, .link_custom::before {
+        background-color: var(--gray)
+    }
+
+    .link_custom:hover::after, .link_custom:hover::before {
+        background: linear-gradient( var(--green),var(--blue));
+    }
+/*#endregion event*/
+/*#region typing*/
+
+
+/*#endregion typing*/
