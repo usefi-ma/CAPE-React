@@ -16,6 +16,9 @@ function UserFooter() {
                       <a className='navbar-brand text-white' href='#'>
                           <div className="logo">
                               <img src={logo} />
+                            
+
+                            
                           </div>
                       </a>
                       <button className='btn navbar-toggler border-3 px-2' type='button' data-bs-toggle='offcanvas'
