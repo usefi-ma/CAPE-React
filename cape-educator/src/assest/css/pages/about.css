@@ -1,0 +1,117 @@
+/*#region about_header*/
+.about_header {
+    padding: 120px 0;
+}
+
+    .about_header .section_title {
+        margin-bottom: 35px !important;
+        font-size: 40px;
+    }
+
+.header {
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+    .header h3 {
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .header p {
+        display: block;
+        margin: 10px auto 0;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--gray);
+        line-height: 25px;
+    }
+/*#endregion about_header*/
+
+.about_content .about_img {
+    background: linear-gradient(rgba(0, 20, 44, 0.6), rgba(0, 20, 44, 0.6)), url(../../images/about/objective.jpg) no-repeat;
+    background-size: cover;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/*#region about_boxes*/
+.about_boxes {
+    margin:150px 0;
+    color:white;
+  
+}
+.about_boxes_wrapp {
+    background: var(--light_navy);
+    width: 100%;
+    border-radius: 15px;
+}
+.title_wrapp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 25px;
+    min-height: 162px;
+    border-radius: 10px 10px 0 0;
+}
+    .title_wrapp h3 {
+        font-size: 21px;
+        font-weight: 600;
+        line-height: 27px;
+    }
+    .title_wrapp p {
+        color: white;
+        margin-top:5px;
+        font-size: 12px;
+    }
+.icon_wrapp {
+    width: 60px;
+    height: 60px;
+    margin-right:15px;
+}
+    .icon_wrapp img {
+        width: auto;
+        height: auto;
+        max-height: 100%;
+    }
+.img_wrapp {
+    width: 100%;
+    height: 190px;
+    background: linear-gradient(rgba(0, 20, 44,0.5), rgba(0, 20, 44,0.5)), url(../../images/about/executive.jpg) no-repeat;
+    background-size: cover;
+}
+.img_wrapp2 {
+    width: 100%;
+    height: 190px;
+    background: linear-gradient(rgba(0, 20, 44,0.5), rgba(0, 20, 44,0.5)),url(../../images/about/authority.jpg) no-repeat;
+    background-size: cover;
+}
+.img_wrapp3 {
+    width: 100%;
+    height: 190px;
+    background: linear-gradient(rgba(0, 20, 44,0.5), rgba(0, 20, 44,0.5)),url(../../images/about/meeting.jpg) no-repeat;
+    background-size: cover;
+}
+.desc {
+    padding: 20px 25px;
+    min-height: 325px;
+    border-radius:0 0 10px 10px;
+}
+    .desc p {
+        color: var(--gray);
+        font-size: 15px;
+        margin-bottom:5px;
+    }
+.second .desc {
+    background: linear-gradient( var(--green),var(--blue));
+}
+    .second .desc p {
+        color: white;
+    }
+.second .title_wrapp {
+    background: linear-gradient( var(--green),var(--blue));
+    color: white;
+}
+/*#endregion about_boxes*/
