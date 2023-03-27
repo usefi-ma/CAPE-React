@@ -2,7 +2,7 @@ import React from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-
+import { useParams,useNavigate } from 'react-router-dom';
 import "../assest/css/pages/conferenceDetail.css";
 
 import UserHeader from '../layouts/UserHeader';
@@ -14,6 +14,8 @@ import logo from '../assest/images/logo.png';
 
 
 const ConferenceDetail = () => {
+    const {id}=useParams();
+    const navigate=useNavigate();
   return (
     <>
     <section className="topbar conference_topbar">

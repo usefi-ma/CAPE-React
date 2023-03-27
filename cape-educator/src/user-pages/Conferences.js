@@ -6,8 +6,14 @@ import "../assest/css/pages/announcement.css";
 import UserHeader from '../layouts/UserHeader';
 import UserFooter from '../layouts/UserFooter';
 
-
+const ConferenceInitail=[{
+    id:1,
+    title:'2019 Annual Conference | Connecting Research, Technology and Police Training.',
+    text:'2019 Annual Conference | Connecting Research, Technology and Police Training. Connecting Research, Technology and Police Training. On behalf of all of the CAPE Executive we would like to invite you and your colleagues to attend the 2019 CAPE Conference...',
+    date:'Feb 15, 2019' 
+}]
 const Conferences = () => {
+
   return (
     <>
     
@@ -50,6 +56,7 @@ const Conferences = () => {
                                 <a href="ConferenceDetail.html" className="btn btn_custom">
                                     Read More
                                 </a>
+                                {/* <Link to={`/executive/${item.id}`}>{item.name}</Link> */}
                             </div>
                         </div>
                     </div>

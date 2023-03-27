@@ -1,7 +1,7 @@
 import React from 'react';
-import MenuItem from '../../components/menu-items'
+import MenuItem from '../../components/menu-items';
 import { Outlet,useNavigate } from 'react-router-dom';
-
+// import panelCSS from '../../admin-pages/assest/css/main.css';
 
 const AdminLayout = () => {
     const navigate=useNavigate();
@@ -25,7 +25,8 @@ const AdminLayout = () => {
                             <div className="menu-toggle-btn mr-20">
                                 <button id="menu-toggle"
                                         className="main-btn primary-btn btn-hover">
-                                    <i className="lni lni-chevron-left me-2"></i> Menu
+                                    <i className="lni lni-chevron-left me-2"></i> 
+                                    Menu
                                 </button>
                             </div>
                             <div className="header-search d-none d-md-flex">

@@ -28,15 +28,15 @@ function App() {
     <>
      <Routes>
      
-            <Route element={ <PrivateRoute><AdminLayout /> </PrivateRoute>}>
+            <Route element={ <PrivateRoute><AdminLayout /></PrivateRoute>}>
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="banner" element={<Banner />} />
-                <Route path="executive" element={<ExecutiveDashboard />} />
-                <Route path="research" element={<ResearchDashboard />} />
+                <Route path="executivedashboard" element={<ExecutiveDashboard />} />
+                <Route path="researchdashboard" element={<ResearchDashboard />} />
                 <Route path="conferences" element={<ConferenceDashboard />} />
                 <Route path="speakers" element={<SpeakersDashboard />} />
                 <Route path="sponsers" element={<SponsersDashboard />} />
-                <Route path="contact" element={<ContactDashboard />} />
+                <Route path="contactdashboard" element={<ContactDashboard />} />
             </Route>
        
         <Route path="/" element={<Home />} />
@@ -45,7 +45,7 @@ function App() {
         <Route path="executive" element={<Executive />} />
         <Route path="executive/:id" element={<ExecutiveDetail />} />
         <Route path="conference" element={<Conferences />} />
-        <Route path="conferenceDetail" element={<ConferenceDetail />} />
+        <Route path="conferenceDetail/:id" element={<ConferenceDetail />} />
         <Route path="contact" element={<Contact />} />
         <Route path="signin" element={<Signin />} />
         <Route path="home" element={<Home />} />
