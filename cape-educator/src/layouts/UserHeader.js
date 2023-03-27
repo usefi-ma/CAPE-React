@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link,NavLink } from 'react-router-dom'
 
 import logo from '../assest/images/logo.png';
 import menu_icon from '../assest/images/menu_icon.svg'
@@ -41,27 +41,30 @@ function UserHeader() {
                         </div>
                         <div className='offcanvas-body p-lg-0'>
                             <ul className='navbar-nav'>
+                           
                                 <li className='nav-item'>
-                                    <a className='nav-link active' href='index.html'>Home</a>
+                                    <NavLink  to="/" className='nav-link' activeClassName="active">Home</NavLink >
                                 </li>
                                 <li className='nav-item'>
-                                    <a className='nav-link' href='About.html'>About Us</a>
+                                    <NavLink  to="/about" className='nav-link' activeClassName="active">About Us</NavLink >
                                 </li>
                                 <li className='nav-item'>
-                                    <a className='nav-link' href='Executive.html'>Executive</a>
+                                    <NavLink  to="/executive" className='nav-link' activeClassName="active">Executive</NavLink >
+                                </li>
+                                
+                                <li className='nav-item'>
+                                    <NavLink  to="/research" className='nav-link' activeClassName="active">Research</NavLink >
                                 </li>
                                 <li className='nav-item'>
-                                    <a className='nav-link' href='Announcements.html'>Announcements</a>
+                                    <NavLink  className='nav-link' to="/conference" activeClassName="active">Conferences</NavLink >
                                 </li>
                                 <li className='nav-item'>
-                                    <a className='nav-link' href='Research.html'>Research</a>
+                                    <NavLink  className='nav-link' to="/contact" activeClassName="active"> Contact Us</NavLink >
                                 </li>
                                 <li className='nav-item'>
-                                    <a className='nav-link' href='Conferences.html'>Conferences</a>
+                                    <NavLink  to="/signin" className='nav-link' activeClassName="active">Signin</NavLink >
                                 </li>
-                                <li className='nav-item'>
-                                    <a className='nav-link' href='Contact.html'>Contact</a>
-                                </li>
+                            
                             </ul>
                             {/* <!--<div className="search_form">
                                 <input placeholder="Search.." />

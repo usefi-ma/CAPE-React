@@ -9,6 +9,7 @@ import UserFooter from '../layouts/UserFooter';
 import executive_icon from '../assest/images/about/executive_icon.png';
 import Autority_icon from '../assest/images/about/Autority_icon.png';
 import meeting_icon from '../assest/images/about/meeting_icon.png';
+import objective from '../assest/images/about/objective.png';
 
 function About() {
     return (
@@ -34,90 +35,91 @@ function About() {
                 </div>
             </div>
         </div>
-    </section>
+        </section>
+    <section className="about_content">
+        <div className="container">
+            <div className="row about_content_wrapp">
 
-    <section classNames="about_content">
-        <div className="about_content_wrapp">
-            <div className="col_left">
-                <div className="about_img">
-
+                <div className="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                    <div className="about_img mt-0 mb-3">
+                        <img src={objective} />
+                    </div>
+                </div>
+                <div className="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+                    <span className="sub_title text_gradient">
+                        C.A.P.E.
+                    </span>
+                    <h2 className="section_title">
+                        Objectives
+                    </h2>
+                    <ul>
+                        <li>
+                            <div className="icon_wrapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
+                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                </svg>
+                            </div>
+                            <p><strong className="text_gradient">Provide</strong> advice and input regarding national and regional law enforcement training and education trends/needs. </p>
+                        </li>
+                        <li>
+                            <div className="icon_wrapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
+                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                </svg>
+                            </div>
+                            <p><strong className="text_gradient">Advocate </strong>and promote the commitment to training. </p>
+                        </li>
+                        <li>
+                            <div className="icon_wrapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
+                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                </svg>
+                            </div>
+                            <p><strong className="text_gradient">Advise </strong>on training specific policy. </p>
+                        </li>
+                        <li>
+                            <div className="icon_wrapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
+                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                </svg>
+                            </div>
+                            <p><strong className="text_gradient">Liaise </strong>between operational training academies and academic institutions. </p>
+                        </li>
+                        <li>
+                            <div className="icon_wrapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
+                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                </svg>
+                            </div>
+                            <p>
+                                <strong className="text_gradient">Guide </strong>
+                                and undertake law enforcement training and education research.
+                            </p>
+                        </li>
+                        <li>
+                            <div className="icon_wrapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
+                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                </svg>
+                            </div>
+                            <p>
+                                <strong className="text_gradient">Coordinate </strong>
+                                knowledge transfer initiatives.
+                            </p>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div className="col_right">
-                <span className="sub_title text_gradient">
-                    C.A.P.E.
-                </span>
-                <h2 className="section_title">
-                    Objectives
-                </h2>
-                <ul>
-                    <li>
-                        <div className="icon_wrapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                            </svg>
-                        </div>
-                        <p><strong className="text_gradient">Provide</strong> advice and input regarding national and regional law enforcement training and education trends/needs. </p>
-                    </li>
-                    <li>
-                        <div className="icon_wrapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                            </svg>
-                        </div>
-                        <p><strong className="text_gradient">Advocate </strong>and promote the commitment to training. </p>
-                    </li>
-                    <li>
-                        <div className="icon_wrapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                            </svg>
-                        </div>
-                        <p><strong className="text_gradient">Advise </strong>on training specific policy. </p>
-                    </li>
-                    <li>
-                        <div className="icon_wrapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                            </svg>
-                        </div>
-                        <p><strong className="text_gradient">Liaise </strong>between operational training academies and academic institutions. </p>
-                    </li>
-                    <li>
-                        <div className="icon_wrapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                            </svg>
-                        </div>
-                        <p>
-                            <strong className="text_gradient">Guide </strong>
-                            and undertake law enforcement training and education research.
-                        </p>
-                    </li>
-                    <li>
-                        <div className="icon_wrapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                            </svg>
-                        </div>
-                        <p>
-                            <strong className="text_gradient">Coordinate </strong>
-                            knowledge transfer initiatives.
-                        </p>
-                    </li>
-                </ul>
-            </div>
-        </div>
+         </div>
     </section>
-
     <section className="about_boxes">
         <div className="container">
             <div className="row">
-                <div className="col-12 col-sm-6 col-md-4">
+                <div className="col-12 col-sm-12 col-md-6  col-lg-4  col-xl-4">
                     <div className="about_boxes_wrapp">
                         <div className="title_wrapp">
                             <div className="icon_wrapp">
-                            <img src={executive_icon} />
+                                <img src={executive_icon} alt="executive" />
                             </div>
                             <div>
                                 <h3>Executive</h3>
@@ -147,18 +149,18 @@ function About() {
                             <p>
                                 Nominations for executive positions will be held at
                                 the annual spring meeting and at the conclusion
-                                of the current executive’s official term.
+                                of the current executive's official term.
                             </p>
 
                         </div>
                     </div>
                 </div>
 
-                <div className="col-12 col-sm-6 col-md-4 second">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 second">
                     <div className="about_boxes_wrapp">
                         <div className="title_wrapp">
                             <div className="icon_wrapp">
-                            <img src={Autority_icon} />                               
+                                <img src={Autority_icon} alt="Autority" />
                             </div>
                             <div>
                                 <h3>Authority and Jurisdiction</h3>
@@ -181,11 +183,11 @@ function About() {
                     </div>
                 </div>
 
-                <div className="col-12 col-sm-6 col-md-4">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
                     <div className="about_boxes_wrapp">
                         <div className="title_wrapp">
                             <div className="icon_wrapp">
-                                <img src={meeting_icon} />
+                                <img src={meeting_icon} alt="executive" />
                             </div>
                             <div>
                                 <h3>Meetings</h3>
@@ -216,7 +218,6 @@ function About() {
             </div>
         </div>
     </section>
-
         <UserFooter></UserFooter>
     </>
   );

@@ -6,6 +6,7 @@
     .about_header .section_title {
         margin-bottom: 35px !important;
         font-size: 40px;
+        color:var(--navy)
     }
 
 .header {
@@ -29,13 +30,15 @@
         line-height: 25px;
     }
 /*#endregion about_header*/
-
-.about_content .about_img {
-    background: linear-gradient(rgba(0, 20, 44, 0.6), rgba(0, 20, 44, 0.6)), url(../../images/about/objective.jpg) no-repeat;
-    background-size: cover;
-    height: 100%;
-    border-radius: 10px;
+/*.about_content .about_img {
+    height: 500px;
+    width: 60%;
+    margin: auto;
+    border-radius: 0 !important;
+    padding: 40px;
 }
+*/
+
 
 /*#region about_boxes*/
 .about_boxes {
@@ -44,9 +47,10 @@
   
 }
 .about_boxes_wrapp {
-    background: var(--light_navy);
+    background: #f1f6fa;
     width: 100%;
     border-radius: 15px;
+    margin-bottom:30px;
 }
 .title_wrapp {
     display: flex;
@@ -60,12 +64,16 @@
         font-size: 21px;
         font-weight: 600;
         line-height: 27px;
+        color: var(--navy);
     }
     .title_wrapp p {
-        color: white;
+        color: var(--navy);
         margin-top:5px;
         font-size: 12px;
     }
+.second .title_wrapp p, .second .title_wrapp h3 {
+    color:#fff;
+}
 .icon_wrapp {
     width: 60px;
     height: 60px;

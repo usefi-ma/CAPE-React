@@ -1,6 +1,5 @@
 import React from 'react';
 
-import "../assest/css/index.css";
 import "../assest/css/pages/research.css";
 
 import UserHeader from '../layouts/UserHeader';
@@ -20,7 +19,7 @@ function Research(){
           <div>
          
 
-<section className="objective">
+<section className="objective objective_reseach">
     <div className="container">
         <div className="row">
             <h2 className="section_title">

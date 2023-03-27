@@ -1,11 +1,11 @@
-.obj_box .icon_wrapp {
+.objective_reseach .obj_box .icon_wrapp {
     width: auto;
     height: 80px;
 }
-.obj_box h3 {
+.objective_reseach .obj_box h3 {
     font-size: 18px;
 }
-.obj_box {
+.objective_reseach .objective .obj_box {
     min-height:410px;
    
 }

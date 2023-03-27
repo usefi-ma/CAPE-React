@@ -1,0 +1,151 @@
+/*#reion team*/
+.speaker {
+    padding: 100px 0 0;
+    background: rgb(255,255,255);
+    margin-bottom: 100px;
+}
+
+.speaker_box {
+    padding: 30px;
+    border-radius: 10px;
+    transition: all .5s;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 15px 38px 0 rgb(0 0 0 / 10%);
+    height: 395px;
+    min-height: 395px;
+    margin-bottom: 30px;
+}
+
+    .speaker_box .speaker_header {
+        margin-bottom: 40px;
+    }
+
+    .speaker_box .speaker_wrap_img {
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        margin: auto;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: all 0.25s ease-in-out;
+        background-position: top
+    }
+
+    .speaker_box:hover .speaker_wrap_img {
+        opacity: 1;
+        transform: scale(1.051,1.051);
+        -webkit-transform: scale(1.051,1.051);
+        -moz-transform: scale(1.051,1.051);
+        -ms-transform: scale(1.051,1.051);
+        -o-transform: scale(1.051,1.051);
+    }
+
+
+    .speaker_box h3 a {
+        font-weight: 600;
+        font-size: 17px;
+        color: var(--gray);
+        margin-bottom: 14px;
+        display: block;
+    }
+
+    .speaker_box p {
+        color: var(--navy);
+        display: block;
+        font-size: 15px;
+        font-weight: 500;
+    }
+/*#endregion*/
+
+
+.caption-text .btn_custom {
+    display: inline-block;
+    width: 150px;
+    padding: 15px 10px;
+    margin: 25px auto 0;
+}
+
+    .caption-text .btn_custom:hover {
+        color: white;
+    }
+
+/*#region header*/
+.executive_header {
+    margin: 100px 0;
+}
+
+    .executive_header .section_title {
+        color: #FFFFFF;
+        font-size: 42px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .executive_header .header {
+        text-align: center;
+        color: white;
+        display: flex;
+        justify-content: center;
+    }
+
+        .executive_header .header h3 {
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .executive_header .header p {
+            display: block;
+            margin: 5px auto 0;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray);
+            line-height: 25px;
+        }
+/*#endregion */
+
+/*#region team_detail*/
+.team_detail {
+    margin: 150px 0;
+}
+
+    .team_detail .desc {
+        padding: 0px 0 0 50px;
+        color: white;
+    }
+
+        .team_detail .desc p {
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: var(--gray);
+        }
+/*#endregion team_detail*/
+@media screen and (max-width:992px) {
+    .executive_header {
+        margin: 100px 0 50px;
+    }
+
+    .team_detail {
+        margin: 0 0 100px 0;
+    }
+
+        .team_detail .desc {
+            padding: 0 10px;
+        }
+}
+
+
+
+
+.team_link {
+    width:100%;
+    height: 100%;
+
+}.team_link img {
+    width:auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+
+}

@@ -22,9 +22,9 @@ function UserFooter() {
                           </div>
                       </a>
                       <button className='btn navbar-toggler border-3 px-2' type='button' data-bs-toggle='offcanvas'
-                              data-bs-target='#offcanvasExample' aria-controls='offcanvasExample'>
-                          <img style={{width: 30}} src={logo} alt='menu icon' />
-                      </button>
+                            data-bs-target='#offcanvasExample' aria-controls='offcanvasExample'>
+                     <img style={{width: 30}} src={menu_icon} alt='menu icon' /> 
+                    </button>
                       <div className='offcanvas offcanvas-start-lg' tabindex='-1' id='offcanvasExample'
                            aria-labelledby='offcanvasExampleLabel'>
                           <div className='offcanvas-header d-flex d-lg-none justify-content-end'>

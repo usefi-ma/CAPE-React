@@ -4,62 +4,62 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-import "../assest/css/pages/home.css";
-
 import UserHeader from '../layouts/UserHeader';
 import UserFooter from '../layouts/UserFooter';
 
 import training from '../assest/images/icon/training.png';
+import advise from '../assest/images/icon/advise.png';
+import law from '../assest/images/icon/law.png';
+import membership from '../assest/images/about/membership1.png';
 
+import '../assest/css/pages/home.css'
 
 function Home() {
   return (
+   
     <>
-      <UserHeader></UserHeader>
-      <section className="banner">
       
-      <div className="container">
-          <div className="row align-center ">
-              <div className="col-12 col-md-10 col-lg-7 banner_content">
-       
-                   
-                  <h1 className="first_h1"> Canadian association of </h1>
-                          <h1 className="element"
-                                data-elements=" police education"></h1>
-                     
-                  <h3>
-                      C.A.P.E. 2023 CONFERENCE
-                  </h3>
-                  <p>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-calendar3" viewBox="0 0 16 16">
-                          <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
-                          <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                      </svg>
-                      June 20th-22nd 2023
-                  </p>
-                  <span className="benner_span">
-                      In partnership with <strong className="text_gradient ">
-                          Calgary Police Service &
-                          Bow Valley College
-                      </strong>
-                  </span>
+     <section className="banner">
+    <UserHeader></UserHeader>
+    <div className="container">
+            <div className="row align-center ">
+                <div className="col-12 col-md-10 col-lg-7 banner_content">
+                    <h1 className="first_h1"> Canadian association of </h1>
+                    <h1 className="element">
+                        police education
+                    </h1>
+                    <h3>
+                        C.A.P.E. 2023 CONFERENCE
+                    </h3>
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-calendar3" viewBox="0 0 16 16">
+                            <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
+                            <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                        </svg>
+                        June 20th-22nd 2023
+                    </p>
+                    <span className="benner_span">
+                        In partnership with <strong className="text_gradient ">
+                            Calgary Police Service &
+                            Bow Valley College
+                        </strong>
+                    </span>
 
-                  <a href="#" className="btn btn_custom ">
-                      Discover More
-                  </a>
-              </div>
-          </div>
-      </div>
-  </section>
-  <section className="objective">
+                    <a href="#" className="btn btn_custom ">
+                        Discover More
+                    </a>
+                </div>
+            </div>
+        </div></section>
+    <section className="objective">
         <div className="container">
             <div className="row">
                 <h2 className="section_title">
                     The Objectives of <span> C.A.P.E.</span>
                 </h2>
             </div>
-            <div className="row">
-                <div className="col-md-4 gx-lg-5">
+            <div className="row justify-content-center">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 gx-lg-4">
                     <div className="obj_box">
                         <div className="box_title">
                             <div className="icon_wrapp">
@@ -73,7 +73,7 @@ function Home() {
                                 regional law enforcement training and education
                                 trends/needs as well as advocating and promoting the commitment to training.
                             </p>
-                            <a href="#" className="text_gradient">
+                            <a href="#" className="btn btn_custom">
                                 About Us
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
@@ -84,11 +84,11 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-4 gx-lg-5">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 gx-lg-4 ">
                     <div className="obj_box">
                         <div className="box_title">
                             <div className="icon_wrapp">
-                                <img src={training} />
+                                <img src={advise} />
                             </div>
                             <h3> Advise on Training Policy</h3>
                         </div>
@@ -98,7 +98,7 @@ function Home() {
                                 We also advise on training specific policy and liaise between
                                 operational training academies and academic institutions.
                             </p>
-                            <a href="#" className="text_gradient">
+                            <a href="#" className="btn btn_custom">
                                 Our Members
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
@@ -109,11 +109,11 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-4 gx-lg-5">
+                <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 gx-lg-4">
                     <div className="obj_box">
                         <div className="box_title">
                             <div className="icon_wrapp">
-                                <img src={training} />
+                                <img src={law} />
                             </div>
                             <h3>Undertaking Law Enforcement</h3>
                         </div>
@@ -122,7 +122,7 @@ function Home() {
                                 Finally, CAPE guides and undertakes law enforcement training and
                                 education research and coordinates knowledge transfer initiatives.
                             </p>
-                            <a href="#" className="text_gradient">
+                            <a href="#" className="btn btn_custom">
                                 Contact Us
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
@@ -169,16 +169,18 @@ function Home() {
                     Our Networks
                 </h2>
             </div>
-            <div className="row ">
-                <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+            <div className="row justify-content-center">
+                <div id="carouselExampleIndicators" className="carousel slide col-md-10" data-bs-ride="carousel">
                     <div className="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
                     </div>
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <div className="row">
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.tps.ca/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/TorontoPolice.png" alt="Toronto Police Service" />
@@ -189,7 +191,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="http://www.opconline.ca/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/Ontorio.png" alt="Ontorio Police" />
@@ -199,7 +201,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.oape.org/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/OntarioAssociation.png" alt="Ontario Association" />
@@ -209,7 +211,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.saskatchewan.ca/residents/justice-crime-and-the-law/saskatchewan-police-college" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/Saskatchewan.png" alt="Saskatchewan Police College" />
@@ -219,7 +221,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.rcmp-grc.gc.ca/index.html" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/RoyalCanadian.png" alt="Royal Canadian Mounted Police" />
@@ -229,7 +231,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.enpq.qc.ca/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/QUEBEC_couleur.svg" alt="Quebec National Police Academy" />
@@ -239,7 +241,12 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+
+                            </div>
+                        </div>
+                        <div className="carousel-item">
+                            <div className="row">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.cpkn.ca/en/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/Network.png" alt="Canadian Police Knowledge Network" />
@@ -249,7 +256,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.jibc.ca/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/Justice.png" alt=" Justice Institute British Columbia" />
@@ -259,7 +266,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.hollandcollege.com/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/ATLANTIC.png" alt="ATLANTIC POLICE ACADEMY" />
@@ -269,7 +276,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://brandon.ca/police" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/Brandon.png" alt="City of Brandon - Brandon Police Service" />
@@ -279,7 +286,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="http://www.policecouncil.ca/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/psc.png" alt="Police Council" />
@@ -289,7 +296,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://assiniboine.net/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/Assiniboine.png" alt="Assiniboine College" />
@@ -303,7 +310,7 @@ function Home() {
                         </div>
                         <div className="carousel-item">
                             <div className="row">
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.emond.ca/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/emond.svg" alt=" Emond Publishing" />
@@ -313,7 +320,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.algonquincollege.com/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/Algonquin_College.svg" alt="Assiniboine College" />
@@ -323,7 +330,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.haltonpolice.ca/en/index.aspx/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/Halton.svg" alt="Halton Police" />
@@ -333,7 +340,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://bowvalleycollege.ca/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/BowValley.png" alt="Bow Valley College" />
@@ -343,7 +350,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.georgiancollege.ca/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/Georgian.png" alt="Georgian College" />
@@ -353,7 +360,8 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.tru.ca/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/tru.png" alt="Thompson Rivers University" />
@@ -363,7 +371,12 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+
+                            </div>
+                        </div>
+                        <div className="carousel-item">
+                            <div className="row">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.opp.ca/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/OntarioPolice.png" alt="Ontario Provincial Police" />
@@ -373,7 +386,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.collegelacite.ca/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/Accueil.png" alt="Accueil - La Cité" />
@@ -383,7 +396,7 @@ function Home() {
                                         </h2>
                                     </a>
                                 </div>
-                                <div className="col-12 col-sm-6 col-md-2 network_box">
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box">
                                     <a href="https://www.ccja.ca/" target="_blank">
                                         <div className="network_img_wrapp">
                                             <img src="./network/Criminal.png" alt="Canadian Criminal Justice Academy" />
@@ -406,185 +419,151 @@ function Home() {
                     </button>
                 </div>
 
-                {/* <!--
-
-                --> */}
             </div>
 
         </div>
     </section>
 
     <section className="about_content">
-        <div className="about_content_wrapp">
-            <div className="col_right">
-                <span className="sub_title text_gradient">
-                    C.A.P.E.
-                </span>
-                <h2 className="section_title">
-                    Membership
-                </h2>
-                <p className="about_content_desc">
-                    CAPE membership is guided by the requirement for geographical,
-                    subject matter expertise and government representation.
-                    Association membership should be composed of representatives from:
-                </p>
-                <ul>
-                    <li>
-                        <div className="icon_wrapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                            </svg>
-                        </div>
-                        <p>
-                            Federal/provincial/municipal Police academies/training divisions (e.g. JIBC,RCMP Depot, OPC, École nationale de police du Québec, Calgary Police Service, Winnipeg Police Service, etc)
-                        </p>
-                    </li>
-                    <li>
-                        <div className="icon_wrapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                            </svg>
-                        </div>
-                        <p>
-                            Ontario Association of Police Educators (OAPE)
-                        </p>
-                    </li>
-                    <li>
-                        <div className="icon_wrapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                            </svg>
-                        </div>
-                        <p>
-                            Police Sector Council
-                        </p>
-                    </li>
-                    <li>
-                        <div className="icon_wrapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                            </svg>
-                        </div>
-                        <p>Provincial Solicitor General/ Justice Ministries</p>
-                    </li>
-                    <li>
-                        <div className="icon_wrapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                            </svg>
-                        </div>
-                        <p>
-                            Canadian Police Knowledge Network
-                        </p>
-                    </li>
-                    <li>
-                        <div className="icon_wrapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                            </svg>
-                        </div>
-                        <p>
-                            University/College Law enforcement/Public Security programs
-                        </p>
-                    </li>
+        <div className="container">
+            <div className="row about_content_wrapp">
+                <div className="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+                    <span className="sub_title text_gradient">
+                        C.A.P.E.
+                    </span>
+                    <h2 className="section_title">
+                        Membership
+                    </h2>
+                    <p className="about_content_desc">
+                        CAPE membership is guided by the requirement for geographical,
+                        subject matter expertise and government representation.
+                        Association membership should be composed of representatives from:
+                    </p>
+                    <ul>
+                        <li>
+                            <div className="icon_wrapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                            </div>
+                            <p>
+                                Federal/provincial/municipal Police academies/training divisions (e.g. JIBC,RCMP Depot, OPC, École nationale de police du Québec, Calgary Police Service, Winnipeg Police Service, etc)
+                            </p>
+                        </li>
+                        <li>
+                            <div className="icon_wrapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                            </div>
+                            <p>
+                                Ontario Association of Police Educators (OAPE)
+                            </p>
+                        </li>
+                        <li>
+                            <div className="icon_wrapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                            </div>
+                            <p>
+                                Police Sector Council
+                            </p>
+                        </li>
+                        <li>
+                            <div className="icon_wrapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                            </div>
+                            <p>Provincial Solicitor General/ Justice Ministries</p>
+                        </li>
+                        <li>
+                            <div className="icon_wrapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                            </div>
+                            <p>
+                                Canadian Police Knowledge Network
+                            </p>
+                        </li>
+                        <li>
+                            <div className="icon_wrapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                            </div>
+                            <p>
+                                University/College Law enforcement/Public Security programs
+                            </p>
+                        </li>
 
-                    <li>
-                        <div className="icon_wrapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                            </svg>
-                        </div>
-                        <p>
-                            CACP HR committee
-                            <br />
-                            The executive will ensure that the membership composition conforms to the above format.
+                        <li>
+                            <div className="icon_wrapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                            </div>
+                            <p>
+                                CACP HR committee
+                                <br />
+                                The executive will ensure that the membership composition conforms to the above format.
 
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            <div className="col_left">
-                <div className="about_img">
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div className="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                    <div className="about_img">
+                        <img src={membership} />
 
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section className="event">
+    <section className="contact">
         <div className="container">
             <div className="row">
-                <h2 className="section_title">
-                    Announcements, News & Events
-                </h2>
+                <div className="col-12 col-lg-5">
+                    <div className="contact">
+                        <h2 className="section_title">
+                            Contact Us
+                        </h2>
+                        <p>
+                            Contact us to learn more about our upcoming educational events and conferences.
+                        </p>
+                        <div className="social">
+                            <a href="https://www.instagram.com/cape_police_educators/" target="_blank">
+                                <div className="social_svg_wrapp">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-instagram" viewBox="0 0 16 16">
+                                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                                    </svg>
+                                </div>
+                            </a>
+                            <a href="https://twitter.com/cape_acifp" className="ms-1" target="_blank">
+                                <div className="social_svg_wrapp">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-twitter" viewBox="0 0 16 16">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                        <div className="">
+                            <a href="contact.html" className="btn btn_custom">Send Message</a>
+                        </div>
+                    </div>
+                </div>
+               <div className="col-12 col-lg-7">
+                    <div className="map">
+                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.3339541282853!2d-114.05819134822391!3d51.046921179461776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53717ad00ad231a9%3A0x34c6c179aae00af8!2sBow%20Valley%20College%2C%20South%20Campus!5e0!3m2!1sen!2sca!4v1678123972520!5m2!1sen!2sca" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                     
+                        </div>
+                </div> 
             </div>
-
-            <div className="row owl-carousel_wrapp">
-                <OwlCarousel items={4}  margin={15} autoplay ={true} className="owl-carousel owl-theme">
-                    <div className="item">
-                        <h3>OAPE 2015 Course</h3>
-                        <span className="text_gradient">
-                            March 25, 2015
-                        </span>
-                        <a href="#" className="link_custom">More Info </a>
-                    </div>
-                    <div className="item">
-                        <h3>Logo Design Competition</h3>
-                        <span className="text_gradient">
-                            September 29, 2016
-                        </span>
-                        <a href="#" className="link_custom">More Info </a>
-                    </div>
-                    <div className="item">
-
-                        <h3>Problem Based Learning – Upcoming Certification</h3>
-                        <span className="text_gradient">
-                            February 6, 2017
-                        </span>
-                        <a href="#" className="link_custom">More Info </a>
-                    </div>
-                    <div className="item">
-                        <h3>Problem Based Learning – Upcoming Certification</h3>
-                        <span className="text_gradient">
-                            October 1, 2018
-                        </span>
-                        <a href="#" className="link_custom">More Info </a>
-                    </div>
-                    <div className="item">
-                        <h3>PSPBL Annual Conference 2015</h3>
-                        <span className="text_gradient">
-                            April 23, 2014
-                        </span>
-                        <a href="#" className="link_custom">More Info </a>
-                    </div>
-                    <div className="item">
-                        <h3>PSPBL Annual Conference 2015</h3>
-                        <span className="text_gradient">
-                            April 23, 2014
-                        </span>
-                        <a href="#" className="link_custom">More Info </a>
-                    </div>
-                    <div className="item">
-                        <h3>PSPBL Annual Conference 2015</h3>
-                        <span className="text_gradient">
-                            April 23, 2014
-                        </span>
-                        <a href="#" className="link_custom">More Info </a>
-                    </div>
-                    <div className="item">
-                        <h3>PSPBL Annual Conference 2015</h3>
-                        <span className="text_gradient">
-                            April 23, 2014
-                        </span>
-                        <a href="#" className="link_custom">More Info </a>
-                    </div>
-                </OwlCarousel>
-            </div>
-
-
         </div>
     </section>
-
 <UserFooter></UserFooter>
     </>
   );
