@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom';
 import "../assest/css/index.css";
 import "../assest/css/pages/executive.css";
 
-import UserHeader from '../layouts/UserHeader';
-import UserFooter from '../layouts/UserFooter';
+import UserHeader from '../layouts/user-layout/UserHeader';
+import UserFooter from '../layouts/user-layout/UserFooter';
 import DaveTutte from '../assest/images/executive/Dave-Tutte.jpg';
 const ExecutiveInitail=[{
     id:1,

@@ -1,8 +1,8 @@
 import React from 'react'
 import {Link,NavLink } from 'react-router-dom'
 
-import logo from '../assest/images/logo.png';
-import menu_icon from '../assest/images/menu_icon.svg'
+import logo from '../../assest/images/logo.png';
+import menu_icon from '../../assest/images/menu_icon.svg'
 
 
 function UserHeader() {

@@ -3,8 +3,8 @@ import React from 'react';
 import "../assest/css/index.css";
 import "../assest/css/pages/about.css";
 
-import UserHeader from '../layouts/UserHeader';
-import UserFooter from '../layouts/UserFooter';
+import UserHeader from '../layouts/user-layout/UserHeader';
+import UserFooter from '../layouts/user-layout/UserFooter';
 
 import executive_icon from '../assest/images/about/executive_icon.png';
 import Autority_icon from '../assest/images/about/Autority_icon.png';

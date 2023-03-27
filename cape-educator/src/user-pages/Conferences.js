@@ -3,8 +3,8 @@ import React from 'react';
 import "../assest/css/index.css";
 import "../assest/css/pages/announcement.css";
 
-import UserHeader from '../layouts/UserHeader';
-import UserFooter from '../layouts/UserFooter';
+import UserHeader from '../layouts/user-layout/UserHeader';
+import UserFooter from '../layouts/user-layout/UserFooter';
 
 const ConferenceInitail=[{
     id:1,

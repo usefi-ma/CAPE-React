@@ -1,8 +1,8 @@
 
 import React from 'react'
 
-import UserHeader from '../layouts/UserHeader';
-import UserFooter from '../layouts/UserFooter';
+import UserHeader from '../layouts/user-layout/UserHeader';
+import UserFooter from '../layouts/user-layout/UserFooter';
 const Contact = () => {
   return (
     <>

@@ -2,8 +2,8 @@ import React from 'react';
 
 import "../assest/css/pages/research.css";
 
-import UserHeader from '../layouts/UserHeader';
-import UserFooter from '../layouts/UserFooter';
+import UserHeader from '../layouts/user-layout/UserHeader';
+import UserFooter from '../layouts/user-layout/UserFooter';
 
 import justiceinstitute from '../assest/images/network/justiceinstitute.png';
 import CANSEBP from '../assest/images/network/CAN-SEBP.png';

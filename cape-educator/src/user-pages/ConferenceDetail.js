@@ -5,7 +5,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { useParams,useNavigate } from 'react-router-dom';
 import "../assest/css/pages/conferenceDetail.css";
 
-import UserHeader from '../layouts/UserHeader';
+import UserHeader from '../layouts/user-layout/UserHeader';
 import aboutConference from '../assest/images/conference/about_conference.jpg';
 import Chief from '../assest/images/conference/speaker/Chief.jpg';
 import menuIcon from '../assest/images/menu_icon.svg'
