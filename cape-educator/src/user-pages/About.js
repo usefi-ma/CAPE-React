@@ -1,15 +1,15 @@
 import React from 'react';
 
-import "../assest/css/index.css";
-import "../assest/css/pages/about.css";
+import "../assets/css/index.css";
+import "../assets/css/pages/about.css";
 
 import UserHeader from '../layouts/user-layout/UserHeader';
 import UserFooter from '../layouts/user-layout/UserFooter';
 
-import executive_icon from '../assest/images/about/executive_icon.png';
-import Autority_icon from '../assest/images/about/Autority_icon.png';
-import meeting_icon from '../assest/images/about/meeting_icon.png';
-import objective from '../assest/images/about/objective.png';
+import executive_icon from '../assets/images/about/executive_icon.png';
+import Autority_icon from '../assets/images/about/Autority_icon.png';
+import meeting_icon from '../assets/images/about/meeting_icon.png';
+import objective from '../assets/images/about/objective.png';
 
 function About() {
     return (

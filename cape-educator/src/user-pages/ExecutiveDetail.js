@@ -1,13 +1,13 @@
 import React from 'react';
 import { useParams,useNavigate } from 'react-router-dom';
 
-import "../assest/css/index.css";
-import "../assest/css/pages/executive.css";
+import "../assets/css/index.css";
+import "../assets/css/pages/executive.css";
 
 import UserHeader from '../layouts/user-layout/UserHeader';
 import UserFooter from '../layouts/user-layout/UserFooter';
 
-import DaveTutte from '../assest/images/executive/Dave-Tutte.jpg';
+import DaveTutte from '../assets/images/executive/Dave-Tutte.jpg';
 const ExecutiveDetail = () => {
     const {id}=useParams();
     const navigate=useNavigate();

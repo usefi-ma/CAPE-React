@@ -1,7 +1,7 @@
 import React from 'react';
 
-import "../assest/css/index.css";
-import "../assest/css/pages/announcement.css";
+import "../assets/css/index.css";
+import "../assets/css/pages/announcement.css";
 
 import UserHeader from '../layouts/user-layout/UserHeader';
 import UserFooter from '../layouts/user-layout/UserFooter';

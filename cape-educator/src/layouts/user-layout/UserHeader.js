@@ -1,8 +1,8 @@
 import React from 'react'
 import {Link,NavLink } from 'react-router-dom'
 
-import logo from '../../assest/images/logo.png';
-import menu_icon from '../../assest/images/menu_icon.svg'
+import logo from '../../assets/images/logo.png';
+import menu_icon from '../../assets/images/menu_icon.svg'
 
 
 function UserHeader() {
@@ -20,7 +20,7 @@ function UserHeader() {
                             data-bs-target='#offcanvasExample' aria-controls='offcanvasExample'>
                      <img style={{width: 30}} src={menu_icon} alt='menu icon' /> 
                     </button>
-                    <div className='offcanvas offcanvas-start-lg' tabindex='-1' id='offcanvasExample'
+                    <div className='offcanvas offcanvas-start-lg' tabIndex='-1' id='offcanvasExample'
                          aria-labelledby='offcanvasExampleLabel'>
                         <div className='offcanvas-header d-flex d-lg-none justify-content-end'>
                             {/* <!--<h5 className='offcanvas-title text-white' id='offcanvasExampleLabel'>Navbar</h5>--> */}
@@ -43,26 +43,26 @@ function UserHeader() {
                             <ul className='navbar-nav'>
                            
                                 <li className='nav-item'>
-                                    <NavLink  to="/" className='nav-link' activeClassName="active">Home</NavLink >
+                                    <NavLink  to="/" className='nav-link' activeclassname="active">Home</NavLink >
                                 </li>
                                 <li className='nav-item'>
-                                    <NavLink  to="/about" className='nav-link' activeClassName="active">About Us</NavLink >
+                                    <NavLink  to="/about" className='nav-link' activeclassname="active">About Us</NavLink >
                                 </li>
                                 <li className='nav-item'>
-                                    <NavLink  to="/executive" className='nav-link' activeClassName="active">Executive</NavLink >
+                                    <NavLink  to="/executive" className='nav-link' activeclassname="active">Executive</NavLink >
                                 </li>
                                 
                                 <li className='nav-item'>
-                                    <NavLink  to="/research" className='nav-link' activeClassName="active">Research</NavLink >
+                                    <NavLink  to="/research" className='nav-link' activeclassname="active">Research</NavLink >
                                 </li>
                                 <li className='nav-item'>
-                                    <NavLink  className='nav-link' to="/conference" activeClassName="active">Conferences</NavLink >
+                                    <NavLink  className='nav-link' to="/conference" activeclassname="active">Conferences</NavLink >
                                 </li>
                                 <li className='nav-item'>
-                                    <NavLink  className='nav-link' to="/contact" activeClassName="active"> Contact Us</NavLink >
+                                    <NavLink  className='nav-link' to="/contact" activeclassname="active"> Contact Us</NavLink >
                                 </li>
                                 <li className='nav-item'>
-                                    <NavLink  to="/signin" className='nav-link' activeClassName="active">Signin</NavLink >
+                                    <NavLink  to="/signin" className='nav-link' activeclassname="active">Signin</NavLink >
                                 </li>
                             
                             </ul>

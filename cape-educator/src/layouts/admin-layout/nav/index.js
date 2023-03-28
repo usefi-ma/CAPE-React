@@ -9,7 +9,7 @@ import { Box, Link, Button, Drawer, Typography, Avatar, Stack } from '@mui/mater
 // hooks
  import useResponsive from '../../../hooks/useResponsive';
 // components
-import Logo from '../../../assest/images/logo-dashboard.png';
+import Logo from '../../../assets/images/logo-dashboard.png';
 import Scrollbar from '../../../components/scrollbar/Scrollbar';
 import NavSection from '../../../components/nav-section';
 //

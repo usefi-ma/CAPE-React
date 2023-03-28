@@ -1,8 +1,7 @@
 import React from 'react'
 
-
-import logo from '../../assest/images/logo.png';
-import menu_icon from '../../assest/images/menu_icon.svg'
+import logo from '../../assets/images/logo.png';
+import menu_icon from '../../assets/images/menu_icon.svg'
 
 
 function UserFooter() {
@@ -25,7 +24,7 @@ function UserFooter() {
                             data-bs-target='#offcanvasExample' aria-controls='offcanvasExample'>
                      <img style={{width: 30}} src={menu_icon} alt='menu icon' /> 
                     </button>
-                      <div className='offcanvas offcanvas-start-lg' tabindex='-1' id='offcanvasExample'
+                      <div className='offcanvas offcanvas-start-lg' tabIndex='-1' id='offcanvasExample'
                            aria-labelledby='offcanvasExampleLabel'>
                           <div className='offcanvas-header d-flex d-lg-none justify-content-end'>
                               {/* <!--<h5 className='offcanvas-title text-white' id='offcanvasExampleLabel'>Navbar</h5>--> */}

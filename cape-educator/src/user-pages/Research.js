@@ -1,13 +1,13 @@
 import React from 'react';
 
-import "../assest/css/pages/research.css";
+import "../assets/css/pages/research.css";
 
 import UserHeader from '../layouts/user-layout/UserHeader';
 import UserFooter from '../layouts/user-layout/UserFooter';
 
-import justiceinstitute from '../assest/images/network/justiceinstitute.png';
-import CANSEBP from '../assest/images/network/CAN-SEBP.png';
-import cpknrcsp from '../assest/images/network/cpkn-rcsp.png';
+import justiceinstitute from '../assets/images/network/justiceinstitute.png';
+import CANSEBP from '../assets/images/network/CAN-SEBP.png';
+import cpknrcsp from '../assets/images/network/cpkn-rcsp.png';
 
 
 

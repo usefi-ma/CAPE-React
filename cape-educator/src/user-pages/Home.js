@@ -7,12 +7,12 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import UserHeader from '../layouts/user-layout/UserHeader';
 import UserFooter from '../layouts/user-layout/UserFooter';
 
-import training from '../assest/images/icon/training.png';
-import advise from '../assest/images/icon/advise.png';
-import law from '../assest/images/icon/law.png';
-import membership from '../assest/images/about/membership1.png';
+import training from '../assets/images/icon/training.png';
+import advise from '../assets/images/icon/advise.png';
+import law from '../assets/images/icon/law.png';
+import membership from '../assets/images/about/membership1.png';
 
-import '../assest/css/pages/home.css'
+import '../assets/css/pages/home.css'
 
 function Home() {
   return (
@@ -77,7 +77,7 @@ function Home() {
                                 About Us
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                                        <path fillRule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
                                     </svg>
                                 </span>
                             </a>
@@ -102,7 +102,7 @@ function Home() {
                                 Our Members
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                                        <path fillRule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
                                     </svg>
                                 </span>
                             </a>
@@ -126,7 +126,7 @@ function Home() {
                                 Contact Us
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                                        <path fillRule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
                                     </svg>
                                 </span>
                             </a>
@@ -558,7 +558,7 @@ function Home() {
                 </div>
                <div className="col-12 col-lg-7">
                     <div className="map">
-                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.3339541282853!2d-114.05819134822391!3d51.046921179461776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53717ad00ad231a9%3A0x34c6c179aae00af8!2sBow%20Valley%20College%2C%20South%20Campus!5e0!3m2!1sen!2sca!4v1678123972520!5m2!1sen!2sca" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                     
+                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.3339541282853!2d-114.05819134822391!3d51.046921179461776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53717ad00ad231a9%3A0x34c6c179aae00af8!2sBow%20Valley%20College%2C%20South%20Campus!5e0!3m2!1sen!2sca!4v1678123972520!5m2!1sen!2sca" width="600" height="450" allowFullScreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                     
                         </div>
                 </div> 
             </div>

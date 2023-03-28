@@ -5,7 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import React from 'react';
 import {BrowserRouter} from "react-router-dom";
 import ReactDOM from 'react-dom/client';
-import './assest/css/index.css'
+import './assets/css/index.css'
 
 
 import App from './App';

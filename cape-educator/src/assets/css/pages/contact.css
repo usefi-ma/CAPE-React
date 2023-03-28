@@ -1,0 +1,130 @@
+
+
+  /* 
+  
+  .contact {
+    padding: 60px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+  }
+  
+    .contact .section_title {
+        margin: 20px;
+        text-align: left
+    }
+  
+    .contact .social {
+        margin-top: 7px;
+    }
+  
+        .contact .social .social_svg_wrapp {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--blue);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+  
+        .contact .social a {
+            display: inline-block;
+            border-radius: 50%;
+        }
+  
+            .contact .social a:hover {
+                box-shadow: 0 0 10px 0 #0d276482
+            }
+  
+        .contact .social svg {
+            color: #fff;
+            cursor: pointer;
+            position: relative
+        }
+  
+    .contact .btn {
+        margin-top: 30px
+    }
+  
+
+  
+
+  
+  .contact-element {
+    border-radius: 10px;
+    padding: 20px;
+  } */
+
+  .header {
+    padding: 20px 0 0 0;
+    margin-bottom: 20px;
+    font-size:xx-large;
+  }
+
+.contact-info{
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+ .svg-icon svg{
+  margin: 1rem 1rem 1rem 0;
+ }
+
+ .social {
+  margin-bottom: 2rem;
+ }
+
+  .contact-box {
+    color: var(--gray);
+  }
+
+  .section_title {
+    color: var(--navy)
+  }
+
+  .contact-detail {
+    display: inline-block;
+  }
+  
+  .form-input {
+    letter-spacing: 1px;
+    text-align: left;
+  }
+  
+  label {
+    margin: 0 5px;
+    padding: 0 5px;
+  }
+  
+  input {
+    margin: 5px;
+    padding: 5px;
+    height: 2rem;
+min-width:100%; 
+    max-width: 100%;
+    border-radius: 10px;
+    border: solid #e0dddb 1px;
+  }
+  
+  textarea {
+    margin: 5px;
+    padding: 5px;
+    height: 10rem;
+    min-width:100%;
+    min-height: 5rem;
+    max-width: 100%;
+    border-radius: 10px;
+    border: solid #e0dddb 1px;
+  }
+  
+  .submitBtn {
+    background-color: #de1f25;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+  }
+  

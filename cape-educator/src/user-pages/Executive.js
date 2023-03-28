@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
-import "../assest/css/index.css";
-import "../assest/css/pages/executive.css";
+import "../assets/css/index.css";
+import "../assets/css/pages/executive.css";
 
 import UserHeader from '../layouts/user-layout/UserHeader';
 import UserFooter from '../layouts/user-layout/UserFooter';
-import DaveTutte from '../assest/images/executive/Dave-Tutte.jpg';
+import DaveTutte from '../assets/images/executive/Dave-Tutte.jpg';
 const ExecutiveInitail=[{
     id:1,
     name:'Dave Tutte',
