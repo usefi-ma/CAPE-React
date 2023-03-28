@@ -12,7 +12,7 @@ import ConferenceDetail from './user-pages/ConferenceDetail';
 import PageNotFound from './page-not-found';
 import Signin from './user-pages/Signin';
 import AdminLayout from './layouts/admin-layout';
-import Dashboard from './admin-pages/Daashboard';
+import Dashboard from './admin-pages/Dashboard';
 import Banner from './admin-pages/Banner';
 import ExecutiveDashboard from './admin-pages/Executive';
 import ResearchDashboard from './admin-pages/Research';
