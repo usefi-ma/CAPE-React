@@ -71,9 +71,10 @@ abbr, acronym {
 body, html {
     background-color: #fff;
     font-family: 'Montserrat', sans-serif;
-    overflow-y: scroll !important;
+ 
     
 }
+body{   overflow-y: scroll !important;}
 /*font-family: 'Josefin Sans', sans-serif;*/
 .section_title {
     color: #FFFFFF;
