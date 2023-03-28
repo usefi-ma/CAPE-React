@@ -147,7 +147,7 @@ const Executive = () => {
                   >
                     Image
                   </Typography>
-                  <Button variant="contained" component="label" organization="large">
+                  <Button variant="contained" component="label" size="large">
                     Upload
                     <input hidden accept="image/*" multiple type="file" />
                   </Button>
@@ -174,7 +174,7 @@ const Executive = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Button variant="contained" organization="large">
+                  <Button variant="contained" size="large">
                     Submit
                   </Button>
                 </Grid>
