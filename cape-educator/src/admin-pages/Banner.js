@@ -3,6 +3,9 @@ import { Grid, Container, Typography, Card, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const columns = [
   { id: 'banner', label: 'Banner Title', minWidth: 170 },
@@ -92,16 +95,9 @@ export default function Banner() {
                   >
                     Date
                   </Typography>
-                  <TextField
-                    fullWidth
-                    id="outlined-basic"
-                    label="Date"
-                    variant="outlined"
-                    type="date"
-                    InputLabelProps={{
-                    shrink: true,
-                    }}
-                  />
+                  <LocalizationProvider dateAdapter={AdapterDayjs} >
+                    <DatePicker className="w-100" />
+                  </LocalizationProvider>
                 </Grid>
                 <Grid item xs={12} sm={6} md={6}>
                   <Typography
