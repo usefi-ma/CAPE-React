@@ -14,12 +14,12 @@ const navConfig = [
   {
     title: 'Banner',
     path: '/banner',
-    icon: icon('ic_user'),
+    icon: icon('ic_blog'),
   },
   {
     title: 'Executive',
     path: '/executivedashboard',
-    icon: icon('ic_cart'),
+    icon: icon('ic_user'),
   },
   {
     title: 'Research',
@@ -34,17 +34,17 @@ const navConfig = [
   {
     title: 'Speakers',
     path: '/speakers',
-    icon: icon('ic_disabled'),
+    icon: icon('ic_user'),
   },  
   {
     title: 'Sponsers',
     path: '/sponsers',
-    icon: icon('ic_disabled'),
+    icon: icon('ic_user'),
   },
   {
     title: 'Contact',
     path: '/contactdashboard',
-    icon: icon('ic_disabled'),
+    icon: icon('ic_lock'),
   },
 ];
 
