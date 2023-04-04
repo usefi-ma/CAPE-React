@@ -18,6 +18,8 @@ const ConferenceDetail = () => {
     const navigate=useNavigate();
   return (
     <>
+    {/* <button onClick={()=>navigate(-1)}> Back</button>
+    {id} */}
     <section className="topbar conference_topbar">
         <div className="intro" id="Home">
             
@@ -541,9 +543,9 @@ const ConferenceDetail = () => {
 
 
     <section className="footer">
-        <svg viewbox="0 0 100 25">
+        {/* <svg viewbox="0 0 100 25">
             <path fill="#1f2945" d="M0 30 V12 Q30 17 55 12 T100 11 V30z" />
-        </svg>
+        </svg> */}
         <div className="container">
             <div className="row menu_footer">
                 <nav className='navbar navbar-expand-lg navbar-light'>
