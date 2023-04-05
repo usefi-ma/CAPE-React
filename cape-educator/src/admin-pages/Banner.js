@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, Container, Typography, Card, Button } from "@mui/material";
+import "../assets/css/dashboard.css";
 import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
@@ -42,7 +43,7 @@ export default function Banner() {
 
 <Container maxWidth="xl">
         <Typography variant="h4" sx={{ marginBottom: 3 }}>
-          User
+        Banner
         </Typography>
         <Box component="form" noValidate autoComplete="off">
           <Card sx={{ padding: 3 }}>

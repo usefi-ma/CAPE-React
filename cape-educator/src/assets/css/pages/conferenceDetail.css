@@ -444,15 +444,31 @@ a:hover {
     }
 
     .speaker_box .speaker_wrap_img {
-        border-radius: 50%;
+        /* border-radius: 50%;
         width: 200px;
         height: 200px;
         margin: auto;
         background-repeat: no-repeat;
         background-size: cover;
+        transition: all 0.25s ease-in-out; */
+        width: 200px;
+        height: 200px;
+        margin: auto;
         transition: all 0.25s ease-in-out;
+        overflow: hidden;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        align-items: center;
     }
+    .speaker_box .speaker_wrap_img > img {   
+         height: auto;
+        width: 100%;
+        position: absolute;
+        top: 0px;
 
+    }
     .speaker_box:hover .speaker_wrap_img {
         opacity: 1;
         transform: scale(1.051,1.051);

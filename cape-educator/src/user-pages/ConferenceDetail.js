@@ -119,92 +119,49 @@ const ConferenceDetail = () => {
                 </div>
             </div>
             <div className="row owl-carousel_wrapp">
-            <OwlCarousel lassName="owl-carousel owl-theme" dots loop margin={10} items={6} nav autoplay>
-                    <div className="item">
-                        <div className="network_box">
-                            <a href="https://www.saskatchewan.ca/residents/justice-crime-and-the-law/saskatchewan-police-college" target="_blank">
-                                <div className="network_img_wrapp">
-                                    <img src="./network/Saskatchewan.png" alt="Saskatchewan Police College"></img>
+           <OwlCarousel className='owl-theme' loop margin={5} >
+           <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box item">
+                                    <a href="https://www.tps.ca/" target="_blank">
+                                        <div className="network_img_wrapp">
+                                            <img src="./network/TorontoPolice.png" alt="Toronto Police Service" />
+                                        </div>
+
+                                        <h2>
+                                            Toronto Police Service
+                                        </h2>
+                                    </a>
                                 </div>
-                                <h2>
-                                    Saskatchewan Police College
-                                </h2>
-                            </a>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="network_box">
-                            <a href="https://www.oape.org/" target="_blank">
-                                <div className="network_img_wrapp">
-                                    <img src="./network/OntarioAssociation.png" alt="Ontario Association"></img>
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box item">
+                                    <a href="http://www.opconline.ca/" target="_blank">
+                                        <div className="network_img_wrapp">
+                                            <img src="./network/Ontorio.png" alt="Ontorio Police" />
+                                        </div>
+                                        <h2>
+                                            opconline.ca
+                                        </h2>
+                                    </a>
                                 </div>
-                                <h2>
-                                    Ontario Association of Police Educators
-                                </h2>
-                            </a>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="network_box">
-                            <a href="https://www.rcmp-grc.gc.ca/index.html" target="_blank">
-                                <div className="network_img_wrapp">
-                                    <img src="./network/RoyalCanadian.png" alt="Royal Canadian Mounted Police"></img>
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box item">
+                                    <a href="https://www.oape.org/" target="_blank">
+                                        <div className="network_img_wrapp">
+                                            <img src="./network/OntarioAssociation.png" alt="Ontario Association" />
+                                        </div>
+                                        <h2>
+                                            Ontario Association of Police Educators
+                                        </h2>
+                                    </a>
                                 </div>
-                                <h2>
-                                    Royal Canadian Mounted Police
-                                </h2>
-                            </a>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="network_box">
-                            <a href="https://www.haltonpolice.ca/en/index.aspx/" target="_blank">
-                                <div className="network_img_wrapp">
-                                    <img src="./network/Halton.svg" alt="Halton Police"></img>
+                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box item">
+                                    <a href="https://www.saskatchewan.ca/residents/justice-crime-and-the-law/saskatchewan-police-college" target="_blank">
+                                        <div className="network_img_wrapp">
+                                            <img src="./network/Saskatchewan.png" alt="Saskatchewan Police College" />
+                                        </div>
+                                        <h2>
+                                            Saskatchewan Police College
+                                        </h2>
+                                    </a>
                                 </div>
-                                <h2>
-                                    Halton Police
-                                </h2>
-                            </a>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="network_box">
-                            <a href="https://www.tru.ca/" target="_blank">
-                                <div className="network_img_wrapp">
-                                    <img src="./network/tru.png" alt="Thompson Rivers University"></img>
-                                </div>
-                                <h2>
-                                    Thompson Rivers University
-                                </h2>
-                            </a>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="network_box">
-                            <a href="https://www.opp.ca/" target="_blank">
-                                <div className="network_img_wrapp">
-                                    <img src="./network/OntarioPolice.png" alt="Ontario Provincial Police"></img>
-                                </div>
-                                <h2>
-                                    Ontario Provincial Police
-                                </h2>
-                            </a>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="network_box">
-                            <a href="https://www.hollandcollege.com/" target="_blank">
-                                <div className="network_img_wrapp">
-                                    <img src="./network/ATLANTIC.png" alt="ATLANTIC POLICE ACADEMY"></img>
-                                </div>
-                                <h2>
-                                    Atlantic Police Academy
-                                </h2>
-                            </a>
-                        </div>
-                    </div>
-                </OwlCarousel>
+</OwlCarousel>
             </div>
         </div>
     </div>

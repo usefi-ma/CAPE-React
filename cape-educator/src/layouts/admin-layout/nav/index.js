@@ -56,27 +56,7 @@ export default function Nav({ openNav, onCloseNav }) {
       <Box sx={{ px: 2.5, pb: 3, display: 'inline-flex' }}>
         <img className="w-100" src={Logo}></img>
       </Box>
-
-      {/* <Box sx={{ mb: 5, mx: 2.5 }}>
-        <Link underline="none">
-          <StyledAccount>
-            <Avatar src={account.photoURL} alt="photoURL" />
-
-            <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {account.displayName}
-              </Typography>
-
-              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {account.role}
-              </Typography>
-            </Box>
-          </StyledAccount>
-        </Link>
-      </Box> */}
-
       <NavSection data={navConfig} />
-
       <Box sx={{ flexGrow: 1 }} />
     </Scrollbar>
   );

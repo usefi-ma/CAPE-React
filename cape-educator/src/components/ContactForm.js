@@ -58,31 +58,23 @@ const ContactForm = (props) => {
   };
 
   return (
-    <section className="container">
-        <br></br>
-        <div>
-          <h1 className="section_title header">Contact Us</h1>
-          <h4 className="text-muted text-center sub_title">
-            Canadian Association of Police Educators
-          </h4>
-        </div>
-      
-      <section className="contact">
+    <section className="container ">
+      <section className="contact-us">
         <div className="container">
           <div className="row">
             <div className="contact-element col-12 col-lg-5 ">
               <div className="contact-box">
-                <h4 className="text-center contact-info">Contact Information</h4>
+              <h3 className="section_title">Contact Information</h3>
                 <p>
                   Fill out the contact form or give us a call to learn more
                   about upcoming educational events and conferences.
                 </p>
-                <div>
+                <div className="mt-3">
                   <div className="svg-icon">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
+                      width="22"
+                      height="22"
                       color="var(--navy)"
                       fill="currentColor"
                       className="bi bi-telephone-fill"
@@ -98,8 +90,8 @@ const ContactForm = (props) => {
                   <div className="svg-icon">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
+                      width="22"
+                      height="22"
                       color="var(--navy)"
                       fill="currentColor"
                       className="bi bi-envelope-fill"
@@ -110,9 +102,8 @@ const ContactForm = (props) => {
                     <p className="contact-detail">contact.cape@mail.com </p>
                   </div>
                 </div>
-                <hr />
                 <div className="social text-center">
-                  <a href="https://twitter.com/cape_acifp">
+                  <a href="https://twitter.com/cape_acifp" target="_blank">
                     <div className="social_svg_wrapp">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +117,7 @@ const ContactForm = (props) => {
                       </svg>
                     </div>
                   </a>
-                  <a href="https://www.instagram.com/cape_police_educators/">
+                  <a href="https://www.instagram.com/cape_police_educators/" target="_blank">
                     <div className="social_svg_wrapp">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +131,7 @@ const ContactForm = (props) => {
                       </svg>
                     </div>
                   </a>
-                  <a href="#">
+                  <a href="#" target="_blank">
                     <div className="social_svg_wrapp">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -159,8 +150,8 @@ const ContactForm = (props) => {
             </div>
 
             <form className="container contact-element col-12 col-lg-7" onSubmit={submitFormHandler}>
+              <h3 className="section_title">Get In Touch</h3>
               <div className="form-input">
-                {/* <label>Full Name</label> */}
                 <input
                   type="text"
                   name="name"
@@ -205,7 +196,7 @@ const ContactForm = (props) => {
                 />
               </div>
               <div className="button-div">
-                <button type="submit" className="submitBtn">
+                <button type="submit" className="submitBtn btn btn_custom">
                   Send
                 </button>
               </div>

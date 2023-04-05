@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link,NavLink } from 'react-router-dom'
+import {NavLink } from 'react-router-dom'
 
 import logo from '../../assets/images/logo.png';
 import menu_icon from '../../assets/images/menu_icon.svg'
@@ -61,9 +61,9 @@ function UserHeader() {
                                 <li className='nav-item'>
                                     <NavLink  className='nav-link' to="/contact" activeclassname="active"> Contact Us</NavLink >
                                 </li>
-                                <li className='nav-item'>
+                                {/* <li className='nav-item'>
                                     <NavLink  to="/signin" className='nav-link' activeclassname="active">Signin</NavLink >
-                                </li>
+                                </li> */}
                             
                             </ul>
                             {/* <!--<div className="search_form">

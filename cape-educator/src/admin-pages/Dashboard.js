@@ -12,7 +12,7 @@ export default function Dashboard() {
     <>
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back
+         Dashboard
         </Typography>
 
         <Grid container spacing={3}>
@@ -20,7 +20,7 @@ export default function Dashboard() {
             <AppWidgetSummary
               title="Conferences"
               total={10}
-              icon={"ant-design:android-filled"}
+              icon={"ant-design:fund-projection-screen-outlined"}
             />
           </Grid>
 
@@ -29,7 +29,7 @@ export default function Dashboard() {
               title="Executives"
               total={20}
               color="info"
-              icon={"ant-design:apple-filled"}
+              icon={"ant-design:fork-outlined"}
             />
           </Grid>
 
@@ -38,7 +38,7 @@ export default function Dashboard() {
               title="Researches"
               total={4}
               color="warning"
-              icon={"ant-design:windows-filled"}
+              icon={"ant-design:file-text-outlined"}
             />
           </Grid>
 
@@ -47,7 +47,7 @@ export default function Dashboard() {
               title="Users"
               total={1}
               color="error"
-              icon={"ant-design:bug-filled"}
+              icon={"ant-design:team-outlined"}
             />
           </Grid>
         </Grid>
