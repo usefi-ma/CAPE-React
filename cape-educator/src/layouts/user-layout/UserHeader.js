@@ -61,9 +61,11 @@ function UserHeader() {
                                 <li className='nav-item'>
                                     <NavLink  className='nav-link' to="/contact" activeclassname="active"> Contact Us</NavLink >
                                 </li>
-                                {/* <li className='nav-item'>
-                                    <NavLink  to="/signin" className='nav-link' activeclassname="active">Signin</NavLink >
-                                </li> */}
+                                <li className='nav-item'>
+                                    <NavLink  to="/signin" className='nav-link' activeclassname="active">        
+                                         Sign In
+                                    </NavLink >
+                                </li>
                             
                             </ul>
                             {/* <!--<div className="search_form">

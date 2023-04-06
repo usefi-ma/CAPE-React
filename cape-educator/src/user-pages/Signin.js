@@ -1,42 +1,95 @@
 import React from 'react';
-
-
+import TextField from "@mui/material/TextField";
+import {Link } from 'react-router-dom'
+import { Grid, Container, Typography, Card, Button } from "@mui/material";
 const Signin = () => {
   return (
     <>
+     
       {/* <!-- ========== signin-section start ========== --> */}
       <section class="signin-section">
         <div class="container-fluid">
         
-          <div class="row g-0 auth-row justify-content-center">
+          <div class="row justify-content-center">
          
-            {/* <!-- end col --> */}
-            <div class="col-lg-6">
+          
+            <div class="col-xs-11 col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-3">
               <div class="signin-wrapper">
+                <h3>Sign In</h3>
                 <div class="form-wrapper">
                   <form action="#">
                     <div class="row">
                       <div class="col-12">
                         <div class="input-style-1">
-                          <label>Email</label>
-                          <input type="email" placeholder="Email" />
+                 
+                        <Grid item xs={12}>
+                  <Typography
+                    variant="subtitle1"
+                    style={{
+                      marginBottom: 8,
+                      display: "block",
+                      fontWeight: "600",
+                      fontSize:"15px"
+                    }}
+                  >
+                    USERNAME
+                  </Typography>
+                  <TextField
+                    id="outlined-multiline-static"
+                    label="Username"
+                    variant="outlined"
+                    fullWidth
+                  />
+                </Grid>
                         </div>
                       </div>
                      
-                      <div class="col-12">
+                      <div class="col-12 mt-4">
                         <div class="input-style-1">
-                          <label>Password</label>
-                          <input type="password" placeholder="Password" />
+                        <Grid item xs={12}>
+                  <Typography
+                    variant="subtitle1"
+                    style={{
+                      marginBottom: 8,
+                      display: "block",
+                      fontWeight: "600",
+                      fontSize:"15px"
+                    }}
+                  >
+                    PASSWORD
+                  </Typography>
+                  <TextField
+                    id="outlined-multiline-static"
+                    label="Password" 
+                    type="password"
+                    variant="outlined"
+                    fullWidth
+                  />
+                </Grid>
                         </div>
                       </div>
-                
-                      <div class="col-xxl-6 col-lg-12 col-md-6">
-                        <div class="form-check checkbox-style mb-30">
+                      <div class="col-12 mt-4">
+                        <div
+                          class="
+                            button-group
+                            d-flex
+                            justify-content-center
+                            flex-wrap
+                          "
+                        >
+                          <Link
+                            class="btn btn_custom w-100 mt-0" to="/dashboard"
+                          >
+                            Sign In
+                          </Link>
+                          <div class="col-12">
+                        <div class="mt-3">
                           <input
-                            class="form-check-input"
+                            class="form-check-input me-2"
                             type="checkbox"
                             value=""
                             id="checkbox-remember"
+                            checked
                           />
                           <label
                             class="form-check-label"
@@ -46,40 +99,6 @@ const Signin = () => {
                           >
                         </div>
                       </div>
-                      
-                      <div class="col-xxl-6 col-lg-12 col-md-6">
-                        <div
-                          class="
-                            text-start text-md-end text-lg-start text-xxl-end
-                            mb-30
-                          "
-                        >
-                          <a href="#0" class="hover-underline"
-                            >Forgot Password?</a
-                          >
-                        </div>
-                      </div>
-                    
-                      <div class="col-12">
-                        <div
-                          class="
-                            button-group
-                            d-flex
-                            justify-content-center
-                            flex-wrap
-                          "
-                        >
-                          <button
-                            class="
-                              main-btn
-                              primary-btn
-                              btn-hover
-                              w-100
-                              text-center
-                            "
-                          >
-                            Sign In
-                          </button>
                         </div>
                       </div>
                     </div>

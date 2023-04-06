@@ -95,8 +95,10 @@
 }
 .desc {
     padding: 20px 25px;
-    min-height: 325px;
-    border-radius:0 0 10px 10px;
+    max-height: 345px;
+    border-radius: 0 0 10px 10px;
+    height: 345px;
+    min-height: 345px;
 }
     .desc p {
         color: var(--gray);

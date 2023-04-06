@@ -11,7 +11,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-
+const icon=[{icon:`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+<path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+</svg>`}]
 const columns = [
   { id: 'name', label: 'Full Name', minWidth: 170 },
   { id: 'jobTitle', label: 'Job Title', minWidth: 100 },
@@ -28,37 +30,22 @@ const columns = [
     minWidth: 170,
     align: 'right',
     format: (value) => value.toFixed(2),
-  },
-  {
-    id: 'action',
-    label: 'Action',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toFixed(2),
-  },
+  }
 ];
 
-function createData(name, jobTitle, organization,action) {
-  const Description =  organization;
-  return { name, jobTitle, organization, Description,action };
+function createData(name, jobTitle, organization,Description) {
+ 
+  return { name, jobTitle, organization, Description };
 }
 
 const rows = [
-  createData('India', 'IN', 1324171354, 3287263,1),
-  createData('China', 'CN', 1403500365, 9596961,1),
-  createData('Italy', 'IT', 60483973, 301340,1),
-  createData('United States', 'US', 327167434, 9833520,1),
-  createData('Canada', 'CA', 37602103, 9984670,1),
-  createData('Australia', 'AU', 25475400, 7692024,1),
-  createData('Germany', 'DE', 83019200, 357578,1),
-  createData('Ireland', 'IE', 4857000, 70273,1),
-  createData('Mexico', 'MX', 126577691, 1972550,1),
-  createData('Japan', 'JP', 126317000, 377973,1),
-  createData('France', 'FR', 67022000, 640679,1),
-  createData('United Kingdom', 'GB', 67545757, 242495,1),
-  createData('Russia', 'RU', 146793744, 17098246,1),
-  createData('Nigeria', 'NG', 200962417, 923768,1),
-  createData('Brazil', 'BR', 210147125, 8515767,1),
+  createData('Dave Tutte', 'President', 'Halton Regional Police', 'Staff Sergeant Dave Tutte has been with the Halton Regional Polic'),
+  createData('Dominique Germain', 'Vice-President','Algonquin College' ,'Dominique Germain holds a master’s degree in social work' ),
+  createData('Lindsay Sutherland', 'Director of Communications', 'Emond Publishing','Lindsay Sutherland is currently the Director of Sales & Business Development' ),
+  createData('Melanie Marchand', 'Co-Treasurer','Georgian College' ,'Melanie Marchand started her academic journey at the University of Waterloo' ),
+  createData('Simon Bradford', 'Co-Treasurer','Georgian College' ,'Staff Sergeant (ret) Simon Bradford spent 31 years in policing' ),
+  createData('Scott Mark', 'Director of Policies and Procedures','Bow Valley College' ,'Scott Mark began his career as a Police Officer in 2004 with the Canadian Forces Military Police' ),
+  createData('Darla Blackmore', 'Director of Conferences','Calgary Police Service' ,'Darla Blackmore has been with the Calgary Police Service' ),
 ];
 const Executive = () => {
   const [page, setPage] = React.useState(0);
@@ -72,6 +59,7 @@ const Executive = () => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+  const notify = () => alert("Information are inserted successfully");
   return (
     <>
       <Container maxWidth="xl">
@@ -174,7 +162,7 @@ const Executive = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Button variant="contained" size="large">
+                  <Button variant="contained" size="large" onClick={notify}>
                     Submit
                   </Button>
                 </Grid>

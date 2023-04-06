@@ -708,3 +708,68 @@ nav {
     color: var(--yellow)
 }
 /*#endreion*/
+.go_top_button{
+    z-index:2;
+    position:fixed;
+    bottom:10%;
+    right:5%;
+    cursor:pointer
+}
+.go_top_button svg{   
+     fill: var(--green);
+    }
+.go_top_button:hover svg {
+    box-shadow: 0 0 10px 0 #d806505e;
+    border-radius: 50%;
+}
+.go_top_button:hover{
+    background-color: transparent !important;
+
+}
+/*#region signIn*/
+body:has(.signin-section){
+    background-color: #f1f6fa;
+    height: 100vh;
+}
+.signin-section{display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;}
+.signin-wrapper{
+    background-color: white;
+    padding: 60px 40px;
+    box-shadow: 0 0 24px 0 #0d276433
+}
+.signin-wrapper h3{
+        font-size: 30px;
+        font-weight: 600;
+        color: var(--navy);
+        margin-bottom: 40px;
+}
+.signin-wrapper .form-check-label{
+    font-family: 'Josefin Sans', sans-serif;
+}
+.signin-wrapper .css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+    border-radius: 50px;
+    /* background-color: #f1f6fa; */
+    /* border:0 */
+}
+.signin-wrapper .form-check-label{
+    color:var(--blue) ;
+    font-weight: 600;
+}
+.signin-wrapper .form-check-input:checked {
+    background-color:  var(--blue);
+    border-color:  var(--blue);
+}
+.signin-wrapper .btn_custom{
+    height:55px;   line-height: 35px;
+}
+.signin-wrapper .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color:var(--blue);
+    font-weight: 500;
+}
+.signin-wrapper .css-md26zr-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+    border-color: var(--blue);
+}
+/*#endregion*/

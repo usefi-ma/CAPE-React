@@ -10,6 +10,7 @@ import aboutConference from "../assets/images/conference/about_conference.jpg";
 import Chief from "../assets/images/conference/speaker/Chief.jpg";
 import menuIcon from "../assets/images/menu_icon.svg";
 import logo from "../assets/images/logo.png";
+import Scroll from "../layouts/user-layout/Scroll";
 
 const options = {
   margin: 30,
@@ -652,7 +653,7 @@ const ConferenceDetail = () => {
         </div>
       </div>
 
-      <div className="gotop" id="gotop">
+      {/* <div className="gotop" id="gotop">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -664,7 +665,7 @@ const ConferenceDetail = () => {
             d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
           />
         </svg>
-      </div>
+      </div> */}
 
       <section className="footer">
         {/* <svg viewbox="0 0 100 25">
@@ -761,6 +762,7 @@ const ConferenceDetail = () => {
           </div>
         </div>
       </section>
+      <Scroll showBelow={250}></Scroll>
     </>
   );
 };

@@ -2,10 +2,13 @@ import React from "react";
 import {NavLink } from 'react-router-dom'
 import logo from "../../assets/images/logo.png";
 import menu_icon from "../../assets/images/menu_icon.svg";
+import Scroll from "./Scroll";
+
 
 function UserFooter() {
   return (
     <>
+     <Scroll showBelow={250}></Scroll>
       <section className="footer">
         <div className="container">
           <div className="row menu_footer">
@@ -110,15 +113,15 @@ function UserFooter() {
                           Contact Us
                         </NavLink>
                       </li>
-                      {/* <li className="nav-item">
+                      <li className="nav-item">
                         <NavLink
                           to="/signin"
                           className="nav-link"
                           activeclassname="active"
                         >
-                          Signin
+                          Sign In
                         </NavLink>
-                      </li> */}
+                      </li>
                     </ul>
                   </div>
                 </div>
