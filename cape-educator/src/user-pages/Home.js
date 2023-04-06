@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -44,10 +44,9 @@ function Home() {
                             Bow Valley College
                         </strong>
                     </span>
+                    <Link to="/about" className="btn btn_custom ">   Discover More </Link>
 
-                    <a href="#" className="btn btn_custom ">
-                        Discover More
-                    </a>
+                   
                 </div>
             </div>
         </div></section>
@@ -73,14 +72,13 @@ function Home() {
                                 regional law enforcement training and education
                                 trends/needs as well as advocating and promoting the commitment to training.
                             </p>
-                            <a href="#" className="btn btn_custom">
-                                About Us
+                            <Link to="/about" className="btn btn_custom "> About Us
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
                                         <path fillRule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
                                     </svg>
                                 </span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -98,14 +96,14 @@ function Home() {
                                 We also advise on training specific policy and liaise between
                                 operational training academies and academic institutions.
                             </p>
-                            <a href="#" className="btn btn_custom">
-                                Our Members
+                            <Link to="/executive" className="btn btn_custom "> 
+                                 Our Members
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
                                         <path fillRule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
                                     </svg>
                                 </span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -122,14 +120,14 @@ function Home() {
                                 Finally, CAPE guides and undertakes law enforcement training and
                                 education research and coordinates knowledge transfer initiatives.
                             </p>
-                            <a href="#" className="btn btn_custom">
+                            <Link to="/contact" className="btn btn_custom "> 
                                 Contact Us
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
                                         <path fillRule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
                                     </svg>
                                 </span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -154,9 +152,10 @@ function Home() {
                         program development, knowledge transfer, network facilitation
                         and collaborative training initiatives.
                     </p>
-                    <a href="#" className="btn btn_custom">
-                        Read More
-                    </a>
+                   
+                    <Link to="/about" className="btn btn_custom ">
+                    Read More
+                                </Link>
                 </div>
             </div>
         </div>
@@ -552,7 +551,9 @@ function Home() {
                             </a>
                         </div>
                         <div className="">
-                            <a href="contact.html" className="btn btn_custom">Send Message</a>
+                            <Link to="/contact" className="btn btn_custom ">
+                            Send Message
+                                </Link>
                         </div>
                     </div>
                 </div>

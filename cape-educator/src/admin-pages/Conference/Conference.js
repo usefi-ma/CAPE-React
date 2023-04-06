@@ -58,7 +58,7 @@ const Conference = () => {
                 </Grid>
                 <Grid item xs={6}>
                   <Typography
-                    variant="subtitle1"
+                    variant="subtitle1" 
                     style={{
                       marginBottom: 8,
                       display: "block",
@@ -68,7 +68,7 @@ const Conference = () => {
                     Start Date
                   </Typography>
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker />
+                    <DatePicker className="w-100" />
                   </LocalizationProvider>
                 </Grid>
                 <Grid item xs={6}>
@@ -83,7 +83,7 @@ const Conference = () => {
                      End Date
                   </Typography>
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker />
+                    <DatePicker className="w-100" />
                   </LocalizationProvider>
                 </Grid>
                 <Grid item xs={12}>

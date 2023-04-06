@@ -72,14 +72,14 @@ const Executive = () => {
           <Typography>Executive</Typography>
         </Breadcrumbs>
       </div>
-      <div className="speaker executive" id="Speakers">
+      <div className="executive" id="Speakers">
         <div className="container">
             <div className="row">
                 {executive.map(item=>
                 <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
-                    <div className="speaker_box">
-                        <div className="speaker_header">
-                            <div className="speaker_wrap_img" >
+                    <div className="executive_box">
+                        <div className="executive_header">
+                            <div className="executive_wrap_img" >
                                 <img src={item.img} />
                             </div>
                         </div>

@@ -21,8 +21,8 @@
     background-color: rgb(255, 231, 217);    border-radius: 12px;
 }
 h4.MuiTypography-root {
-    font-weight: 900;
-    font-size: 2rem;}
+    font-weight: 500;
+    font-size: 1.6rem;}
     header.MuiPaper-root,.css-1hawdz8{    background-color: rgb(249, 250, 251);}
 
     body:has(.css-10650aq), html:has(.css-10650aq)  {
@@ -31,6 +31,7 @@ h4.MuiTypography-root {
       .MuiPaper-root {
         background-color: rgb(255, 255, 255);
         border-bottom: 0;
-        box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
+        box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;   
+         border-radius: 10px;
        
     }

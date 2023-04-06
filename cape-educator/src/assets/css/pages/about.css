@@ -24,7 +24,7 @@
     .header p {
         display: block;
         margin: 10px auto 0;
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 500;
         color: var(--gray);
         line-height: 25px;
@@ -60,7 +60,7 @@
     .title_wrapp p {
         color: var(--navy);
         margin-top:5px;
-        font-size: 12px;
+        font-size: 13px;
     }
 .second .title_wrapp p, .second .title_wrapp h3 {
     color:#fff;
@@ -100,7 +100,7 @@
 }
     .desc p {
         color: var(--gray);
-        font-size: 15px;
+        font-size: 16px;
         margin-bottom:5px;
     }
 .second .desc {
@@ -114,3 +114,6 @@
     color: white;
 }
 /*#endregion about_boxes*/
+.gray_about_content ul {
+    font-size: 16px;
+}

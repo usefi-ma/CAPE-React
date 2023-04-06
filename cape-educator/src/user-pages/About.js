@@ -35,7 +35,7 @@ function About() {
       <section className="about_header">
         <div className="container">
           <div className="row header">
-            <div className="col-12 col-md-12 col-lg-9">
+            <div className="col-12 col-md-12 col-lg-10">
               <h2 className="section_title">
               Canadian Association of<span> Police Educators</span>
                
@@ -52,7 +52,7 @@ function About() {
           </div>
         </div>
       </section>
-      <section className="about_content">
+      <section className="about_content gray_about_content">
         <div className="container">
           <div className="row about_content_wrapp">
             <div className="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">

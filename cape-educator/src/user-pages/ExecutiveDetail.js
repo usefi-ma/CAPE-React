@@ -1,6 +1,5 @@
 import React from 'react';
-import { useParams,useNavigate } from 'react-router-dom';
-
+import { useParams,useNavigate} from 'react-router-dom';
 import "../assets/css/index.css";
 import "../assets/css/pages/executive.css";
 
@@ -14,24 +13,11 @@ const ExecutiveDetail = () => {
   return (
     <>
         <UserHeader></UserHeader>
-        <section className="executive_header">
-        <div className="container">
-            <div className="row header">
-                <div className="col-12 col-md-12 col-lg-9">
-                    <h2 className="section_title text_gradient">
-                        {id}Dave Tutte
-                    </h2>
-                    <h3>
-                        President
-                    </h3>
-                    <p>
-                        Halton Regional Police
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
+        <div role="presentation" className="breadcrumb">
+        <h2>  Dave Tutte</h2>
+        {/* {id} */}
+        <p className='executive_title'> Halton Regional Police</p>
+      </div>
     <section className="team_detail">
         <div className="container">
             <div className="row">
@@ -57,7 +43,7 @@ const ExecutiveDetail = () => {
             </div>
         </div>
     </section>
-<button onClick={()=>navigate(-1)}> Back</button>
+{/* <button onClick={()=>navigate(-1)}> Back</button> */}
 
         <UserFooter></UserFooter>
     </>

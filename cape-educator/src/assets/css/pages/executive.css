@@ -1,6 +1,7 @@
 /*#reion team*/
 .executive{
-    padding-bottom: 100px !important ;
+    padding-bottom: 100px ;
+   padding-top:50px;
 }
 .speaker {
     padding: 100px 0 0;
@@ -8,7 +9,7 @@
     margin-bottom: 100px;
 }
 
-.speaker_box {
+.executive_box {
     padding: 30px;
     border-radius: 10px;
     transition: all .5s;
@@ -20,11 +21,12 @@
     margin-bottom: 30px;
 }
 
-    .speaker_box .speaker_header {
+
+    .executive_box .executive_header {
         margin-bottom: 40px;
     }
 
-    .speaker_box .speaker_wrap_img {
+    .executive_box .executive_wrap_img {
         border-radius: 50%;
         width: 200px;
         height: 200px;
@@ -35,7 +37,7 @@
         background-position: top
     }
 
-    .speaker_box:hover .speaker_wrap_img {
+    .executive_box:hover .executive_wrap_img {
         opacity: 1;
         transform: scale(1.051,1.051);
         -webkit-transform: scale(1.051,1.051);
@@ -45,7 +47,7 @@
     }
 
 
-    .speaker_box h3 a {
+    .executive_box h3 a {
         font-weight: 600;
         font-size: 17px;
         color: var(--gray);
@@ -53,15 +55,34 @@
         display: block;
     }
 
-    .speaker_box p {
-        color: var(--navy);
+    .executive_box p {
+        color: var(--conference-blue);
         display: block;
-        font-size: 15px;
-        font-weight: 500;
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 16px;font-weight: 500;
     }
+
+    .executive_box .executive_wrap_img {
+        width: 200px;
+        height: 200px;
+        margin: auto;
+        transition: all 0.25s ease-in-out;
+        overflow: hidden;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        align-items: center;
+    }
+    .executive_box .executive_wrap_img > img {   
+         height: auto;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+
+    }
+    
 /*#endregion*/
-
-
 .caption-text .btn_custom {
     display: inline-block;
     width: 150px;
@@ -73,44 +94,10 @@
         color: white;
     }
 
-/*#region header*/
-.executive_header {
-    margin: 100px 0;
-}
-
-    .executive_header .section_title {
-        color: #FFFFFF;
-        font-size: 42px;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .executive_header .header {
-        text-align: center;
-        color: white;
-        display: flex;
-        justify-content: center;
-    }
-
-        .executive_header .header h3 {
-            font-weight: 500;
-            font-size: 18px;
-        }
-
-        .executive_header .header p {
-            display: block;
-            margin: 5px auto 0;
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--gray);
-            line-height: 25px;
-        }
-/*#endregion */
 
 /*#region team_detail*/
 .team_detail {
-    margin: 150px 0;
+    margin: 70px 0;
 }
 
     .team_detail .desc {
