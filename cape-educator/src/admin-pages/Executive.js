@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Container, Typography, Card, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
@@ -11,6 +11,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import axios from 'axios';
 
 const columns = [
   { id: 'name', label: 'Full Name', minWidth: 170 },
@@ -74,7 +75,7 @@ const Executive = () => {
   };
 
   //Form Data handle
-  const [executiveData, setExecutiveData] = useState([]);
+  const[executiveData, setExecutiveData] = useState([]);
   const[formErrors, setFormErrors] = useState({});
 
   const handleFormSubmit = (e) =>{
@@ -84,6 +85,8 @@ const Executive = () => {
     const jobTitle = e.target.jobTitle.value.trim();
     const organization = e.target.organization.value.trim();
     const description = e.target.description.value.trim();
+
+    //VERIFY THAT ALL INPUT FIELDS ARE FILLED IN
 
     const errors = {};
     if(!name){
@@ -114,6 +117,20 @@ const Executive = () => {
     const { name, value} = e.target;
     console.log(name, value);
   }
+
+  //FETCH CALL FROM SERVER
+  useEffect(() =>{
+    const fetchAllMembers = async () =>{
+      try{
+        const res = await axios.get("http://localhost:3000/members")
+        setExecutiveData(res.data);
+        console.log(res.data);
+      }catch(error){
+        console.error(error);
+      }
+    }
+    fetchAllMembers();
+  }, [])
 
 
 
@@ -273,17 +290,19 @@ const Executive = () => {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((data) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={data.jobTitle}>
-                    {columns.map((column) => {
+                  <TableRow hover role="checkbox" tabIndex={-1} key={data.id}>
+                    {/* {columns.map((column) => {
                       const value = data[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {column.format && typeof value === 'number'
                             ? column.format(value)
                             : value}
+                            {data.fullName}
                         </TableCell>
                       );
-                    })}
+                    })} */}
+                    
                   </TableRow>
                 );
               })}
