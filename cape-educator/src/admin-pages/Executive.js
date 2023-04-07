@@ -78,13 +78,13 @@ const Executive = () => {
   const[executiveData, setExecutiveData] = useState([]);
   const[formErrors, setFormErrors] = useState({});
 
-  const handleFormSubmit = (e) =>{
-    e.preventDefault();
+  const handleFormSubmit = async e =>{
+    // e.preventDefault();
 
-    const name = e.target.fullName.value.trim();
-    const jobTitle = e.target.jobTitle.value.trim();
-    const organization = e.target.organization.value.trim();
-    const description = e.target.description.value.trim();
+    const name = e.target.FullName.value.trim();
+    const jobTitle = e.target.JobTitle.value.trim();
+    const organization = e.target.Organization.value.trim();
+    const description = e.target.Description.value.trim();
 
     //VERIFY THAT ALL INPUT FIELDS ARE FILLED IN
 
@@ -105,8 +105,16 @@ const Executive = () => {
     if(Object.keys(errors).length > 0){
       setFormErrors(errors);
     } else {
-      setExecutiveData([...executiveData, {name, jobTitle, organization, description}]);
-      console.log(executiveData);
+      // setExecutiveData([...executiveData, {name, jobTitle, organization, description}]);
+      // console.log(executiveData);
+      try{
+        const response = await axios.post("http://localhost:3000/members", {FullName: name, JobTitle: jobTitle, Organization: organization, Description: description});
+        setExecutiveData([...executiveData, response.data]);
+        
+      } catch(error) {
+        console.log(error);
+        // console.log(setExecutiveData);
+      }
       e.target.reset();
       setFormErrors({});
     }
@@ -160,7 +168,7 @@ const Executive = () => {
                     id="outlined-basic"
                     label="Full Name"
                     variant="outlined"
-                    name="fullName"
+                    name="FullName"
                     onChange={handleChange}
                     error={formErrors.name}
                     helperText={formErrors.name}
@@ -182,7 +190,7 @@ const Executive = () => {
                     id="outlined-basic"
                     label="Job Title"
                     variant="outlined"
-                    name="jobTitle"
+                    name="JobTitle"
                     onChange={handleChange}
                     error={formErrors.jobTitle}
                     helperText={formErrors.jobTitle}
@@ -204,7 +212,7 @@ const Executive = () => {
                     id="outlined-basic"
                     label="Organization"
                     variant="outlined"
-                    name="organization"
+                    name="Organization"
                     onChange={handleChange}
                     error={formErrors.organization}
                     helperText={formErrors.organization}
@@ -244,7 +252,7 @@ const Executive = () => {
                     rows={5}
                     variant="outlined"
                     fullWidth
-                    name="description"
+                    name="Description"
                     onChange={handleChange}
                     error={formErrors.description}
                     helperText={formErrors.description}
@@ -286,23 +294,23 @@ const Executive = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {executiveData
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((data) => {
+            {executiveData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((members) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={data.id}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={members.id}>
                     {/* {columns.map((column) => {
-                      const value = data[column.id];
+                      const value = members[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {column.format && typeof value === 'number'
                             ? column.format(value)
                             : value}
-                            {data.fullName}
                         </TableCell>
                       );
                     })} */}
-                    
+                    <TableCell>{members.FullName}</TableCell>
+                    <TableCell>{members.JobTitle}</TableCell>
+                    <TableCell>{members.Organization}</TableCell>
+                    <TableCell>{members.Description}</TableCell>
                   </TableRow>
                 );
               })}
@@ -328,3 +336,6 @@ const Executive = () => {
 };
 
 export default Executive;
+
+
+
