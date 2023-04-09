@@ -2,7 +2,7 @@ import React from "react";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate,NavLink } from "react-router-dom";
 import "../assets/css/pages/conferenceDetail.css";
 
 import UserHeader from "../layouts/user-layout/UserHeader";
@@ -720,7 +720,7 @@ const ConferenceDetail = () => {
                     </a>
                   </div>
                   <div className="offcanvas-body p-lg-0">
-                    <ul className="navbar-nav">
+                    {/* <ul className="navbar-nav">
                       <li className="nav-item">
                         <a className="nav-link " href="index.html">
                           Home
@@ -750,6 +750,73 @@ const ConferenceDetail = () => {
                         <a className="nav-link" href="Contact.html">
                           Contact
                         </a>
+                      </li>
+                    </ul> */}
+                        <ul className="navbar-nav">
+                      <li className="nav-item">
+                        <NavLink
+                          to="/"
+                          className="nav-link"
+                          activeclassname="active"
+                        >
+                          Home
+                        </NavLink>
+                      </li>
+                      <li className="nav-item">
+                        <NavLink
+                          to="/about"
+                          className="nav-link"
+                          activeclassname="active"
+                        >
+                          About Us
+                        </NavLink>
+                      </li>
+                      <li className="nav-item">
+                        <NavLink
+                          to="/executive"
+                          className="nav-link"
+                          activeclassname="active"
+                        >
+                          Executive
+                        </NavLink>
+                      </li>
+
+                      <li className="nav-item">
+                        <NavLink
+                          to="/research"
+                          className="nav-link"
+                          activeclassname="active"
+                        >
+                          Research
+                        </NavLink>
+                      </li>
+                      <li className="nav-item">
+                        <NavLink
+                          className="nav-link"
+                          to="/conference"
+                          activeclassname="active"
+                        >
+                          Conferences
+                        </NavLink>
+                      </li>
+                      <li className="nav-item">
+                        <NavLink
+                          className="nav-link"
+                          to="/contact"
+                          activeclassname="active"
+                        >
+                          {" "}
+                          Contact Us
+                        </NavLink>
+                      </li>
+                      <li className="nav-item">
+                        <NavLink
+                          to="/signin"
+                          className="nav-link"
+                          activeclassname="active"
+                        >
+                          Sign In
+                        </NavLink>
                       </li>
                     </ul>
                   </div>

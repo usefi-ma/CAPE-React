@@ -49,20 +49,17 @@ function Research() {
     <>
       <UserHeader></UserHeader>
       <div role="presentation" className="breadcrumb">
-        <h2>Executive</h2>
+        <h2>Research</h2>
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" to="/">
             Home
           </Link>
-          <Typography>Executive</Typography>
+          <Typography>Research</Typography>
         </Breadcrumbs>
       </div>
       <div>
         <section className="objective objective_reseach">
           <div className="container">
-            <div className="row">
-              <h2 className="section_title">Research</h2>
-            </div>
             <div className="row">
             {research.map(item=>
               <div className="col-12 col-sm-12 col-md-6 col-lg-4 gx-xl-5 mb-5">

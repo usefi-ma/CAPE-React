@@ -704,6 +704,9 @@ nav {
     color:white;
     font-weight: 500;
 }
+.breadcrumb .css-9l3uo3{
+    color:white
+}
 .breadcrumb .css-63vwl1-MuiTypography-root-MuiBreadcrumbs-root a:hover{
     color: var(--yellow)
 }
