@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import "../assets/css/pages/contact.css";
 import "../assets/css/index.css";
-
 
 const ContactForm = (props) => {
   const [msgInfo, setMsgInfo] = useState({
@@ -38,22 +38,12 @@ const ContactForm = (props) => {
     ) {
       alert("Please fill out all fields.");
     } else {
-      fetch("http://localhost:5000/newmessage", {
-        method: "POST",
-        body: JSON.stringify(msgInfo),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then(() => {
-          console.log("Response received");
-        })
-        .catch((error) => {
-          console.warn("Error: ", error.response.body);
-        });
-
       resetForm();
-      alert("Your message has been sent.");
+      await axios
+        .post("http://localhost:3000/contact", msgInfo)
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
@@ -64,7 +54,7 @@ const ContactForm = (props) => {
           <div className="row">
             <div className="contact-element col-12 col-lg-5 ">
               <div className="contact-box">
-              <h3 className="section_title">Contact Information</h3>
+                <h3 className="section_title">Contact Information</h3>
                 <p>
                   Fill out the contact form or give us a call to learn more
                   about upcoming educational events and conferences.
@@ -117,7 +107,10 @@ const ContactForm = (props) => {
                       </svg>
                     </div>
                   </a>
-                  <a href="https://www.instagram.com/cape_police_educators/" target="_blank">
+                  <a
+                    href="https://www.instagram.com/cape_police_educators/"
+                    target="_blank"
+                  >
                     <div className="social_svg_wrapp">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +142,10 @@ const ContactForm = (props) => {
               </div>
             </div>
 
-            <form className="container contact-element col-12 col-lg-7" onSubmit={submitFormHandler}>
+            <form
+              className="container contact-element col-12 col-lg-7"
+              onSubmit={submitFormHandler}
+            >
               <h3 className="section_title">Get In Touch</h3>
               <div className="form-input">
                 <input
