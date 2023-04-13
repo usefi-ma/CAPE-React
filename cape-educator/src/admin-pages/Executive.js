@@ -108,7 +108,7 @@ const Executive = () => {
       // setExecutiveData([...executiveData, {name, jobTitle, organization, description}]);
       // console.log(executiveData);
       try{
-        const response = await axios.post("http://localhost:3000/members", {FullName: name, JobTitle: jobTitle, Organization: organization, Description: description});
+        const response = await axios.post("http://localhost:4000/members", {FullName: name, JobTitle: jobTitle, Organization: organization, Description: description});
         setExecutiveData([...executiveData, response.data]);
         
       } catch(error) {
@@ -130,7 +130,7 @@ const Executive = () => {
   useEffect(() =>{
     const fetchAllMembers = async () =>{
       try{
-        const res = await axios.get("http://localhost:3000/members")
+        const res = await axios.get("http://localhost:4000/members")
         setExecutiveData(res.data);
         console.log(res.data);
       }catch(error){
