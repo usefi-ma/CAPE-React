@@ -103,7 +103,7 @@ const Executive = () => {
                         </h3>
                         <p>
                             {item.JobTitle}
-                            <span className="d-block">{item.Description}</span>
+                            <span className="d-block">{item.Organization}</span>
                         </p>
 
                     </div>

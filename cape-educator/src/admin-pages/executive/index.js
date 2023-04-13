@@ -19,6 +19,13 @@ import DeleteExecutive from "./DeleteExecutive";
 
 const columns = [
   { id: "name", label: "Full Name", minWidth: 170 },
+  {
+    id: "image",
+    label: "image",
+    minWidth: 170,
+    align: "right",
+    format: (value) => value.toFixed(2),
+  },
   { id: "jobTitle", label: "Job Title", minWidth: 100 },
   {
     id: "organization",
@@ -34,6 +41,7 @@ const columns = [
     align: "right",
     format: (value) => value.toFixed(2),
   },
+
   {
     id: "action",
     label: "Action",
@@ -43,9 +51,6 @@ const columns = [
   },
 ];
 
-// function createData(name, jobTitle, organization, description) {
-//   return { name, jobTitle, organization, description };
-// }
 
 const rows = [];
 const Executive = () => {
@@ -66,9 +71,9 @@ const Executive = () => {
   const [formErrors, setFormErrors] = useState({});
   const [selectedRow, setSelectedRow] = useState();
   const [insertSuccess, setInsertSuccess] = useState(false);
-
   const [openModal, setOpenModal] = useState(false);
   const [open, setOpen] = React.useState(false);
+  const [file, setfile] = useState(null);
 
   const handleOpenModal = () => {
     setOpenModal(!openModal);
@@ -95,6 +100,7 @@ const Executive = () => {
     const jobTitle = e.target.JobTitle.value.trim();
     const organization = e.target.Organization.value.trim();
     const description = e.target.Description.value.trim();
+
     //VERIFY THAT ALL INPUT FIELDS ARE FILLED IN
 
     const errors = {};
@@ -115,12 +121,22 @@ const Executive = () => {
       setFormErrors(errors);
     } else {
       try {
-        const response = await axios.post("http://localhost:3000/executive", {
-          FullName: name,
-          JobTitle: jobTitle,
-          Organization: organization,
-          Description: description,
-        });
+        const config = {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        };
+        const response = await axios.post(
+          "http://localhost:3000/executive",
+          {
+            FullName: name,
+            JobTitle: jobTitle,
+            Organization: organization,
+            Description: description,
+            Image: file,
+          },
+          config
+        );
         setExecutiveData([...executiveData, response.data]);
         setInsertSuccess(true);
       } catch (error) {
@@ -135,6 +151,10 @@ const Executive = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(name, value);
+    if (e.target.files) {
+      setfile(e.target.files[0]);
+    }
+   
   };
 
   //FETCH CALL FROM SERVER
@@ -161,7 +181,6 @@ const Executive = () => {
           <Card sx={{ padding: 3 }}>
             <CardContent>
               <Grid container spacing={2}>
-           
                 <Grid item xs={12} sm={6} md={6}>
                   <Typography
                     variant="subtitle1"
@@ -242,8 +261,10 @@ const Executive = () => {
                   </Typography>
                   <Button variant="contained" component="label" size="large">
                     Upload
-                    <input hidden accept="image/*" multiple type="file" />
+                    {/* <input type="file" name="Image" onChange={handleChange} /> */}
+                   <input hidden type="file" name="Image" onChange={handleChange} /> 
                   </Button>
+                  
                 </Grid>
                 <Grid item xs={12}>
                   <Typography
@@ -275,7 +296,7 @@ const Executive = () => {
                     Submit
                   </Button>
                 </Grid>
-               
+
                 <Grid item xs={12}>
                   {insertSuccess ? (
                     <Alert severity="success">
@@ -285,8 +306,6 @@ const Executive = () => {
                     <span></span>
                   )}
                 </Grid>
-
-
               </Grid>
             </CardContent>
           </Card>
@@ -300,8 +319,6 @@ const Executive = () => {
                   Executive List
                 </Typography>
               </Grid>
-                       
-              
 
               <Paper sx={{ width: "100%" }}>
                 <TableContainer sx={{ maxHeight: 440 }}>
@@ -329,6 +346,7 @@ const Executive = () => {
                           return (
                             <TableRow>
                               <TableCell>{item.FullName}</TableCell>
+                              <TableCell>{item.Image}</TableCell>
                               <TableCell>{item.JobTitle}</TableCell>
                               <TableCell>{item.Organization}</TableCell>
                               <TableCell>{item.Description}</TableCell>

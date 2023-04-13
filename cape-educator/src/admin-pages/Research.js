@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Grid, Container, Typography, Card, Button } from "@mui/material";
 import "../assets/css/dashboard.css";
 import TextField from "@mui/material/TextField";
@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import axios from "axios";
 
 const columns = [
   { id: 'banner', label: 'Banner Title', minWidth: 170 },
@@ -37,12 +38,14 @@ function createData(banner, eventTitle, date, link, image, action) {
 
 
 const Research = () => {
+
   return (
     <>
     <Container maxWidth="xl">
         <Typography variant="h4" sx={{ marginBottom: 3 }}>
         Research
         </Typography>
+   
         <Box component="form" noValidate autoComplete="off">
           <Card sx={{ padding: 3 }}>
             <CardContent>
@@ -83,6 +86,7 @@ const Research = () => {
                     variant="outlined"
                   />
                 </Grid>
+              
                 <Grid item xs={12}>
                   <Typography
                     variant="subtitle1"
@@ -130,6 +134,9 @@ const Research = () => {
                   </Button>
                 </Grid>
               </Grid>
+
+            
+
             </CardContent>
           </Card>
         </Box>

@@ -1,4 +1,8 @@
 import mysql from "mysql2/promise";
+ import multer from "multer";
+
+
+
 const pool = mysql.createPool({
   host: "localhost",
   user: "Cape",
@@ -8,6 +12,32 @@ const pool = mysql.createPool({
   connectionLimit: 10,
   queueLimit: 0,
 });
+
+const multerConfig=multer.diskStorage({
+  destination:(req,file,callback)=>{
+    callback(null,"public/");
+  },
+  filename:(req,file,callback)=>{
+    const ext=file.mimetype.split('/')[1];
+    callback(null,`image-${Date.now()}.${ext}`);
+  },
+})
+
+const isImage=(req,file,callback)=>{
+  if(file.mimetype.startsWith('image')){
+    callback(null,true)
+  }else{
+    callback(new Error('Only image is Allowed..'));
+  }
+}
+
+const upload = multer({
+  storage:multerConfig,
+  fileFilter:isImage,
+});
+
+export const uploadImage = upload.single("Image")
+
 export default class Executive {
   //every middleware which is related to executives, write here
 
@@ -23,7 +53,12 @@ export default class Executive {
 
   static async AddOne(req, res) {
     //Parameters expected
+
     const { FullName, JobTitle, Organization, Description } = req.body;
+
+    //console.log(req.file.filename);
+    const Image=req.file.filename;
+   
     if (!FullName || !JobTitle || !Organization || !Description) {
       return res.status(400).send("Please ensure you have added all fields");
     }
@@ -31,9 +66,10 @@ export default class Executive {
       const conn = await pool.getConnection();
       await conn.beginTransaction();
       const [result] = await conn.execute(
-        "INSERT INTO executive (FullName, JobTitle, Organization, Description) VALUES(?, ?, ?, ?)",
-        [FullName, JobTitle, Organization, Description]
+        "INSERT INTO executive (FullName, JobTitle, Organization, Description,Image) VALUES(?, ?, ?, ?,?)",
+        [FullName, JobTitle, Organization, Description,Image]
       );
+      
       const [row] = await conn.execute("Select * FROM executive WHERE id = ?", [
         result.insertId,
       ]);
@@ -46,7 +82,6 @@ export default class Executive {
     }
   }
 
-  
   static async UpdateOne(req, res) {
     const { FullName, JobTitle, Organization, Description } = req.body;
     if (!FullName || !JobTitle || !Organization || !Description) {
@@ -56,10 +91,11 @@ export default class Executive {
       const conn = await pool.getConnection();
       await conn.beginTransaction();
       const [result] = await conn.execute(
-        "UPDATE executive SET `FullName`=?, `JobTitle`=?,`Organization`=?,`Description`=? WHERE Id=?",[FullName, JobTitle, Organization, Description,req.params.Id]
+        "UPDATE executive SET `FullName`=?, `JobTitle`=?,`Organization`=?,`Description`=? WHERE Id=?",
+        [FullName, JobTitle, Organization, Description, req.params.Id]
       );
       const [row] = await conn.execute("Select * FROM executive WHERE id = ?", [
-        req.params.Id
+        req.params.Id,
       ]);
       console.log([result]);
       await conn.commit();
@@ -69,17 +105,15 @@ export default class Executive {
       console.error(error);
       return res.status(500).send("Internal Server Error");
     }
- 
   }
 
   static async DeleteOne(req, res) {
-   
     try {
       const conn = await pool.getConnection();
       await conn.beginTransaction();
-      const [result] = await conn.execute(
-        "DELETE FROM executive WHERE Id=?",[req.params.Id]
-      );
+      const [result] = await conn.execute("DELETE FROM executive WHERE Id=?", [
+        req.params.Id,
+      ]);
       await conn.commit();
       conn.release();
       return res.send(result);
@@ -88,5 +122,4 @@ export default class Executive {
       return res.status(500).send("Internal Server Error");
     }
   }
-
 }
