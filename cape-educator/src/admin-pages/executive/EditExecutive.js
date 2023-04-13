@@ -21,6 +21,7 @@ const EditExecutive = ({ExecutiveItem,toggleModal}) => {
       };
       const[formErrors, setFormErrors] = useState({});
       const [isOpen, setIsOpen] = useState(true);
+     
 
 
     const toggleIt = () => {
@@ -29,9 +30,10 @@ const EditExecutive = ({ExecutiveItem,toggleModal}) => {
     }
 
     const [executiveData, setExecutiveData] = useState([]);
+    const [Newfile, setNewfile] = useState(null);
 
     const handleFormSubmit = async (e) => {
-      //e.preventDefault();
+     
         const name = e.target.FullName.value.trim();
         const jobTitle = e.target.JobTitle.value.trim();
         const organization = e.target.Organization.value.trim();
@@ -51,17 +53,24 @@ const EditExecutive = ({ExecutiveItem,toggleModal}) => {
         if (!description) {
           errors.description = "Description is required";
         }
-    
+   
         if (Object.keys(errors).length > 0) {
           setFormErrors(errors);
         } else {
           try {
+            const config = {
+              headers: {
+                "content-type": "multipart/form-data",
+              },
+            };
             const response = await axios.put(`http://localhost:3000/executive/${ExecutiveItem.Id}`, {
               FullName: name,
               JobTitle: jobTitle,
               Organization: organization,
               Description: description,
-            });
+              Image: Newfile,
+            },config);
+            
             setExecutiveData([...executiveData, response.data]);
            
           } catch (error) {
@@ -76,6 +85,10 @@ const EditExecutive = ({ExecutiveItem,toggleModal}) => {
  const handleChange = (e) =>{
     const { name, value} = e.target;
     console.log(name, value);
+    if (e.target.files) {
+      setNewfile(e.target.files[0]);
+      console.log(e.target.files[0])
+    }
   }
 
 
@@ -174,10 +187,20 @@ const EditExecutive = ({ExecutiveItem,toggleModal}) => {
                   >
                     Image
                   </Typography>
-                  <Button variant="contained" component="label" size="large">
-                    Upload
-                    <input hidden accept="image/*" multiple type="file" />
-                  </Button>
+                  <img className='executive_image me-2' src={`http://localhost:3000/executive/${ExecutiveItem.Image}`} />
+                  <div className="fileInput_wrapp">
+                    <label className="fileInput_button" for="inputTag1">
+                      {" "}
+                      Upload File
+                    </label>
+                    <input
+                      id="inputTag1"
+                      type="file"
+                      className="fileInput_custom"
+                      name="Image"
+                      onChange={handleChange}
+                    />
+                  </div>
                 </Grid>
                 <Grid item xs={12}>
                   <Typography

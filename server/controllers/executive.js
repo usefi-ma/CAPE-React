@@ -15,7 +15,7 @@ const pool = mysql.createPool({
 
 const multerConfig=multer.diskStorage({
   destination:(req,file,callback)=>{
-    callback(null,"public/");
+    callback(null,"public/executive");
   },
   filename:(req,file,callback)=>{
     const ext=file.mimetype.split('/')[1];
@@ -40,7 +40,17 @@ export const uploadImage = upload.single("Image")
 
 export default class Executive {
   //every middleware which is related to executives, write here
-
+  static async Get(req, res) {
+    try {
+      const [row] = await pool.execute("Select * FROM executive WHERE Id = ?", [
+        req.params.Id,
+      ]);
+      return res.json(row[0]);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal Server Error");
+    }
+  }
   static async GetAll(req, res) {
     try {
       const [rows, fields] = await pool.execute("SELECT * FROM executive");
@@ -51,12 +61,10 @@ export default class Executive {
     }
   }
 
-  static async AddOne(req, res) {
+  static async Add(req, res) {
     //Parameters expected
 
     const { FullName, JobTitle, Organization, Description } = req.body;
-
-    //console.log(req.file.filename);
     const Image=req.file.filename;
    
     if (!FullName || !JobTitle || !Organization || !Description) {
@@ -82,8 +90,12 @@ export default class Executive {
     }
   }
 
-  static async UpdateOne(req, res) {
-    const { FullName, JobTitle, Organization, Description } = req.body;
+  static async Update(req, res) {
+
+    const { FullName, JobTitle, Organization, Description} = req.body;
+    //console.log("the file that had error was: "+ req.file.filename )
+     const Image=req.file.filename;
+
     if (!FullName || !JobTitle || !Organization || !Description) {
       return res.status(400).send("Please ensure you have added all fields");
     }
@@ -91,8 +103,8 @@ export default class Executive {
       const conn = await pool.getConnection();
       await conn.beginTransaction();
       const [result] = await conn.execute(
-        "UPDATE executive SET `FullName`=?, `JobTitle`=?,`Organization`=?,`Description`=? WHERE Id=?",
-        [FullName, JobTitle, Organization, Description, req.params.Id]
+        "UPDATE executive SET `FullName`=?, `JobTitle`=?,`Organization`=?,`Description`=?, `Image`=? WHERE Id=?",
+        [FullName, JobTitle, Organization, Description,Image, req.params.Id]
       );
       const [row] = await conn.execute("Select * FROM executive WHERE id = ?", [
         req.params.Id,
@@ -107,7 +119,7 @@ export default class Executive {
     }
   }
 
-  static async DeleteOne(req, res) {
+  static async Delete(req, res) {
     try {
       const conn = await pool.getConnection();
       await conn.beginTransaction();

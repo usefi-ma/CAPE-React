@@ -776,3 +776,36 @@ body:has(.signin-section){
     border-color: var(--blue);
 }
 /*#endregion*/
+/*#region fileInput*/
+.fileInput_custom {
+    position: absolute;
+    z-index: 0;
+    top: 6px;
+    left:12px;
+    font-size: 15px;
+    color: rgb(153,153,153);
+  }
+
+  .fileInput_wrapp {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .fileInput_button {
+    display: inline-block;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #1976d2;
+    font-size: 16px;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+  }
+  /*#endregion*/
+  .executive_image{
+    width: 49px;
+    height: 49px;
+    border-radius: 50%;
+    display: inline-block;
+  }

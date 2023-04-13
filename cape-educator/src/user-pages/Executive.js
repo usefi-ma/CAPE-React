@@ -9,55 +9,6 @@ import axios from "axios";
 
 import UserHeader from '../layouts/user-layout/UserHeader';
 import UserFooter from '../layouts/user-layout/UserFooter';
-import DaveTutte from '../assets/images/executive/Dave-Tutte.jpg';
-import dominique from '../assets/images/executive/dominique.png';
-import Lindsay from '../assets/images/executive/Lindsay-Sutherland.jpg';
-import Melanie from '../assets/images/executive/Melanie.jpg';
-import Simon from '../assets/images/executive/Simon.jpg';
-import Mark from '../assets/images/executive/Mark.jpg';
-
-// const ExecutiveInitail=[{
-//     id:1,
-//     name:'Dave Tutte',
-//     jobTitle:'President',
-//     palce:'Halton Regional Police',
-//     img:DaveTutte
-// },
-// {
-//     id:2,
-//     name:'Dominique Germain',
-//     jobTitle:'Vice-President',
-//     palce:'Algonquin College',
-//     img:dominique
-// },{
-//     id:3,
-//     name:'Lindsay Sutherland',
-//     jobTitle:'Director of Communications',
-//     palce:'Emond Publishing',
-//     img:Lindsay
-// }
-// ,{
-//     id:4,
-//     name:'Melanie Marchand',
-//     jobTitle:'Co-Treasurer',
-//     palce:'Georgian College',
-//     img:Melanie
-// }
-// ,{
-//     id:5,
-//     name:'Simon Bradford',
-//     jobTitle:'Co-Treasurer',
-//     palce:'Georgian College',
-//     img:Simon
-// }
-// ,{
-//     id:6,
-//     name:'Scott Mark',
-//     jobTitle:'Director of Policies and Procedures',
-//     palce:'Bow Valley College',
-//     img:Mark
-// }
-// ]
 
 const Executive = () => {
     const [executive,setExecutive]=useState([]);
@@ -95,7 +46,7 @@ const Executive = () => {
                     <div className="executive_box">
                         <div className="executive_header">
                             <div className="executive_wrap_img" >
-                                <img src={item.img} />
+                                <img src={`http://localhost:3000/executive/${item.Image}`} />
                             </div>
                         </div>
                         <h3>

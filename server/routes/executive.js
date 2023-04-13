@@ -6,11 +6,9 @@ import {uploadImage} from "../controllers/executive.js";
 
 const router=express.Router();
 
-
-
-  
 router.get('/executive' , ExecutiveController.GetAll)
-router.post('/executive',uploadImage,ExecutiveController.AddOne)
-router.put('/executive/:Id',ExecutiveController.UpdateOne)
-router.delete('/executive/:Id',ExecutiveController.DeleteOne)
+router.get('/executive/:Id' , ExecutiveController.Get)
+router.post('/executive',uploadImage,ExecutiveController.Add)
+router.put('/executive/:Id',uploadImage,ExecutiveController.Update)
+router.delete('/executive/:Id',ExecutiveController.Delete)
 export default router;

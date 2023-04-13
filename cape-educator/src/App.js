@@ -20,7 +20,7 @@ import ConferenceDashboard from './admin-pages/Conference/Conference';
 import SpeakersDashboard from './admin-pages/Conference/Speakers';
 import SponsersDashboard from './admin-pages/Conference/Sponsers';
 import ContactDashboard from './admin-pages/Conference/Contact';
-
+import Contactbook from './admin-pages/Contactbook'
 
 
 function App() {
@@ -38,6 +38,7 @@ function App() {
                 <Route path="speakers" element={<SpeakersDashboard />} />
                 <Route path="sponsers" element={<SponsersDashboard />} />
                 <Route path="contactdashboard" element={<ContactDashboard />} />
+                <Route path="Contactbook" element={<Contactbook />} />
             </Route>
        
         <Route path="/" element={<Home />} />

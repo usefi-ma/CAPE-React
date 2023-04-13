@@ -46,6 +46,11 @@ const navConfig = [
     path: '/contactdashboard',
     icon: icon('ic_lock'),
   },
+  {
+    title: 'Contactbook',
+    path: '/Contactbook',
+    icon: icon('ic_lock'),
+  },
 ];
 
 export default navConfig;

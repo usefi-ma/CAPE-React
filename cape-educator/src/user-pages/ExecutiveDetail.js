@@ -14,8 +14,8 @@ const ExecutiveDetail = () => {
     <>
         <UserHeader></UserHeader>
         <div role="presentation" className="breadcrumb">
-        <h2>  Dave Tutte</h2>
-        {/* {id} */}
+        <h2> {id} Dave Tutte</h2>
+        
         <p className='executive_title'> Halton Regional Police</p>
       </div>
     <section className="team_detail">

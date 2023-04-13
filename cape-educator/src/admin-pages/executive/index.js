@@ -3,56 +3,17 @@ import { Grid, Container, Typography, Card, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
 import axios from "axios";
 import EditExecutive from "./EditExecutive";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 import Alert from "@mui/material/Alert";
 import DeleteExecutive from "./DeleteExecutive";
-
-const columns = [
-  { id: "name", label: "Full Name", minWidth: 170 },
-  {
-    id: "image",
-    label: "image",
-    minWidth: 170,
-    align: "right",
-    format: (value) => value.toFixed(2),
-  },
-  { id: "jobTitle", label: "Job Title", minWidth: 100 },
-  {
-    id: "organization",
-    label: "Organization",
-    minWidth: 170,
-    align: "right",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "description",
-    label: "description",
-    minWidth: 170,
-    align: "right",
-    format: (value) => value.toFixed(2),
-  },
-
-  {
-    id: "action",
-    label: "Action",
-    minWidth: 170,
-    align: "right",
-    format: (value) => value.toFixed(2),
-  },
-];
+import { DataGrid } from "@mui/x-data-grid";
 
 
-const rows = [];
 const Executive = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -79,20 +40,64 @@ const Executive = () => {
     setOpenModal(!openModal);
   };
 
-  const handleEdit = (item) => {
-    setSelectedRow(item);
+  const handleEdit = (e, row) => {
+    e.stopPropagation();
+    setSelectedRow(row);
     setOpenModal(!openModal);
   };
 
-  const handleClickOpen = (item) => {
-    setSelectedRow(item);
+  const handleClickOpen = (e, row) => {
+    e.stopPropagation();
+    setSelectedRow(row);
+
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
 
-  //saving an item
+  const columns = [
+   
+    { field: "Image",
+     headerName: "Image",
+     width: 70,
+     editable: true,
+     renderCell: (params) =><img src={`http://localhost:3000/executive/${params.row.Image}`} className="executive_image" />, // renderCell will render the component
+    },
+    { field: "FullName", headerName: "Full Name",flex: 1 },
+    { field: "JobTitle", headerName: "Job Title", flex: 1 },
+    { field: "Organization", headerName: "Organization",flex: 1  },
+    { field: "Description", headerName: "Description",flex: 1   },
+    {
+      field: "Actions",
+      headerName: "Actions",
+     width:100  ,
+      renderCell: (params) => {
+        return (
+          <>
+            <IconButton
+              variant="text"
+              color="warning"
+              onClick={(e) => handleEdit(e, params.row)}
+            >
+              <EditIcon />
+            </IconButton>
+            <IconButton
+              className="me-1"
+              variant="text"
+              size="small"
+              color="error"
+              onClick={(e) => handleClickOpen(e, params.row)}
+            >
+              <DeleteIcon />
+            </IconButton>
+
+          </>
+        );
+      },
+    },
+  ];
+  //saving an item 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -102,7 +107,6 @@ const Executive = () => {
     const description = e.target.Description.value.trim();
 
     //VERIFY THAT ALL INPUT FIELDS ARE FILLED IN
-
     const errors = {};
     if (!name) {
       errors.name = "Name is required";
@@ -153,8 +157,7 @@ const Executive = () => {
     console.log(name, value);
     if (e.target.files) {
       setfile(e.target.files[0]);
-    }
-   
+    } 
   };
 
   //FETCH CALL FROM SERVER
@@ -226,7 +229,7 @@ const Executive = () => {
                     helperText={formErrors.jobTitle}
                   />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6}>
                   <Typography
                     variant="subtitle1"
                     style={{
@@ -248,7 +251,7 @@ const Executive = () => {
                     helperText={formErrors.organization}
                   />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6}>
                   <Typography
                     variant="subtitle1"
                     style={{
@@ -259,12 +262,19 @@ const Executive = () => {
                   >
                     Image
                   </Typography>
-                  <Button variant="contained" component="label" size="large">
-                    Upload
-                    {/* <input type="file" name="Image" onChange={handleChange} /> */}
-                   <input hidden type="file" name="Image" onChange={handleChange} /> 
-                  </Button>
-                  
+                  <div className="fileInput_wrapp">
+                    <label className="fileInput_button" for="inputTag">
+                      {" "}
+                      Upload File
+                    </label>
+                    <input
+                      id="inputTag"
+                      type="file"
+                      className="fileInput_custom"
+                      name="Image"
+                      onChange={handleChange}
+                    />
+                  </div>
                 </Grid>
                 <Grid item xs={12}>
                   <Typography
@@ -319,8 +329,32 @@ const Executive = () => {
                   Executive List
                 </Typography>
               </Grid>
-
-              <Paper sx={{ width: "100%" }}>
+              <DataGrid
+                rows={executiveData}
+                columns={columns}
+                getRowId={(row) => row.Id}
+                initialState={{
+                  ...executiveData.initialState,
+                  pagination: { paginationModel: { pageSize: 5 } },
+                }}
+                pageSizeOptions={[5, 10, 25]}
+                autoHeight
+                getRowHeight={() => '180px'}
+              />
+              <DeleteExecutive
+                SelectedItem={selectedRow}
+                handleOpen={handleClickOpen}
+                open={open}
+                handleClose={handleClose}
+              ></DeleteExecutive>
+              {openModal && (
+                <EditExecutive
+                  ExecutiveItem={selectedRow}
+                  toggleModal={handleOpenModal}
+                ></EditExecutive>
+              )}
+              clickedRow: {selectedRow ? `${selectedRow.FullName}` : null}
+              {/* <Paper sx={{ width: "100%" }}>
                 <TableContainer sx={{ maxHeight: 440 }}>
                   <Table stickyHeader aria-label="sticky table">
                     <TableHead>
@@ -385,19 +419,11 @@ const Executive = () => {
                   onPageChange={handleChangePage}
                   onRowsPerPageChange={handleChangeRowsPerPage}
                 />
-              </Paper>
+              </Paper> */}
             </CardContent>
           </Card>
         </Box>
-        {/* <Modal
-          keepMounted
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="keep-mounted-modal-title"
-          aria-describedby="keep-mounted-modal-description"
-        >
-          <EditExecutive handleClose={handleClose} parentToChild={executiveData}></EditExecutive>
-        </Modal> */}
+
       </Container>
     </>
   );
