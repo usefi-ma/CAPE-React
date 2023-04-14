@@ -1,4 +1,6 @@
-import React from 'react';
+import React , { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import {Link} from 'react-router-dom';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -15,6 +17,22 @@ import membership from '../assets/images/about/membership1.png';
 import '../assets/css/pages/home.css'
 
 function Home() {
+    
+    const[bannerData, setBannerData] = useState([]);
+    //FETCH CALL FROM SERVER
+    useEffect(() =>{
+        const fetchAllBanner = async () =>{
+        try{
+            const res = await axios.get("http://localhost:3000/banner")
+            setBannerData(res.data);
+            console.log(res.data);
+        }catch(error){
+            console.error(error);
+        }
+        }
+        fetchAllBanner();
+    }, [])
+
   return (
    
     <>
@@ -24,28 +42,27 @@ function Home() {
     <div className="container">
             <div className="row align-center ">
                 <div className="col-12 col-md-10 col-lg-7 banner_content">
-                    <h1 className="first_h1"> Canadian association of </h1>
-                    <h1 className="element">
-                        police education
-                    </h1>
+                {bannerData.map((data) =>{
+                     return(
+                        <>
+                    <h1 className="first_h1"> {data.BannerTitle}</h1>
                     <h3>
-                        C.A.P.E. 2023 CONFERENCE
+                       {data.EventTitle}
                     </h3>
                     <p>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-calendar3" viewBox="0 0 16 16">
                             <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
                             <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                         </svg>
-                        June 20th-22nd 2023
+                        {data.Date}
                     </p>
                     <span className="benner_span">
-                        In partnership with <strong className="text_gradient ">
-                            Calgary Police Service &
-                            Bow Valley College
-                        </strong>
+                       {data.Description}
                     </span>
-                    <Link to="/about" className="btn btn_custom ">   Discover More </Link>
-
+                    <Link to="/about" className="btn btn_custom ">Discover More </Link>
+                    </>
+                    );
+                })}
                    
                 </div>
             </div>

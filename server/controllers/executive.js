@@ -106,7 +106,7 @@ export default class Executive {
         "UPDATE executive SET `FullName`=?, `JobTitle`=?,`Organization`=?,`Description`=?, `Image`=? WHERE Id=?",
         [FullName, JobTitle, Organization, Description,Image, req.params.Id]
       );
-      const [row] = await conn.execute("Select * FROM executive WHERE id = ?", [
+      const [row] = await conn.execute("Select * FROM executive WHERE Id = ?", [
         req.params.Id,
       ]);
       console.log([result]);

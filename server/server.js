@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import ExecuiveRoutes from "./routes/executive.js";
 import ContactRoutes from './routes/contact.js';
-
+import BannerRoutes from './routes/banner.js';
 
 const app = express();
 app.use(express.json());
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     next();
   });
 app.use(ExecuiveRoutes);
-
+app.use(BannerRoutes);
 app.use(ContactRoutes);
 
 app.listen(PORT, () => {
