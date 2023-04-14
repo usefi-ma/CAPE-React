@@ -1,7 +1,5 @@
 import mysql from "mysql2/promise";
- import multer from "multer";
-
-
+import multer from "multer";
 
 const pool = mysql.createPool({
   host: "localhost",
@@ -13,30 +11,30 @@ const pool = mysql.createPool({
   queueLimit: 0,
 });
 
-const multerConfig=multer.diskStorage({
-  destination:(req,file,callback)=>{
-    callback(null,"public/executive");
+const multerConfig = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "public/executive");
   },
-  filename:(req,file,callback)=>{
-    const ext=file.mimetype.split('/')[1];
-    callback(null,`image-${Date.now()}.${ext}`);
+  filename: (req, file, callback) => {
+    const ext = file.mimetype.split("/")[1];
+    callback(null, `image-${Date.now()}.${ext}`);
   },
-})
-
-const isImage=(req,file,callback)=>{
-  if(file.mimetype.startsWith('image')){
-    callback(null,true)
-  }else{
-    callback(new Error('Only image is Allowed..'));
-  }
-}
-
-const upload = multer({
-  storage:multerConfig,
-  fileFilter:isImage,
 });
 
-export const uploadImage = upload.single("Image")
+const isImage = (req, file, callback) => {
+  if (file.mimetype.startsWith("image")) {
+    callback(null, true);
+  } else {
+    callback(new Error("Only image is Allowed.."));
+  }
+};
+
+const upload = multer({
+  storage: multerConfig,
+  fileFilter: isImage,
+});
+
+export const uploadImage = upload.single("Image");
 
 export default class Executive {
   //every middleware which is related to executives, write here
@@ -63,10 +61,13 @@ export default class Executive {
 
   static async Add(req, res) {
     //Parameters expected
-
+    
     const { FullName, JobTitle, Organization, Description } = req.body;
-    const Image=req.file.filename;
-   
+    const Image="EmptyUser.jpg";
+    if (req.file != undefined) {
+      Image = req.file.filename;
+    } 
+
     if (!FullName || !JobTitle || !Organization || !Description) {
       return res.status(400).send("Please ensure you have added all fields");
     }
@@ -75,9 +76,9 @@ export default class Executive {
       await conn.beginTransaction();
       const [result] = await conn.execute(
         "INSERT INTO executive (FullName, JobTitle, Organization, Description,Image) VALUES(?, ?, ?, ?,?)",
-        [FullName, JobTitle, Organization, Description,Image]
+        [FullName, JobTitle, Organization, Description, Image]
       );
-      
+
       const [row] = await conn.execute("Select * FROM executive WHERE id = ?", [
         result.insertId,
       ]);
@@ -91,10 +92,11 @@ export default class Executive {
   }
 
   static async Update(req, res) {
-
-    const { FullName, JobTitle, Organization, Description} = req.body;
-    //console.log("the file that had error was: "+ req.file.filename )
-     const Image=req.file.filename;
+    const { FullName, JobTitle, Organization, Description } = req.body;
+    const Image="EmptyUser.jpg";
+    if (req.file != undefined) {
+      Image = req.file.filename;
+    } 
 
     if (!FullName || !JobTitle || !Organization || !Description) {
       return res.status(400).send("Please ensure you have added all fields");
@@ -104,7 +106,7 @@ export default class Executive {
       await conn.beginTransaction();
       const [result] = await conn.execute(
         "UPDATE executive SET `FullName`=?, `JobTitle`=?,`Organization`=?,`Description`=?, `Image`=? WHERE Id=?",
-        [FullName, JobTitle, Organization, Description,Image, req.params.Id]
+        [FullName, JobTitle, Organization, Description, Image, req.params.Id]
       );
       const [row] = await conn.execute("Select * FROM executive WHERE Id = ?", [
         req.params.Id,
