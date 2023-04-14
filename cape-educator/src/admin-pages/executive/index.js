@@ -8,10 +8,11 @@ import EditExecutive from "./EditExecutive";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-
+import imgEmpty from './EmptyUser.jpg'
 import Alert from "@mui/material/Alert";
 import DeleteExecutive from "./DeleteExecutive";
 import { DataGrid } from "@mui/x-data-grid";
+
 
 
 const Executive = () => {
@@ -36,6 +37,7 @@ const Executive = () => {
   const [open, setOpen] = React.useState(false);
   const [file, setfile] = useState(null);
 
+  console.log("executiveData"+ executiveData)
   const handleOpenModal = () => {
     setOpenModal(!openModal);
   };
@@ -64,10 +66,10 @@ const Executive = () => {
      editable: true,
      renderCell: (params) =><img src={`http://localhost:3000/executive/${params.row.Image}`} className="executive_image" />, // renderCell will render the component
     },
-    { field: "FullName", headerName: "Full Name",flex: 1 },
-    { field: "JobTitle", headerName: "Job Title", flex: 1 },
-    { field: "Organization", headerName: "Organization",flex: 1  },
-    { field: "Description", headerName: "Description",flex: 1   },
+    { field: "FullName", headerName: "Full Name",flex: 1},
+    { field: "JobTitle", headerName: "Job Title", flex: 1},
+    { field: "Organization", headerName: "Organization",flex: 1},
+    { field: "Description", headerName: "Description",flex: 1},
     {
       field: "Actions",
       headerName: "Actions",
@@ -130,6 +132,9 @@ const Executive = () => {
             "content-type": "multipart/form-data",
           },
         };
+        if(!file){
+          setfile({imgEmpty})
+        }
         const response = await axios.post(
           "http://localhost:3000/executive",
           {
@@ -147,6 +152,8 @@ const Executive = () => {
         console.log(error);
       }
       e.target.reset();
+      e.target.files=null;
+      setfile(null);
       setFormErrors({});
     }
   };

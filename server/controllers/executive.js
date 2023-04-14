@@ -61,15 +61,22 @@ export default class Executive {
 
   static async Add(req, res) {
     //Parameters expected
-    
     const { FullName, JobTitle, Organization, Description } = req.body;
-   console.log("eq.file: "+ req.file.filename);
-    const Image = req.file.filename;
+
+    let Image = "EmptyUser.jpg";
+    try{
+      Image = req.file.filename;
+    }catch(error){
+      Image = "EmptyUser.jpg";
+      console.log("error from catch"+error)
+    }
+
 
     if (!FullName || !JobTitle || !Organization || !Description) {
       return res.status(400).send("Please ensure you have added all fields");
     }
     try {
+      
       const conn = await pool.getConnection();
       await conn.beginTransaction();
       const [result] = await conn.execute(
@@ -91,10 +98,13 @@ export default class Executive {
 
   static async Update(req, res) {
     const { FullName, JobTitle, Organization, Description } = req.body;
-    const Image="EmptyUser.jpg";
-    if (req.file != undefined) {
+    let Image = "EmptyUser.jpg";
+    try{
       Image = req.file.filename;
-    } 
+    }catch(error){
+      Image = "EmptyUser.jpg";
+      console.log("error from catch"+error)
+    }
 
     if (!FullName || !JobTitle || !Organization || !Description) {
       return res.status(400).send("Please ensure you have added all fields");

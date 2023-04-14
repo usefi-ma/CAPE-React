@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
 import axios from "axios";
-
+import imgEmpty from './EmptyUser.jpg'
 
 const EditExecutive = ({ExecutiveItem,toggleModal}) => {
     const modal = {
@@ -30,10 +30,11 @@ const EditExecutive = ({ExecutiveItem,toggleModal}) => {
     }
 
     const [executiveData, setExecutiveData] = useState([]);
-    const [Newfile, setNewfile] = useState(null);
+    const [newFile, setNewFile] = useState(null);
 
     const handleFormSubmit = async (e) => {
-     
+    
+
         const name = e.target.FullName.value.trim();
         const jobTitle = e.target.JobTitle.value.trim();
         const organization = e.target.Organization.value.trim();
@@ -63,12 +64,15 @@ const EditExecutive = ({ExecutiveItem,toggleModal}) => {
                 "content-type": "multipart/form-data",
               },
             };
+            if(!newFile){
+              setNewFile({imgEmpty})
+            }
             const response = await axios.put(`http://localhost:3000/executive/${ExecutiveItem.Id}`, {
               FullName: name,
               JobTitle: jobTitle,
               Organization: organization,
               Description: description,
-              Image: Newfile,
+              Image: newFile,
             },config);
             
             setExecutiveData([...executiveData, response.data]);
@@ -77,8 +81,13 @@ const EditExecutive = ({ExecutiveItem,toggleModal}) => {
             console.log(error);
           }
           e.target.reset();
+          e.target.files=null;
+          setNewFile(null);
+          e.target.Image.value=null;
+          console.log("After editting the file will be",e.target.files)
           setFormErrors({});
           toggleIt()
+        
         }
       };
  //TESTING
@@ -86,8 +95,8 @@ const EditExecutive = ({ExecutiveItem,toggleModal}) => {
     const { name, value} = e.target;
     console.log(name, value);
     if (e.target.files) {
-      setNewfile(e.target.files[0]);
-      console.log(e.target.files[0])
+      setNewFile(e.target.files[0]);
+      console.log("before editting the file will be" , e.target.files[0], " , ",newFile)
     }
   }
 
