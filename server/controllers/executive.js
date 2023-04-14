@@ -63,10 +63,8 @@ export default class Executive {
     //Parameters expected
     
     const { FullName, JobTitle, Organization, Description } = req.body;
-    const Image="EmptyUser.jpg";
-    if (req.file != undefined) {
-      Image = req.file.filename;
-    } 
+   console.log("eq.file: "+ req.file.filename);
+    const Image = req.file.filename;
 
     if (!FullName || !JobTitle || !Organization || !Description) {
       return res.status(400).send("Please ensure you have added all fields");
@@ -128,6 +126,7 @@ export default class Executive {
       const [result] = await conn.execute("DELETE FROM executive WHERE Id=?", [
         req.params.Id,
       ]);
+      console.log([result]);
       await conn.commit();
       conn.release();
       return res.send(result);

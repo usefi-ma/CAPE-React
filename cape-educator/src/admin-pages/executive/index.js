@@ -354,72 +354,7 @@ const Executive = () => {
                 ></EditExecutive>
               )}
               clickedRow: {selectedRow ? `${selectedRow.FullName}` : null}
-              {/* <Paper sx={{ width: "100%" }}>
-                <TableContainer sx={{ maxHeight: 440 }}>
-                  <Table stickyHeader aria-label="sticky table">
-                    <TableHead>
-                      <TableRow>
-                        {columns.map((column) => (
-                          <TableCell
-                            key={column.id}
-                            align={column.align}
-                            style={{ minWidth: column.minWidth }}
-                          >
-                            {column.label}
-                          </TableCell>
-                        ))}
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {executiveData
-                        .slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        )
-                        .map((item) => {
-                          return (
-                            <TableRow>
-                              <TableCell>{item.FullName}</TableCell>
-                              <TableCell>{item.Image}</TableCell>
-                              <TableCell>{item.JobTitle}</TableCell>
-                              <TableCell>{item.Organization}</TableCell>
-                              <TableCell>{item.Description}</TableCell>
-                              <TableCell>
-                                <button onClick={() => handleEdit(item)}>
-                                  Edit
-                                </button>
-                                {openModal && (
-                                  <EditExecutive
-                                    ExecutiveItem={selectedRow}
-                                    toggleModal={handleOpenModal}
-                                  ></EditExecutive>
-                                )}
-                                <button onClick={() => handleClickOpen(item)}>
-                                  Delete
-                                </button>
-                                <DeleteExecutive
-                                  SelectedItem={selectedRow}
-                                  handleOpen={handleClickOpen}
-                                  open={open}
-                                  handleClose={handleClose}
-                                ></DeleteExecutive>
-                              </TableCell>
-                            </TableRow>
-                          );
-                        })}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-                <TablePagination
-                  rowsPerPageOptions={[10, 25, 100]}
-                  component="div"
-                  count={rows.length}
-                  rowsPerPage={rowsPerPage}
-                  page={page}
-                  onPageChange={handleChangePage}
-                  onRowsPerPageChange={handleChangeRowsPerPage}
-                />
-              </Paper> */}
+         
             </CardContent>
           </Card>
         </Box>
