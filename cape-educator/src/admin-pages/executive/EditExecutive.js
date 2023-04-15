@@ -34,7 +34,7 @@ const EditExecutive = ({ExecutiveItem,toggleModal}) => {
 
     const handleFormSubmit = async (e) => {
     
-
+try{
         const name = e.target.FullName.value.trim();
         const jobTitle = e.target.JobTitle.value.trim();
         const organization = e.target.Organization.value.trim();
@@ -88,6 +88,10 @@ const EditExecutive = ({ExecutiveItem,toggleModal}) => {
           setFormErrors({});
           toggleIt()
         
+        }
+      }catch(err){
+        console.log("Error from try catch", err)
+          alert("Error from try catch", err)
         }
       };
  //TESTING

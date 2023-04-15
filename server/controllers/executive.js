@@ -1,5 +1,6 @@
 import mysql from "mysql2/promise";
 import multer from "multer";
+import { v4 as uuidv4} from 'uuid';
 
 const pool = mysql.createPool({
   host: "localhost",
@@ -11,14 +12,18 @@ const pool = mysql.createPool({
   queueLimit: 0,
 });
 
+
+let V4=uuidv4();
 const multerConfig = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, "public/executive");
   },
   filename: (req, file, callback) => {
     const ext = file.mimetype.split("/")[1];
-    callback(null, `image-${Date.now()}.${ext}`);
+    // callback(null, `image-${Date.now()}.${ext}`);
+    callback(null, `image-${V4}.${ext}`);
   },
+  
 });
 
 const isImage = (req, file, callback) => {
@@ -109,6 +114,7 @@ export default class Executive {
     if (!FullName || !JobTitle || !Organization || !Description) {
       return res.status(400).send("Please ensure you have added all fields");
     }
+    console.log("Id is = "+ req.params.Id);
     try {
       const conn = await pool.getConnection();
       await conn.beginTransaction();
