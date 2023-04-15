@@ -6,35 +6,39 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import axios from "axios";
 import { Button } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 
-const DeleteExecutive = ({SelectedItem,handleClickOpen,handleClose,open}) => {
+const theme = createTheme({
+  palette: {
+    neutral: {
+      main: "#64748B",
+      contrastText: "#fff",
+    },
+  },
+});
 
-    // const [executiveData, setExecutiveData] = useState([]);
-  
+const DeleteExecutive = ({
+  SelectedItem,
+  handleClickOpen,
+  handleClose,
+  open,
+}) => {
+  const handleDelete = (SelectedItem) => {
+    try {
+      const response = axios
+        .delete(`http://localhost:3000/executive/${SelectedItem.Id}`)
+        .then((response) => {
+          handleClose();
+          window.location.reload();
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    const handleDelete = (SelectedItem) => {
-       // console.log("mahya"+SelectedItem.Id)
-         try {
-          const response = axios
-            .delete(`http://localhost:3000/executive/${SelectedItem.Id}`)
-            .then((response) => {
-             // setExecutiveData(
-            //  const temp=executiveData.filter((value) => 
-            //     SelectedItem.Id != value.Id
-            //     )
-             
-              handleClose()
-              window.location.reload()
-           });
-         } catch (error) {
-          console.log(error);
-         }
-      };
-    
   return (
     <>
-      
       <Dialog
         open={open}
         onClose={handleClose}
@@ -46,18 +50,25 @@ const DeleteExecutive = ({SelectedItem,handleClickOpen,handleClose,open}) => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-             Are you sure you want to delete?  {/*{SelectedItem[0].Id}  */}
+            Are you sure you want to delete?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancle</Button>
-           <Button onClick={() => handleDelete(SelectedItem)} autoFocus>
+          <ThemeProvider theme={theme}>
+            <Button onClick={handleClose} variant="outlined" color="neutral">
+              Cancle
+            </Button>
+          </ThemeProvider>
+          <Button
+            onClick={() => handleDelete(SelectedItem)}
+            variant="contained"
+            color="error"
+            autoFocus
+          >
             Delete
-          </Button> 
+          </Button>
         </DialogActions>
-      
       </Dialog>
-     
     </>
   );
 };

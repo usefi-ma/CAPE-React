@@ -8,12 +8,11 @@ import EditExecutive from "./EditExecutive";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import imgEmpty from './EmptyUser.jpg'
-import Alert from "@mui/material/Alert";
+import imgEmpty from "./EmptyUser.jpg";
 import DeleteExecutive from "./DeleteExecutive";
 import { DataGrid } from "@mui/x-data-grid";
-
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Executive = () => {
   const [page, setPage] = React.useState(0);
@@ -37,7 +36,7 @@ const Executive = () => {
   const [open, setOpen] = React.useState(false);
   const [file, setfile] = useState(null);
 
-  console.log("executiveData"+ executiveData)
+  console.log("executiveData" + executiveData);
   const handleOpenModal = () => {
     setOpenModal(!openModal);
   };
@@ -59,21 +58,28 @@ const Executive = () => {
   };
 
   const columns = [
-   
-    { field: "Image",
-     headerName: "Image",
-     width: 70,
-     editable: true,
-     renderCell: (params) =><img src={`http://localhost:3000/executive/${params.row.Image}`} className="executive_image" />, // renderCell will render the component
+    {
+      field: "Image",
+      headerName: "Image",
+      width: 80,
+      editable: true,
+      renderCell: (params) => (
+        <div className="executive_img_wrapper">
+        <img
+          src={`http://localhost:3000/executive/${params.row.Image}`}
+          className="executive_image"
+        />
+        </div>
+      ), // renderCell will render the component
     },
-    { field: "FullName", headerName: "Full Name",flex: 1},
-    { field: "JobTitle", headerName: "Job Title", flex: 1},
-    { field: "Organization", headerName: "Organization",flex: 1},
-    { field: "Description", headerName: "Description",flex: 1},
+    { field: "FullName", headerName: "Full Name", flex: 1 },
+    { field: "JobTitle", headerName: "Job Title", flex: 1 },
+    { field: "Organization", headerName: "Organization", flex: 1 },
+    { field: "Description", headerName: "Description", flex: 1 },
     {
       field: "Actions",
       headerName: "Actions",
-     width:100  ,
+      width: 100,
       renderCell: (params) => {
         return (
           <>
@@ -93,13 +99,12 @@ const Executive = () => {
             >
               <DeleteIcon />
             </IconButton>
-
           </>
         );
       },
     },
   ];
-  //saving an item 
+  //saving an item
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -132,8 +137,8 @@ const Executive = () => {
             "content-type": "multipart/form-data",
           },
         };
-        if(!file){
-          setfile({imgEmpty})
+        if (!file) {
+          setfile({ imgEmpty });
         }
         const response = await axios.post(
           "http://localhost:3000/executive",
@@ -148,11 +153,14 @@ const Executive = () => {
         );
         setExecutiveData([...executiveData, response.data]);
         setInsertSuccess(true);
+        toast.success("New member inserted successfully!!!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
       } catch (error) {
         console.log(error);
       }
       e.target.reset();
-      e.target.files=null;
+      e.target.files = null;
       setfile(null);
       setFormErrors({});
     }
@@ -164,7 +172,7 @@ const Executive = () => {
     console.log(name, value);
     if (e.target.files) {
       setfile(e.target.files[0]);
-    } 
+    }
   };
 
   //FETCH CALL FROM SERVER
@@ -314,15 +322,7 @@ const Executive = () => {
                   </Button>
                 </Grid>
 
-                <Grid item xs={12}>
-                  {insertSuccess ? (
-                    <Alert severity="success">
-                      This is a success alert — check it out!
-                    </Alert>
-                  ) : (
-                    <span></span>
-                  )}
-                </Grid>
+                {insertSuccess ? <ToastContainer /> : <span></span>}
               </Grid>
             </CardContent>
           </Card>
@@ -346,7 +346,8 @@ const Executive = () => {
                 }}
                 pageSizeOptions={[5, 10, 25]}
                 autoHeight
-                getRowHeight={() => '180px'}
+                rowHeight={75}
+               
               />
               <DeleteExecutive
                 SelectedItem={selectedRow}
@@ -360,12 +361,10 @@ const Executive = () => {
                   toggleModal={handleOpenModal}
                 ></EditExecutive>
               )}
-              clickedRow: {selectedRow ? `${selectedRow.FullName}` : null}
-         
+              {/* clickedRow: {selectedRow ? `${selectedRow.FullName}` : null} */}
             </CardContent>
           </Card>
         </Box>
-
       </Container>
     </>
   );

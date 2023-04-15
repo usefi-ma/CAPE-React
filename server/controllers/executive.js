@@ -141,7 +141,6 @@ export default class Executive {
       const [result] = await conn.execute("DELETE FROM executive WHERE Id=?", [
         req.params.Id,
       ]);
-      console.log([result]);
       await conn.commit();
       conn.release();
       return res.send(result);
