@@ -5,11 +5,8 @@ import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
 import axios from "axios";
-import imgEmpty from "./EmptyUser.jpg";
+import imgEmpty from "../../assets/images/EmptyUser.jpg";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
   const modal = {

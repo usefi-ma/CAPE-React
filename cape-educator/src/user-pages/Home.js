@@ -13,7 +13,7 @@ import training from '../assets/images/icon/training.png';
 import advise from '../assets/images/icon/advise.png';
 import law from '../assets/images/icon/law.png';
 import membership from '../assets/images/about/membership1.png';
-
+import imgEmpty from "../assets/images/EmptyUser.jpg";
 import '../assets/css/pages/home.css'
 
 function Home() {
@@ -36,15 +36,14 @@ function Home() {
   return (
    
     <>
-      
-     <section className="banner">
+       {bannerData.map((data) =>{ 
+          return(  <>
+     <section className="banner" style={{background: `linear-gradient(180deg, #091D4280 50%, var(--navy) 100%),center / cover no-repeat url(http://localhost:3000/banner/${data.Image})`}}>
     <UserHeader></UserHeader>
     <div className="container">
             <div className="row align-center ">
                 <div className="col-12 col-md-10 col-lg-7 banner_content">
-                {bannerData.map((data) =>{
-                     return(
-                        <>
+                      
                     <h1 className="first_h1"> {data.BannerTitle}</h1>
                     <h3>
                        {data.EventTitle}
@@ -59,14 +58,13 @@ function Home() {
                     <span className="benner_span">
                        {data.Description}
                     </span>
-                    <Link to="/about" className="btn btn_custom ">Discover More </Link>
-                    </>
-                    );
-                })}
-                   
+                    <Link to={data.BannerLink} className="btn btn_custom " target='_blank'>Discover More </Link>
                 </div>
             </div>
-        </div></section>
+        </div></section>   
+          </> 
+           );  
+     })}
     <section className="objective">
         <div className="container">
             <div className="row">

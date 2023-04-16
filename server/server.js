@@ -11,6 +11,8 @@ app.use(cors());
 
 app.use(express.static('public')); 
 app.use('/executive', express.static('executive'));
+app.use('/banner', express.static('banner'));
+
 
 const PORT = 3000;
 app.use((req, res, next) => {

@@ -8,7 +8,7 @@ import EditExecutive from "./EditExecutive";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import imgEmpty from "./EmptyUser.jpg";
+import imgEmpty from "../../assets/images/EmptyUser.jpg";
 import DeleteExecutive from "./DeleteExecutive";
 import { DataGrid } from "@mui/x-data-grid";
 import { ToastContainer, toast } from "react-toastify";
@@ -279,7 +279,6 @@ const Executive = () => {
                   </Typography>
                   <div className="fileInput_wrapp">
                     <label className="fileInput_button" for="inputTag">
-                      {" "}
                       Upload File
                     </label>
                     <input
