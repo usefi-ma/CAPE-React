@@ -131,7 +131,6 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                     xs={12} 
                     container
                     alignItems="center"
-                    justifyContent="flex-center"
                     className="w-100" >
                     <div className="executive_img_edit_wrapper me-3">
                       <img 

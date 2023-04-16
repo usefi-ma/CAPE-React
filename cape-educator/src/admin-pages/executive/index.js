@@ -79,7 +79,7 @@ const Executive = () => {
     {
       field: "Actions",
       headerName: "Actions",
-      width: 100,
+      width: 120,
       renderCell: (params) => {
         return (
           <>

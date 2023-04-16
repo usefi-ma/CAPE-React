@@ -42,13 +42,13 @@ useEffect(() => {
         <div className="container">
             <div className="row">
                 <div className="col-12 col-sm-6 col-md-5 gx-lg-5 team_item">
-                    <div className="team_link team_item_content">
+                    <div className="team_detail_image_wrapp">
                         <img src={`http://localhost:3000/executive/${executiveItem.Image}`} alt={`${executiveItem.FullName}`}/>
                        
                     </div>
                 </div>
                 <div className="col-12 col-md-7 col-lg-7">
-                    <div className="desc">
+                    <div className="team_detail_desc">
                         <p>
                             {executiveItem.Description}
                         </p>
