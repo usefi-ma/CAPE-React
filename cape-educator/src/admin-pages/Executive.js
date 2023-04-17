@@ -79,7 +79,7 @@ const Executive = () => {
   const[formErrors, setFormErrors] = useState({});
 
   const handleFormSubmit = async e =>{
-    // e.preventDefault();
+    
 
     const name = e.target.FullName.value.trim();
     const jobTitle = e.target.JobTitle.value.trim();
@@ -103,6 +103,7 @@ const Executive = () => {
     }
 
     if(Object.keys(errors).length > 0){
+      e.preventDefault();
       setFormErrors(errors);
     } else {
       // setExecutiveData([...executiveData, {name, jobTitle, organization, description}]);

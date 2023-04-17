@@ -1,18 +1,21 @@
 import { useTheme } from "@mui/material/styles";
 import { Grid, Container, Typography } from "@mui/material";
+import { useLocation } from "react-router-dom";
 
 // sections
 import { AppWidgetSummary } from "../sections/@dashboard/app";
 // ----------------------------------------------------------------------
 
 export default function Dashboard() {
+  const location = useLocation();
+  const user = location.state.user;
   const theme = useTheme();
 
   return (
     <>
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back
+          Hi, Welcome back {user.FullName}
         </Typography>
 
         <Grid container spacing={3}>

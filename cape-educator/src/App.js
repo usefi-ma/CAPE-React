@@ -11,6 +11,7 @@ import Contact from './user-pages/Contact';
 import ConferenceDetail from './user-pages/ConferenceDetail';
 import PageNotFound from './page-not-found';
 import Signin from './user-pages/Signin';
+import Register from './user-pages/Register';
 import AdminLayout from './layouts/admin-layout';
 import Dashboard from './admin-pages/Dashboard';
 import Banner from './admin-pages/Banner';
@@ -48,6 +49,7 @@ function App() {
         <Route path="conferenceDetail/:id" element={<ConferenceDetail />} />
         <Route path="contact" element={<Contact />} />
         <Route path="signin" element={<Signin />} />
+        <Route path="register" element={<Register />} />
         <Route path="home" element={<Home />} />
         <Route path="*" element={<PageNotFound />}/>
      </Routes>
