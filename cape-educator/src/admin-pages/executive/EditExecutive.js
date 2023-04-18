@@ -280,7 +280,7 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                         color="neutral"
                         onClick={() => toggleIt()}
                       >
-                        cancle
+                        Cancel
                       </Button>
                     </ThemeProvider>
 
