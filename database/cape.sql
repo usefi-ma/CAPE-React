@@ -33,11 +33,11 @@ CREATE TABLE IF NOT EXISTS `banner` (
   `BannerTitle` varchar(1000) NOT NULL,
   `EventTitle` varchar(1000) NOT NULL,
   `Date` varchar(200) NOT NULL,
-  `BannerLink` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `BannerLink` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Description` mediumtext NOT NULL,
   `Image` varchar(100) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `banner`
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `executive` (
   `Description` text NOT NULL,
   `Image` varchar(100) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=183 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=183 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `executive`
@@ -82,9 +82,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `FullName` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
