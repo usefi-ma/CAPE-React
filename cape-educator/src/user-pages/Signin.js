@@ -1,64 +1,67 @@
-import React from 'react';
-import TextField from '@mui/material/TextField';
-import { Link, useNavigate } from 'react-router-dom';
-import { Grid, Container, Typography, Card, Button } from '@mui/material';
-import { useState } from 'react';
-import axios from 'axios';
-import { object } from 'prop-types';
+import React from "react";
+import TextField from "@mui/material/TextField";
+import { Link, useNavigate } from "react-router-dom";
+import { Grid, Container, Typography, Card, Button } from "@mui/material";
+import { useState } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { object } from "prop-types";
 
 const Signin = () => {
-  
-
-  const[userData, setUserData] = useState([]);
-  const[formErrors, setFormErrors] = useState({});
-  const[loginSuccess, setLoginSuccess] = useState(false);
+  const [userData, setUserData] = useState([]);
+  const [formErrors, setFormErrors] = useState({});
+  const [loginSuccess, setLoginSuccess] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleChange = (e) =>{
+  const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(name, value);
-  }
+  };
 
-  const handleSubmit = async e =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const email = e.target.Email.value;
     const pwd = e.target.Password.value;
-    
+
     //VERIFY THAT ALL INPUT FIELDS ARE FILLED IN
 
     const errors = {};
-    if(!email){
-      errors.email = 'Email is required';
+    if (!email) {
+      errors.email = "Email is required";
     }
-    if(!pwd){
-      errors.pwd = 'Password title is required';
+    if (!pwd) {
+      errors.pwd = "Password title is required";
     }
 
-    if(Object.keys(errors).length > 0){
+    if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
     } else {
-      try{
-        const response = await axios.post("http://localhost:3000/GetAll/login", {Email: email, Pwd: pwd});
+      try {
+        const response = await axios.post("http://localhost:3000/login", {
+          Email: email,
+          Pwd: pwd,
+        });
         console.log(response.data);
         setUserData(response.data);
-        if(typeof response.data === 'object'){
+        if (typeof response.data === "object") {
           setLoginSuccess(true);
           console.log("Login Successful");
-          navigate('/dashboard', { state: {user: response.data} });
+          navigate("/dashboard", { state: { user: response.data } });
         } else {
-          console.log("Login Failed")
+          console.log("Login Failed");
+          toast.error("Please enter the right Email and Password!!!", {
+            position: toast.POSITION.TOP_CENTER,
+          });
         }
-        
-      } catch(error) {
+      } catch (error) {
         console.log(error);
       }
       e.target.reset();
       setFormErrors({});
     }
-  }
-
-
+  };
 
   return (
     <>
@@ -79,9 +82,9 @@ const Signin = () => {
                               variant="subtitle1"
                               style={{
                                 marginBottom: 8,
-                                display: 'block',
-                                fontWeight: '600',
-                                fontSize: '15px',
+                                display: "block",
+                                fontWeight: "600",
+                                fontSize: "15px",
                               }}
                             >
                               EMAIL
@@ -105,9 +108,9 @@ const Signin = () => {
                               variant="subtitle1"
                               style={{
                                 marginBottom: 8,
-                                display: 'block',
-                                fontWeight: '600',
-                                fontSize: '15px',
+                                display: "block",
+                                fontWeight: "600",
+                                fontSize: "15px",
                               }}
                             >
                               PASSWORD
@@ -133,16 +136,23 @@ const Signin = () => {
                             flex-wrap
                           "
                         >
-                        <Button type="submit" class="btn btn_custom w-100 mt-0">
-                            SIGN IN
-                        </Button>
-                          <Link
+                          <Button
+                            type="submit"
                             class="btn btn_custom w-100 mt-0"
-                            to="/Register"
                           >
-                            Register Now
-                          </Link>
-                          <div class="col-12">
+                            SIGN IN
+                          </Button>
+                          <div class="col-12 mt-1 account_desc">
+                            You don't have any acount &nbsp;
+                            <Link
+                              class=" w-100 mt-0 form-check-label"
+                              to="/Signup"
+                            >
+                              Sign Up
+                            </Link>
+                            <ToastContainer /> 
+                          </div>
+                          {/* <div class="col-12">
                             <div class="mt-3">
                               <input
                                 class="form-check-input me-2"
@@ -158,7 +168,7 @@ const Signin = () => {
                                 Remember me next time
                               </label>
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>

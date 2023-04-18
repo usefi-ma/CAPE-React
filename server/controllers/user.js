@@ -54,7 +54,7 @@ export default class User {
 
   static async Login(req, res) {
     const { Email, Pwd } = req.body;
-    
+
     try {
       const conn = await pool.getConnection();
       const [result] = await conn.execute(
@@ -68,8 +68,7 @@ export default class User {
 
       const user = result[0];
 
-     
-      if(await bcrypt.compare(Pwd, user.Password)){
+      if (await bcrypt.compare(Pwd, user.Password)) {
         const { FullName, Email } = user;
         console.log(user);
         res.json({ FullName, Email });

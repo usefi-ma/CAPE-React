@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 18, 2023 at 04:15 PM
+-- Generation Time: Apr 18, 2023 at 04:58 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -74,35 +74,6 @@ INSERT INTO `executive` (`Id`, `FullName`, `JobTitle`, `Organization`, `Descript
 -- --------------------------------------------------------
 
 --
--- Table structure for table `members`
---
-
-DROP TABLE IF EXISTS `members`;
-CREATE TABLE IF NOT EXISTS `members` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `FullName` varchar(45) NOT NULL,
-  `JobTitle` varchar(45) NOT NULL,
-  `Organization` varchar(45) NOT NULL,
-  `Description` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `members`
---
-
-INSERT INTO `members` (`id`, `FullName`, `JobTitle`, `Organization`, `Description`) VALUES
-(1, 'Mark', 'Mendoza', 'Bow Valley', 'Bow Valley Bow Valley Bow Valley Bow ValleyBo'),
-(2, 'Mahya', 'Yousesfi', 'Bow Valley', 'Bow Valley Bow Valley Bow Valley Bow ValleyBo'),
-(3, 'Kale', 'White', 'Bow Valley', 'Bow Valley Bow Valley Bow Valley Bow ValleyBo'),
-(4, 'MMM', 'Mendoza', 'Bow Valley', 'Bow Valley Bow Valley Bow Valley Bow ValleyBo'),
-(5, 'MMM', 'Mendoza', 'Bow Valley', 'Bow Valley Bow Valley Bow Valley Bow ValleyBo'),
-(6, 'MMM', 'Mendoza', 'Bow Valley', 'Bow Valley Bow Valley Bow Valley Bow ValleyBo'),
-(7, 'MMM', 'Mendoza', 'Bow Valley', 'Bow Valley Bow Valley Bow Valley Bow ValleyBo');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
@@ -113,14 +84,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Email` varchar(50) NOT NULL,
   `Password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`Id`, `FullName`, `Email`, `Password`) VALUES
-(5, 'Mahya', 'usefi.ma@gmail.com', '1234');
+(8, 'Mohammad', 'Zamani.md@gmail.com', '$2b$10$eHDQp36L1m9jqB2fQr//D.GNc3B2zZpnLXhb.hKM.8kzus/wNtd/G'),
+(7, 'Mahya', 'usefi.ma@gmail.com', '$2b$10$oodUzCBOlsa6XfsGbTtX/eJRVtNsJAHau17WDMh4/x1AwmdQL0bSe');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
