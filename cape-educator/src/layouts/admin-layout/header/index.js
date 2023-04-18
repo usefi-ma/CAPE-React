@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+
 // @mui
 import { styled, alpha } from '@mui/material/styles';
 import {
@@ -19,9 +20,11 @@ import Searchbar from "./Searchbar";
 import AccountPopover from "./AccountPopover";
 import LanguagePopover from "./LanguagePopover";
 import account from "../../../_mock/account";
+import Logout from "./Logout";
 // import NotificationsPopover from './NotificationsPopover';
 
 // ----------------------------------------------------------------------
+
 
 const NAV_WIDTH = 280;
 
@@ -59,6 +62,7 @@ Header.propTypes = {
 };
 
 export default function Header({ onOpenNav }) {
+
   return (
     <StyledRoot>
       <StyledToolbar>
@@ -77,7 +81,7 @@ export default function Header({ onOpenNav }) {
            
           </Box> */}
 
-
+<div className="d-flex justify-content-between w-100 align-item-center">
       <Box sx={{ my: 1.5, px: 0 }}>
         <Link underline="none">
           <StyledAccount>
@@ -96,8 +100,8 @@ export default function Header({ onOpenNav }) {
         </Link>
       </Box>
 
-
-
+      <Logout></Logout>
+      </div>
         {/* <Searchbar /> */}
         <Box sx={{ flexGrow: 1 }} />
 
@@ -113,15 +117,7 @@ export default function Header({ onOpenNav }) {
           {/* <NotificationsPopover /> */}
           {/* <AccountPopover /> */}
 
-          <Box sx={{ my: 1.5, px: 2.5 }}>
-            <Typography
-              variant="subtitle2"
-              sx={{ color: "text.secondary" }}
-              wrap>
-              Logout
-            </Typography>
-          </Box>
-
+        
         </Stack>
       </StyledToolbar>
     </StyledRoot>
