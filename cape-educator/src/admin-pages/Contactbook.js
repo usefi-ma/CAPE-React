@@ -2,7 +2,7 @@ import React from 'react'
 
 const Contactbook = () => {
   return (
-    <div>Contactbook</div>
+    <div>Contact List</div>
   )
 }
 

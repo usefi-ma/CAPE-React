@@ -44,20 +44,20 @@ function Home() {
             <div className="row align-center ">
                 <div className="col-12 col-md-10 col-lg-7 banner_content">
                       
-                    <h1 className="first_h1"> {data.BannerTitle}</h1>
+                    <h1 className="first_h1 mb-3"> {data.BannerTitle}</h1>
                     <h3>
                        {data.EventTitle}
                     </h3>
-                    <p>
+                    <p className="mb-1">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-calendar3" viewBox="0 0 16 16">
                             <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
                             <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                         </svg>
                         {data.Date}
                     </p>
-                    <span className="benner_span">
+                    <strong className="benner_span text_gradient w-100 d-block mb-3">
                        {data.Description}
-                    </span>
+                    </strong>
                     <Link to={data.BannerLink} className="btn btn_custom " target='_blank'>Discover More </Link>
                 </div>
             </div>
