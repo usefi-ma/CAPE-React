@@ -93,6 +93,38 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`Id`, `FullName`, `Email`, `Password`) VALUES
 (8, 'Mohammad', 'Zamani.md@gmail.com', '$2b$10$eHDQp36L1m9jqB2fQr//D.GNc3B2zZpnLXhb.hKM.8kzus/wNtd/G'),
 (7, 'Mahya', 'usefi.ma@gmail.com', '$2b$10$oodUzCBOlsa6XfsGbTtX/eJRVtNsJAHau17WDMh4/x1AwmdQL0bSe');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `conference`
+--
+
+DROP TABLE IF EXISTS `conference`;
+CREATE TABLE IF NOT EXISTS `conference` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `ConferenceTitle` varchar(100) NOT NULL,
+  `Description` varchar(255) NOT NULL,
+  `Date` varchar(50) NOT NULL,
+  `Image` varchar(100) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `conference`
+--
+
+INSERT INTO `conference` (`Id`, `ConferenceTitle`, `Description`, `Date`, `Image`) VALUES
+(1, '2023 Annual Conference | Wellness starts from the inside', 'The CAPE Executive team would like to invite you and your colleagues to attend the 2023 CAPE Conference in Calgary, Alberta from June 20th-22nd, in partnership with Calgary Police Service and Bow Valley College...', 'June 20th-June 22nd 2023', 'Conference2023.jpg'),
+(2, '2022 Annual Conference | Life never stops teaching, so never stop learning', 'The CAPE Executive team would like to invite you and your colleagues to attend the 2022 Fall CAPE Conference in Niagara Falls, Ontario. We are excited to have the opportunity to connect, learn and socialize in person for the first time since 2019...', 'October 25th-27th 2022', 'ConferenceBanner.jpg'),
+(3, '2019 Annual Conference | Connecting Research, Technology and Police Training.', '2019 Annual Conference | Connecting Research, Technology and Police Training. Connecting Research, Technology and Police Training. On behalf of all of the CAPE Executive we would like to invite you and your colleagues to attend the 2019 CAPE Conference...', 'Feb 15, 2019', '1.jpg'),
+(4, 'C.A.P.E. 2018 Conference | Pracademics – Bridging the Gap Between Academia & Police Training', '', 'June 25 – 29, 2018', 'siren.jpg'),
+(5, 'C.A.P.E. 2017 Conference | Transforming Canada’s Police Training and Education', 'It is the desire of CAPE that the 2017 Conference will accomplish (2) objectives. First as always is to provide an environment to renew, refresh working relationships with Police Trainers and Educators from across Canada. Secondly is to provide an...', 'June 12 - 16', 'frontcar.jpg'),
+(6, 'C.A.P.E. 2016 Conference | Research, Instructional Design, Interactive Academics & Practical Skills', '', 'May 30 - June 3', 'toronto.jpg'),
+(7, 'C.A.P.E. 2016 Conference | Effective and Defensible Training Through Collaboration', '', 'May 19 - 22', 'policetape.jpg'),
+(8, 'C.A.P.E. Conference 2014 | How to Meet the Training Needs of Policing in the Future.', 'The goal of this year’s C.A.P.E. conference is to engage the community of police educators in active discussion around accountability, evidence based training, and technological advancements which will influence the future.', 'May 20 - 23', 'backcar.jpg');
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

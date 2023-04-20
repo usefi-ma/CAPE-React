@@ -1,8 +1,13 @@
-import { useTheme } from "@mui/material/styles";
-import { Grid, Container, Typography } from "@mui/material";
+import { useTheme } from '@mui/material/styles';
+import { Grid, Container, Typography } from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-// sections
+
 import { AppWidgetSummary } from "../sections/@dashboard/app";
+
+
+import { AppWidgetSummary } from '../sections/@dashboard/app';
+
 
 // ----------------------------------------------------------------------
 
@@ -12,15 +17,14 @@ export default function Dashboard() {
     <>
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-         Dashboard
+          Dashboard
         </Typography>
-        
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary
               title="Conferences"
               total={10}
-              icon={"ant-design:fund-projection-screen-outlined"}
+              icon={'ant-design:fund-projection-screen-outlined'}
             />
           </Grid>
 
@@ -29,7 +33,7 @@ export default function Dashboard() {
               title="Executives"
               total={20}
               color="info"
-              icon={"ant-design:fork-outlined"}
+              icon={'ant-design:fork-outlined'}
             />
           </Grid>
 
@@ -38,7 +42,7 @@ export default function Dashboard() {
               title="Researches"
               total={4}
               color="warning"
-              icon={"ant-design:file-text-outlined"}
+              icon={'ant-design:file-text-outlined'}
             />
           </Grid>
 
@@ -47,7 +51,7 @@ export default function Dashboard() {
               title="Users"
               total={1}
               color="error"
-              icon={"ant-design:team-outlined"}
+              icon={'ant-design:team-outlined'}
             />
           </Grid>
         </Grid>
