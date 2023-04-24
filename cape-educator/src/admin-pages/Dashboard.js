@@ -7,8 +7,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { AppWidgetSummary } from "../sections/@dashboard/app";
 
 
-import { AppWidgetSummary } from '../sections/@dashboard/app';
-
 // ----------------------------------------------------------------------
 
 export default function Dashboard() {
