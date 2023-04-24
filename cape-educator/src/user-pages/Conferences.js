@@ -47,7 +47,7 @@ const Conferences = () => {
       <section className="conference">
         <div className="container">
           <div className="row">
-            {conference.map((item) => (
+            {conference.slice(0).reverse().map((item) => (
               <div className="col-12 col-md-6 col-lg-4 mb-4">
                 <div className="news_box">
                   <div className="news_img_wrapp">
