@@ -14,31 +14,6 @@ import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import axios from "axios";
 
-const ConferenceInitail = [
-  {
-    id: 1,
-    title: "2023 Annual Conference | Wellness starts from the inside",
-    text: "The CAPE Executive team would like to invite you and your colleagues to attend the 2023 CAPE Conference in Calgary, Alberta from June 20th-22nd, in partnership with Calgary Police Service and Bow Valley College..",
-    date: "June 20th-June 22nd 2023",
-    img: Conference2023,
-  },
-  {
-    id: 2,
-    title:
-      "2022 Annual Conference | Life never stops teaching, so never stop learning",
-    text: "The CAPE Executive team would like to invite you and your colleagues to attend the 2022 Fall CAPE Conference in Niagara Falls, Ontario. We are excited to have the opportunity to connect, learn and socialize in person for the first time since 2019....",
-    date: "October 25th-27th 2022",
-    img: Conference2022,
-  },
-  {
-    id: 3,
-    title:
-      "2019 Annual Conference | Connecting Research, Technology and Police Training.",
-    text: "2019 Annual Conference | Connecting Research, Technology and Police Training. Connecting Research, Technology and Police Training. On behalf of all of the CAPE Executive we would like to invite you and your colleagues to attend the 2019 CAPE Conference...",
-    date: "Feb 15, 2019",
-    img: Conference2019,
-  },
-];
 const Conferences = () => {
   const [conference, setConference] = useState([]);
 
@@ -73,7 +48,7 @@ const Conferences = () => {
         <div className="container">
           <div className="row">
             {conference.map((item) => (
-              <div className="col-12 col-md-4">
+              <div className="col-12 col-md-4 mb-4">
                 <div className="news_box">
                   <div className="news_img_wrapp">
                     <img src={`http://localhost:3000/conference/${item.Image}`} />
