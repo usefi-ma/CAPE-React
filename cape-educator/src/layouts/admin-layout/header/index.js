@@ -63,9 +63,9 @@ Header.propTypes = {
 };
 
 export default function Header({ onOpenNav }) {
-  const location = useLocation();
-  const user = location.state.user;
-  const userData = JSON.parse(localStorage.getItem('sessionData'));
+  // const location = useLocation();
+  // const user = location.state.user;
+  // const userData = JSON.parse(localStorage.getItem('sessionData'));
   return (
     <StyledRoot>
       <StyledToolbar>
@@ -95,11 +95,11 @@ export default function Header({ onOpenNav }) {
                     variant="subtitle2"
                     sx={{ color: 'text.primary' }}
                   >
-                    {user.FullName}
+                    {/* {user.FullName} */}
                   </Typography>
 
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    {user.Email}
+                    {/* {user.Email} */}
                   </Typography>
                 </Box>
               </StyledAccount>

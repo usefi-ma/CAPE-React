@@ -5,8 +5,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const Logout = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const user = location.state.user;
-  const userData = JSON.parse(localStorage.getItem('sessionData'));
+  // const user = location.state.user;
+  // const userData = JSON.parse(localStorage.getItem('sessionData'));
   const handleLogout = () => {
     localStorage.removeItem('sessionData');
     navigate('/Signin', { replace: true });

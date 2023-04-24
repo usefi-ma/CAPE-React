@@ -4,20 +4,116 @@ import { Grid, Container, Typography, Card, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import { DataGrid } from "@mui/x-data-grid";
 import { ToastContainer, toast } from "react-toastify";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import DeleteConference from "./DeleteConference";
+import EditConference from "./EditConference";
+
 
 // Change to default conference image
 import imgEmpty from "../../assets/images/EmptyUser.jpg";
 
 
-const Conference = () => {
 
+const Conference = () => {
+  // For list of conferences in dashboard
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
+  // Form data fields
   const [conferenceData, setConferenceData] = useState([]);
+  const [formErrors, setFormErrors] = useState({});
+  const [selectedRow, setSelectedRow] = useState();
   const [insertSuccess, setInsertSuccess] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [open, setOpen] = React.useState(false);
   const [file, setFile] = useState(null);
+
+  const handleOpenModal = () => {
+    setOpenModal(!openModal);
+  };
+
+  const handleEdit = (e, row) => {
+    e.stopPropagation();
+    setSelectedRow(row);
+    setOpenModal(!openModal);
+  };
+
+  const handleClickOpen = (e, row) => {
+    e.stopPropagation();
+    setSelectedRow(row);
+
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const columns = [
+    {
+      field: "Image",
+      headerName: "Image",
+      width: 80,
+      editable: true,
+      renderCell: (params) => (
+        <div className="conference_img_wrapper">
+        <img
+          src={`http://localhost:3000/conference/${params.row.Image}`}
+          className="conference_image"
+        />
+        </div>
+      ), // renderCell will render the component
+    },
+    //title, desc, date
+    { field: "Title", headerName: "Title", flex: 1 },
+    { field: "Date", headerName: "Date", flex: 1 },
+    { field: "Description", headerName: "Description", flex: 1 },
+    {
+      field: "Actions",
+      headerName: "Actions",
+      width: 120,
+      renderCell: (params) => {
+        return (
+          <>
+            <IconButton
+              variant="text"
+              color="warning"
+              onClick={(e) => handleEdit(e, params.row)}
+            >
+              <EditIcon />
+            </IconButton>
+            <IconButton
+              className="me-1"
+              variant="text"
+              size="small"
+              color="error"
+              onClick={(e) => handleClickOpen(e, params.row)}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </>
+        );
+      },
+    },
+  ];
+
+
+
 
   // Handle form change
   const handleChange = (e) => {
@@ -40,13 +136,13 @@ const Conference = () => {
     const errors = {};
 
     if(!conferenceTitle) {
-      errors.conferenceTitle = "Tite is required."
+      errors.conferenceTitle = "Title is required."
     }
     if(!description) {
-      errors.description = "Tite is required."
+      errors.description = "Description is required."
     }
     if(!date) {
-      errors.date = "Tite is required."
+      errors.date = "Date is required."
     }
 
     if (Object.keys(errors).length > 0){
@@ -86,7 +182,18 @@ const Conference = () => {
     }
     
   }
-
+  useEffect(() => {
+    const fetchAllExecutive = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/conference");
+        setConferenceData(res.data);
+        console.log(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchAllExecutive();
+  }, []);
 
   // Make list like executive page??
 
@@ -284,6 +391,44 @@ const Conference = () => {
                   </Button>
                 </Grid>
               </Grid>
+            </CardContent>
+          </Card>
+        </Box>
+
+        <Box sx={{ marginTop: 5 }}>
+          <Card sx={{ padding: 3 }}>
+            <CardContent>
+              <Grid container spacing={2}>
+                <Typography variant="h6" sx={{ marginBottom: 3 }}>
+                  Conference List
+                </Typography>
+              </Grid>
+              <DataGrid
+                rows={conferenceData}
+                columns={columns}
+                getRowId={(row) => row.Id}
+                initialState={{
+                  ...conferenceData.initialState,
+                  pagination: { paginationModel: { pageSize: 5 } },
+                }}
+                pageSizeOptions={[5, 10, 25]}
+                autoHeight
+                rowHeight={75}
+               
+              />
+              <DeleteConference
+                SelectedItem={selectedRow}
+                handleOpen={handleClickOpen}
+                open={open}
+                handleClose={handleClose}
+              ></DeleteConference>
+              {openModal && (
+                <EditConference
+                  ExecutiveItem={selectedRow}
+                  toggleModal={handleOpenModal}
+                ></EditConference>
+              )}
+              {/* clickedRow: {selectedRow ? `${selectedRow.FullName}` : null} */}
             </CardContent>
           </Card>
         </Box>

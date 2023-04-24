@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import ExecuiveRoutes from "./routes/executive.js";
+import ExecutiveRoutes from "./routes/executive.js";
 import ContactRoutes from './routes/contact.js';
 import BannerRoutes from './routes/banner.js';
 import UserRoutes from './routes/user.js';
@@ -28,7 +28,7 @@ app.use((req, res, next) => {
     next();
   });
   
-app.use(ExecuiveRoutes);
+app.use(ExecutiveRoutes);
 app.use(BannerRoutes);
 app.use(ContactRoutes);
 app.use(UserRoutes);

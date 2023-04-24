@@ -1,6 +1,7 @@
 import mysql from "mysql2/promise";
 import multer from "multer";
 import { v4 as uuidv4, v4} from 'uuid';
+//import ConferenceDetail from "../../cape-educator/src/user-pages/ConferenceDetail";
 
 const pool = mysql.createPool({
     host: "localhost",
@@ -42,7 +43,26 @@ export default class Conference {
     // ! Assumes database table is named 'conference'
 
     // Get single conference for conference page 
-    // static async Get(req, res)
+    static async Get(req, res) {
+      try {
+        const [row] = await pool.execute("Select * FROM confernce WHERE Id = ?", [
+          req.params.Id,
+        ]);
+        return res.json(row[0]);
+      } catch (error) {
+        console.error(error);
+        return res.status(500).send("Internal Server Error");
+      }
+    }
+    static async GetAll(req, res) {
+      try {
+        const [rows, fields] = await pool.execute("SELECT * FROM conference");
+        return res.json(rows);
+      } catch (error) {
+        console.error(error);
+        return res.status(500).send("Internal Server Error");
+      }
+    }
 
 
     // Get all conferences for conference list page
@@ -92,4 +112,57 @@ export default class Conference {
           return res.status(500).send("Internal Server Error");
         }
       }
+
+      static async Update(req, res) {
+        const { ConferenceTitle, Date, Description } = req.body;
+        let Image = "EmptyUser.jpg";
+        try{
+          Image = req.file.filename;
+        }catch(error){
+          Image = "EmptyUser.jpg";
+        }
+    
+        if (!ConferenceTitle || !Date || !Description) {
+          return res.status(400).send("Please ensure you have added all fields");
+        }
+    
+        try {
+          const conn = await pool.getConnection();
+          await conn.beginTransaction();
+          const [result] = await conn.execute(
+            "UPDATE conference SET `ConferenceTitle`=?, `Date`=?,`Description`=?, `Image`=? WHERE Id=?",
+            [ConferenceTitle, Date, Description, Image, req.params.Id]
+          );
+          const [row] = await conn.execute("Select * FROM conference WHERE Id = ?", [
+            req.params.Id,
+          ]);
+          console.log([result]);
+          await conn.commit();
+          conn.release();
+          return res.json(row[0]);
+        } catch (error) {
+          console.error(error);
+          return res.status(500).send("Internal Server Error");
+        }
+      }
+
+      static async Delete(req, res) {
+        try {
+          const conn = await pool.getConnection();
+          await conn.beginTransaction();
+          const [result] = await conn.execute("DELETE FROM conference WHERE Id=?", [
+            req.params.Id,
+          ]);
+          await conn.commit();
+          conn.release();
+          return res.send(result);
+        } catch (error) {
+          console.error(error);
+          return res.status(500).send("Internal Server Error");
+        }
+      }
+
+
+
+
 }

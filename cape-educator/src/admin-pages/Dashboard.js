@@ -4,13 +4,16 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 // sections
 import { AppWidgetSummary } from '../sections/@dashboard/app';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 // ----------------------------------------------------------------------
 
 export default function Dashboard() {
   const theme = useTheme();
-  const notify = () => toast('Wow so easy!');
+  //const notify = () => toast('Wow so easy!');
+  // const location = useLocation();
+  // const user = location.state.user;
+  // const userData = JSON.parse(localStorage.getItem('sessionData'));
 
   return (
     <>
@@ -18,13 +21,13 @@ export default function Dashboard() {
         <Typography variant="h4" sx={{ mb: 5 }}>
           Dashboard
         </Typography>
-        <button onClick={notify}>Notify!</button>
+        {/* <button onClick={notify}>Notify!</button>
         <br></br>
         <br></br>
         <br></br>
         <br></br>
         <br></br>
-        <ToastContainer />
+        <ToastContainer /> */}
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
