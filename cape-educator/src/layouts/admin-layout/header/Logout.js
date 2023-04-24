@@ -6,12 +6,6 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 
-
-
-
-
-
-    
 const Logout = () => {
     const navigate = useNavigate();
     const userData = JSON.parse(localStorage.getItem('sessionData'));

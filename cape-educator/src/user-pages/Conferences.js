@@ -7,6 +7,10 @@ import UserHeader from "../layouts/user-layout/UserHeader";
 import UserFooter from "../layouts/user-layout/UserFooter";
 
 import Conference2023 from "../assets/images/conference/Conference2023.jpg";
+import Conference2016 from "../assets/images/conference/Conference2016.jpg";
+import Conference20161 from "../assets/images/conference/Conference2016-1.jpg";
+import Conference2018 from "../assets/images/conference/Conference2018.jpg";
+import Conference2017 from "../assets/images/conference/Conference2017.jpg";
 import Conference2022 from "../assets/images/conference/ConferenceBanner.jpg";
 import Conference2019 from "../assets/images/announcement/1.jpg";
 
@@ -38,6 +42,34 @@ const ConferenceInitail = [
     date: "Feb 15, 2019",
     img: Conference2019,
   },
+  {
+    id: 4,
+    title:
+      "Bridging the Gap Between Academia & Police Training 2018",
+    text: "We have never had a national body of Canadian Police Knowledge.  All too often we look to the US or the UK for solutions.  The time is now for a hub of information that is Canadian and inclusive",
+    date: "June 25, 2018",
+    img: Conference2018,
+  }, 
+   {
+    id: 5,
+    title:"C.A.P.E. 2017 Transforming Canada’s Police Training and Education",
+    text: "In the past several decades Canada has an established reputation as having a system of police and public safety that is considered to be amongst the best in the world.",
+    date: "June 12, 2017",
+    img: Conference2017,
+  },
+  {
+   id:6,
+   title:"York Regional Police Presents",
+   text: "Research, instruction design, interactive academics and practical skills.",
+   date: "May 13, 2016",
+   img: Conference2016,
+ }, {
+  id:7,
+  title:"Warriors, Guardians, Problem Solvers | Defining Roles Through PBL Police Society for Problem Based Learning Annual Conference",
+  text: "We are pleased to announce preliminary information for the 2015 PSPBL Annual Conference!The Lowell Massachusetts Police Department will host the 2016 Annual Conference June 22, 23 & 24, 2016.",
+  date: "June 22 - 24, 2016",
+  img: Conference20161,
+},
 ];
 const Conferences = () => {
   const [conference, setConference] = useState(ConferenceInitail);
@@ -57,7 +89,7 @@ const Conferences = () => {
         <div className="container">
           <div className="row">
             {conference.map((item) => (
-              <div className="col-12 col-md-4">
+              <div className="col-12 col-md-4 mb-4">
                 <div className="news_box">
                   <div className="news_img_wrapp">
                     <img src={item.img} />
