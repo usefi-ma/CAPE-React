@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+
 const Logout = () => {
   const navigate = useNavigate();
   const location = useLocation();
