@@ -47,7 +47,7 @@ export default class ContactRequest {
       from: '"CAPE Educators" <cape-confirmation@outlook.com>',
       to: contactRequest.email,
       subject: "Contact Request Received",
-      html: "<b>Hello!</b><br> Thanks for reaching out to us at CAPE! We have received your email and will get back to you as soon as possible.",
+      html: `<head><meta charset='utf-8' /><title></title><style>*{box-sizing: border-box; color: black;}</style></head><body style='background-color: #f4f4f4; font-family: Roboto, arial, sans-serif'><div style='background-color: #0d2764; height: 140px;'></div><div style='background-color: white; margin: -80px auto 0 auto; padding: 20px 60px 80px 60px;'><div style='font-size: 30px; font-weight: 300; margin-top: 20px; text-align: center;'> Contact Request Received! </div><br /><p style='text-align: center;'>Thanks for contacting us at C.A.P.E! We've received your contact request and one of our team members will get back to you as soon as possible.</p><div class='box-sizing: border-box; width: 100%;'><br /><br /><div style='font-size: 18px; text-align: center'>Your message: ${contactRequest.message} <br></div></div></div></body>`,
     };
 
     console.log("Created confirmation transport object.");

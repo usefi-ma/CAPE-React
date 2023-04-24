@@ -11,9 +11,13 @@ import axios from "axios";
 import imgEmpty from "../assets/images/EmptyUser.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useLocation } from "react-router-dom"; 
 
 export default function Banner() {
   // const [selectedDate, setSelectedDate] = useState(new Date());
+  // const location = useLocation();
+  // const user = location.state.user;
+  // const userData = JSON.parse(localStorage.getItem('sessionData'));
 
   const [formErrors, setFormErrors] = useState({});
   const [bannerData, setBannerData] = useState([]);

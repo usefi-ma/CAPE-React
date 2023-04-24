@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../assets/css/index.css";
 import "../assets/css/pages/announcement.css";
@@ -7,16 +7,12 @@ import UserHeader from "../layouts/user-layout/UserHeader";
 import UserFooter from "../layouts/user-layout/UserFooter";
 
 import Conference2023 from "../assets/images/conference/Conference2023.jpg";
-import Conference2016 from "../assets/images/conference/Conference2016.jpg";
-import Conference20161 from "../assets/images/conference/Conference2016-1.jpg";
-import Conference2018 from "../assets/images/conference/Conference2018.jpg";
-import Conference2017 from "../assets/images/conference/Conference2017.jpg";
 import Conference2022 from "../assets/images/conference/ConferenceBanner.jpg";
 import Conference2019 from "../assets/images/announcement/1.jpg";
 
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-
+import axios from "axios";
 
 const ConferenceInitail = [
   {
@@ -42,37 +38,25 @@ const ConferenceInitail = [
     date: "Feb 15, 2019",
     img: Conference2019,
   },
-  {
-    id: 4,
-    title:
-      "Bridging the Gap Between Academia & Police Training 2018",
-    text: "We have never had a national body of Canadian Police Knowledge.  All too often we look to the US or the UK for solutions.  The time is now for a hub of information that is Canadian and inclusive",
-    date: "June 25, 2018",
-    img: Conference2018,
-  }, 
-   {
-    id: 5,
-    title:"C.A.P.E. 2017 Transforming Canada’s Police Training and Education",
-    text: "In the past several decades Canada has an established reputation as having a system of police and public safety that is considered to be amongst the best in the world.",
-    date: "June 12, 2017",
-    img: Conference2017,
-  },
-  {
-   id:6,
-   title:"York Regional Police Presents",
-   text: "Research, instruction design, interactive academics and practical skills.",
-   date: "May 13, 2016",
-   img: Conference2016,
- }, {
-  id:7,
-  title:"Warriors, Guardians, Problem Solvers | Defining Roles Through PBL Police Society for Problem Based Learning Annual Conference",
-  text: "We are pleased to announce preliminary information for the 2015 PSPBL Annual Conference!The Lowell Massachusetts Police Department will host the 2016 Annual Conference June 22, 23 & 24, 2016.",
-  date: "June 22 - 24, 2016",
-  img: Conference20161,
-},
 ];
 const Conferences = () => {
-  const [conference, setConference] = useState(ConferenceInitail);
+  const [conference, setConference] = useState([]);
+
+  // Fetch conferences from database
+  useEffect(() => {
+    const fetchAllConferences = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/conference");
+        setConference(res.data);
+        console.log(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchAllConferences();
+  }, []);
+
+
   return (
     <>
       <UserHeader></UserHeader>
@@ -82,17 +66,17 @@ const Conferences = () => {
           <Link underline="hover" to="/">
             Home
           </Link>
-          <Typography>conferences</Typography>
+          <Typography>Conferences</Typography>
         </Breadcrumbs>
       </div>
       <section className="conference">
         <div className="container">
           <div className="row">
             {conference.map((item) => (
-              <div className="col-12 col-md-4 mb-4">
+              <div className="col-12 col-md-4">
                 <div className="news_box">
                   <div className="news_img_wrapp">
-                    <img src={item.img} />
+                    <img src={`http://localhost:3000/conference/${item.Image}`} />
                   </div>
                   <div className="news_desc">
                     <div className="news_date_wrapp">
@@ -105,19 +89,19 @@ const Conferences = () => {
                         <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
                         <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                       </svg>
-                      <span>{item.date}</span>
+                      <span>{item.Date}</span>
                     </div>
 
                     <h4>
                       <Link
-                        to={`/conferenceDetail/${item.id}`}>
-                        {item.title}
+                        to={`/conferenceDetail/${item.Id}`}>
+                        {item.ConferenceTitle}
                       </Link>
                     </h4>
-                    <p>{item.text}</p>
+                    <p>{item.Description}</p>
                     <div className="news_footer">
                       <Link
-                        to={`/conferenceDetail/${item.id}`}
+                        to={`/conferenceDetail/${item.Id}`}
                         className="btn btn_custom"
                       >
                         Read More
