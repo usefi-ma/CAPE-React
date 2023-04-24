@@ -48,7 +48,7 @@ const Conferences = () => {
         <div className="container">
           <div className="row">
             {conference.map((item) => (
-              <div className="col-12 col-md-4 mb-4">
+              <div className="col-12 col-md-6 col-lg-4 mb-4">
                 <div className="news_box">
                   <div className="news_img_wrapp">
                     <img src={`http://localhost:3000/conference/${item.Image}`} />
@@ -73,7 +73,7 @@ const Conferences = () => {
                         {item.ConferenceTitle}
                       </Link>
                     </h4>
-                    <p>{item.Description}</p>
+                    <p >{item.Description}</p>
                     <div className="news_footer">
                       <Link
                         to={`/conferenceDetail/${item.Id}`}
