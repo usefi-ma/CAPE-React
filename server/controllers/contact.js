@@ -82,7 +82,7 @@ export default class ContactRequest {
         port: "587",
         auth: {
           user: "cape-confirmation@outlook.com",
-          pass: "CAPEeducators!2023",
+          pass: "CAPE2023!educators",
         },
         secureConnection: false,
         tls: {

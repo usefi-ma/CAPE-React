@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `banner` (
 --
 
 INSERT INTO `banner` (`Id`, `BannerTitle`, `EventTitle`, `Date`, `BannerLink`, `Description`, `Image`) VALUES
-(1, 'Canadian association of police education', 'C.A.P.E. 2023 CONFERENCE', 'June 20th-22nd 2023', 'https://www.cape-educators.ca/2023-conference/', 'In partnership with Calgary Police Service & Bow Valley College', 'image-73267c47-d5f0-4904-b0ee-49940b4dc6c6.jpeg');
+(1, 'Canadian Association of Police Education', 'C.A.P.E. 2023 CONFERENCE', 'June 20th-22nd 2023', 'https://www.cape-educators.ca/2023-conference/', 'In partnership with Calgary Police Service & Bow Valley College', 'image-73267c47-d5f0-4904-b0ee-49940b4dc6c6.jpeg');
 
 -- --------------------------------------------------------
 

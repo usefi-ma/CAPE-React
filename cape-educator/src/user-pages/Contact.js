@@ -20,10 +20,11 @@ const Contact = () => {
           <Typography>Contact Us</Typography>
         </Breadcrumbs>
       </div>
+      <ContactForm></ContactForm>
       <div className="map_container">
         <div className="map">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.3339541282853!2d-114.05819134822391!3d51.046921179461776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53717ad00ad231a9%3A0x34c6c179aae00af8!2sBow%20Valley%20College%2C%20South%20Campus!5e0!3m2!1sen!2sca!4v1678123972520!5m2!1sen!2sca"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2841.6668649940634!2d-79.43139718447185!3d44.58338427910034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4d2aabe26666e323%3A0xd665a2971948eb29!2sThe%20Canadian%20Association%20of%20Police%20Educators!5e0!3m2!1sen!2sca!4v1682356757560!5m2!1sen!2sca"
             width="600"
             height="450"
             allowFullScreen=""
@@ -32,7 +33,7 @@ const Contact = () => {
           ></iframe>
         </div>
       </div>
-      <ContactForm></ContactForm>
+      
       <UserFooter></UserFooter>
     </>
   );
