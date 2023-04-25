@@ -21,9 +21,8 @@ import ConferenceDashboard from './admin-pages/Conference/Conference';
 import SpeakersDashboard from './admin-pages/Conference/Speakers';
 import SponsersDashboard from './admin-pages/Conference/Sponsers';
 import ContactDashboard from './admin-pages/Conference/Contact';
-import Contactbook from './admin-pages/Contactbook'
-
-
+import Contactbook from './admin-pages/Contactbook';
+import ConferenceDetailDashboard from './admin-pages/Conference/ConferenceDetail';
 
 function App() {
   return (
@@ -37,6 +36,7 @@ function App() {
                 <Route path="executivedashboard" element={<ExecutiveDashboard />} />
                 <Route path="researchdashboard" element={<ResearchDashboard />} />
                 <Route path="conferences" element={<ConferenceDashboard />} />
+                <Route path="conferenceDetail" element={<ConferenceDetailDashboard />} />
                 <Route path="speakers" element={<SpeakersDashboard />} />
                 <Route path="sponsers" element={<SponsersDashboard />} />
                 <Route path="contactdashboard" element={<ContactDashboard />} />

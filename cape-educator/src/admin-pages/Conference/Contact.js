@@ -54,7 +54,7 @@ const Contact = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Contact Desc
+                    Contact Title Description
                   </Typography>
                   <TextField
                     fullWidth
@@ -72,7 +72,7 @@ const Contact = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Address
+                    Event Address
                   </Typography>
                   <TextField
                     fullWidth
@@ -81,6 +81,7 @@ const Contact = () => {
                     variant="outlined"
                   />
                 </Grid>
+
                 <Grid item xs={12} sm={6} md={6}>
                   <Typography
                     variant="subtitle1"
@@ -90,25 +91,7 @@ const Contact = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Map Location
-                  </Typography>
-                  <TextField
-                    fullWidth
-                    id="outlined-basic"
-                    label="Map Location"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6} md={6}>
-                  <Typography
-                    variant="subtitle1"
-                    style={{
-                      marginBottom: 8,
-                      display: "block",
-                      fontWeight: "500",
-                    }}
-                  >
-                    Email
+                    Event Email
                   </Typography>
                   <TextField
                     fullWidth
@@ -126,7 +109,7 @@ const Contact = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Phone
+                    Event Phone
                   </Typography>
                   <TextField
                     fullWidth
@@ -144,12 +127,32 @@ const Contact = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Conference will start
+                    Event will start
+                  </Typography>
+                  <TextField
+                    label="Event will start"
+                    multiline
+                    rows={3}
+                    variant="outlined"
+                    name="eventDate"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6} md={6}>
+                  <Typography
+                    variant="subtitle1"
+                    style={{
+                      marginBottom: 8,
+                      display: "block",
+                      fontWeight: "500",
+                    }}
+                  >
+                    Map Location
                   </Typography>
                   <TextField
                     fullWidth
                     id="outlined-basic"
-                    label="Conference will start"
+                    label="Map Location"
                     variant="outlined"
                   />
                 </Grid>
