@@ -38,7 +38,7 @@ const navConfig = [
   },
   {
     title: 'Conference Speakers',
-    path: '/speakers',
+    path: '/speaker',
     icon: icon('ic_user'),
   },  
   {

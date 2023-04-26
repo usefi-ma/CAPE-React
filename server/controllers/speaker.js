@@ -1,6 +1,6 @@
 import mysql from "mysql2/promise";
 import multer from "multer";
-import { v4 as uuidv4, v4} from 'uuid';
+import { v4 as uuidv4, v4 } from "uuid";
 
 const pool = mysql.createPool({
   host: "localhost",
@@ -13,10 +13,9 @@ const pool = mysql.createPool({
 });
 
 
-
 const multerConfig = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "public/executive");
+    callback(null, "public/speaker");
   },
   filename: (req, file, callback) => {
     const ext = file.mimetype.split("/")[1];
@@ -41,11 +40,10 @@ const upload = multer({
 
 export const uploadImage = upload.single("Image");
 
-export default class Executive {
-  //every middleware which is related to executives, write here
+export default class Speaker {
   static async Get(req, res) {
     try {
-      const [row] = await pool.execute("Select * FROM executive WHERE Id = ?", [
+      const [row] = await pool.execute("Select * FROM speaker WHERE Id = ?", [
         req.params.Id,
       ]);
       return res.json(row[0]);
@@ -54,9 +52,10 @@ export default class Executive {
       return res.status(500).send("Internal Server Error");
     }
   }
+
   static async GetAll(req, res) {
     try {
-      const [rows, fields] = await pool.execute("SELECT * FROM executive");
+      const [rows, fields] = await pool.execute("SELECT * FROM speaker");
       return res.json(rows);
     } catch (error) {
       console.error(error);
@@ -65,9 +64,9 @@ export default class Executive {
   }
 
   static async Add(req, res) {
-    //Parameters expected
-    const { FullName, JobTitle, Organization, Description } = req.body;
+    console.log("Attempting to Update one Speaker");
 
+    const { ConferenceId, FullName, Organization } = req.body;
     let Image = "EmptyUser.jpg";
     try{
       Image = req.file.filename;
@@ -76,55 +75,51 @@ export default class Executive {
       console.log("error from catch"+error)
     }
 
-
-    if (!FullName || !JobTitle || !Organization || !Description) {
-      return res.status(400).send("Please ensure you have added all fields");
-    }
+ 
     try {
-      
-      const conn = await pool.getConnection();
-      await conn.beginTransaction();
-      const [result] = await conn.execute(
-        "INSERT INTO executive (FullName, JobTitle, Organization, Description,Image) VALUES(?, ?, ?, ?,?)",
-        [FullName, JobTitle, Organization, Description, Image]
-      );
-
-      const [row] = await conn.execute("Select * FROM executive WHERE id = ?", [
-        result.insertId,
-      ]);
-      await conn.commit();
-      conn.release();
-      return res.json(row[0]);
-    } catch (error) {
-      console.error(error);
-      return res.status(500).send("Internal Server Error");
-    }
+        const conn = await pool.getConnection();
+        await conn.beginTransaction();
+        const [result] = await conn.execute(
+            "INSERT INTO speaker (FullName, Organization, Image, ConferenceId) VALUES(?, ?, ?, ?)",
+            [FullName, Organization, Image, ConferenceId]
+          );
+          const [row] = await conn.execute(
+            "SELECT * FROM speaker WHERE Id = ?",
+            [result.insertId]
+          );
+  
+          await conn.commit();
+          conn.release();
+          return res.json(row[0]);
+        } catch (error) {
+          console.error(error);
+          return res.status(500).send("Internal Server Error");
+        }
   }
 
+
+
   static async Update(req, res) {
-    const { FullName, JobTitle, Organization, Description } = req.body;
+    const { ConferenceId, FullName, Organization } = req.body;
     let Image = "EmptyUser.jpg";
     try{
       Image = req.file.filename;
     }catch(error){
       Image = "EmptyUser.jpg";
-    }
-
-    if (!FullName || !JobTitle || !Organization || !Description) {
-      return res.status(400).send("Please ensure you have added all fields");
+      console.log("error from catch"+error)
     }
 
     try {
       const conn = await pool.getConnection();
       await conn.beginTransaction();
       const [result] = await conn.execute(
-        "UPDATE executive SET `FullName`=?, `JobTitle`=?,`Organization`=?,`Description`=?, `Image`=? WHERE Id=?",
-        [FullName, JobTitle, Organization, Description, Image, req.params.Id]
+        "UPDATE speaker SET `FullName`=?, `Organization`=?,`ConferenceId`=?, `Image`=? WHERE Id=?",
+        [FullName, Organization, ConferenceId, Image, req.params.Id]
       );
-      const [row] = await conn.execute("Select * FROM executive WHERE Id = ?", [
+      const [row] = await conn.execute("Select * FROM speaker WHERE Id = ?", [
         req.params.Id,
       ]);
-      
+      console.log([result]);
       await conn.commit();
       conn.release();
       return res.json(row[0]);
@@ -134,11 +129,13 @@ export default class Executive {
     }
   }
 
+
+
   static async Delete(req, res) {
     try {
       const conn = await pool.getConnection();
       await conn.beginTransaction();
-      const [result] = await conn.execute("DELETE FROM executive WHERE Id=?", [
+      const [result] = await conn.execute("DELETE FROM speaker WHERE Id=?", [
         req.params.Id,
       ]);
       await conn.commit();
@@ -149,4 +146,8 @@ export default class Executive {
       return res.status(500).send("Internal Server Error");
     }
   }
+
+
+
+
 }
