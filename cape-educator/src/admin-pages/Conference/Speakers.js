@@ -76,41 +76,33 @@ const Speakers = () => {
                     variant="outlined"
                   />
                 </Grid>
-                <Grid item xs={12} >
-                  <Typography
-                    variant="subtitle1"
-                    style={{
-                      marginBottom: 8,
-                      display: "block",
-                      fontWeight: "500",
-                    }}>
-                    Description
-                  </Typography>
-                  <TextField
-                    id="outlined-multiline-static"
-                    label="Description "
-                    multiline
-                    rows={3}
-                    variant="outlined"
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography
-                    variant="subtitle1"
-                    style={{
-                      marginBottom: 8,
-                      display: "block",
-                      fontWeight: "500",
-                    }}
-                  >
-                    Image
-                  </Typography>
-                  <Button variant="contained" component="label" size="large">
-                    Upload
-                    <input hidden accept="image/*" multiple type="file" />
-                  </Button>
-                </Grid>
+                <Grid item xs={6}>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        marginBottom: 8,
+                        display: "block",
+                        fontWeight: "500",
+                      }}
+                    >
+                      Image
+                    </Typography>
+
+                    <div className="fileInput_wrapp">
+                      <label className="fileInput_button" for="inputTag1">
+                       
+                        Upload File
+                      </label>
+                      <input
+                        id="inputTag1"
+                        type="file"
+                        className="fileInput_custom"
+                        name="Image"
+                      />
+                    </div>
+                  </Grid>
+                
+               
                 <Grid item xs={12}>
                   <Button variant="contained" size="large">
                     Submit

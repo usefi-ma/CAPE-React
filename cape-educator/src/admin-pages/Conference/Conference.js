@@ -249,36 +249,7 @@ const Conference = () => {
                     fullWidth
                   />
                 </Grid>
-                {/* <Grid item xs={6}>
-                  <Typography
-                    variant="subtitle1" 
-                    style={{
-                      marginBottom: 8,
-                      display: "block",
-                      fontWeight: "500",
-                    }}
-                  >
-                    Start Date
-                  </Typography>
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker className="w-100" />
-                  </LocalizationProvider>
-                </Grid> */}
-                {/* <Grid item xs={6}>
-                  <Typography
-                    variant="subtitle1"
-                    style={{
-                      marginBottom: 8,
-                      display: "block",
-                      fontWeight: "500",
-                    }}
-                  >
-                     End Date
-                  </Typography>
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker className="w-100" />
-                  </LocalizationProvider>
-                </Grid> */}
+              
                 <Grid item xs={6}>
                   <Typography
                     variant="subtitle1"
@@ -299,24 +270,7 @@ const Conference = () => {
                     fullWidth
                   />
                 </Grid>
-                {/* <Grid item xs={12}>
-                  <Typography
-                    variant="subtitle1"
-                    style={{
-                      marginBottom: 8,
-                      display: "block",
-                      fontWeight: "500",
-                    }}
-                  >
-                    Location
-                  </Typography>
-                  <TextField
-                    id="outlined-multiline-static"
-                    label="Location"
-                    variant="outlined"
-                    fullWidth
-                  />
-                </Grid> */}
+               
                 <Grid item xs={6}>
                   <Typography
                     variant="subtitle1"
@@ -340,51 +294,9 @@ const Conference = () => {
                       onChange={handleChange}
                     />
                   </div>
-                  {/* <Button variant="contained" component="label" size="large">
-                    Upload
-                    <input hidden accept="image/*" multiple type="file" />
-                  </Button> */}
+              
                 </Grid>
-                {/* <Grid item xs={6}>
-                  <Typography
-                    variant="Conference Image"
-                    style={{
-                      marginBottom: 8,
-                      display: "block",
-                      fontWeight: "500",
-                    }}
-                  >
-                    Conference Image
-                  </Typography>
-                  <Button variant="contained" component="label" size="large">
-                    Upload
-                    <input hidden accept="image/*" multiple type="file" />
-                  </Button>
-                </Grid> */}
-                {/* <Grid item xs={12}>
-                  <Typography
-                    variant="subtitle1"
-                    style={{
-                      marginBottom: 8,
-                      display: "block",
-                      fontWeight: "500",
-                    }}
-                  >
-                    Additional information
-                  </Typography>
-                  <TextField
-                    id="outlined-multiline-static"
-                    label="Information"
-                    multiline
-                    rows={5}
-                    variant="outlined"
-                    fullWidth
-                  />
-                </Grid> */}
-
-
-
-
+<ToastContainer></ToastContainer>
                 <Grid item xs={12}>
                   <Button type="submit" variant="contained" size="large">
                     Submit

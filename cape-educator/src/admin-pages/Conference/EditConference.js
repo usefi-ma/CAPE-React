@@ -134,7 +134,7 @@ const EditConference = ({ ConferenceItem, toggleModal }) => {
             {/* Might have to change back to executive_img class */}
                     <div className="conference_img_edit_wrapper me-3">
                       <img 
-                        className="conference_image"
+                        className="executive_img"
                         src={`http://localhost:3000/conference/${ConferenceItem.Image}`}
                       />
                     </div>
