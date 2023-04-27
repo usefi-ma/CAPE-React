@@ -98,7 +98,6 @@ const ModifySpeaker = ({ speakerItem, toggleModal }) => {
         aria-labelledby="keep-mounted-modal-title"
         aria-describedby="keep-mounted-modal-description"
         onClose={() => setIsOpen(false)}
-        onOpen={() => setIsOpen(true)}
         open={isOpen}
       >
         <Box sx={modal} onSubmit={handleFormSubmit}>
