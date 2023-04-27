@@ -1,42 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Container, Typography, Card, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
+import imgEmpty from "../../assets/images/EmptyConference.png";
 import axios from "axios";
-import EditExecutive from "./EditExecutive";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import imgEmpty from "../../assets/images/EmptyUser.jpg";
-import DeleteExecutive from "./DeleteExecutive";
 import { DataGrid } from "@mui/x-data-grid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DeleteResearch from "./DeleteResearch";
+import ModifyResearch from "./ModifyResearch";
 
-const Executive = () => {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-
-  //Form Data handle
-  const [executiveData, setExecutiveData] = useState([]);
-  const [formErrors, setFormErrors] = useState({});
+const Research = () => {
+  const [researchData, setResearchData] = useState([]);
+  const [file, setfile] = useState(null);
   const [selectedRow, setSelectedRow] = useState();
-  const [insertSuccess, setInsertSuccess] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [open, setOpen] = React.useState(false);
-  const [file, setfile] = useState(null);
 
-  console.log("executiveData" + executiveData);
+  //Modals
   const handleOpenModal = () => {
     setOpenModal(!openModal);
   };
@@ -56,7 +42,7 @@ const Executive = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
+  //table
   const columns = [
     {
       field: "Image",
@@ -65,16 +51,15 @@ const Executive = () => {
       editable: true,
       renderCell: (params) => (
         <div className="executive_img_wrapper">
-        <img
-          src={`http://localhost:3000/executive/${params.row.Image}`}
-          className="executive_image"
-        />
+          <img
+            src={`http://localhost:3000/research/${params.row.Image}`}
+            className="executive_image"
+          />
         </div>
       ), // renderCell will render the component
     },
-    { field: "FullName", headerName: "Full Name", flex: 1 },
-    { field: "JobTitle", headerName: "Job Title", flex: 1 },
-    { field: "Organization", headerName: "Organization", flex: 1 },
+    { field: "Title", headerName: "Research Title", flex: 1 },
+    { field: "Link", headerName: "Research Link", flex: 1 },
     { field: "Description", headerName: "Description", flex: 1 },
     {
       field: "Actions",
@@ -86,7 +71,7 @@ const Executive = () => {
             <IconButton
               variant="text"
               color="warning"
-              onClick={(e) => handleEdit(e, params.row)}
+               onClick={(e) => handleEdit(e, params.row)}
             >
               <EditIcon />
             </IconButton>
@@ -104,69 +89,21 @@ const Executive = () => {
       },
     },
   ];
-  //saving an item
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-
-    const name = e.target.FullName.value.trim();
-    const jobTitle = e.target.JobTitle.value.trim();
-    const organization = e.target.Organization.value.trim();
-    const description = e.target.Description.value.trim();
-
-    //VERIFY THAT ALL INPUT FIELDS ARE FILLED IN
-    const errors = {};
-    if (!name) {
-      errors.name = "Name is required";
-    }
-    if (!jobTitle) {
-      errors.jobTitle = "Job title is required";
-    }
-    if (!organization) {
-      errors.organization = "Organization is required";
-    }
-    if (!description) {
-      errors.description = "Description is required";
-    }
-
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-    } else {
+//loading data
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        const config = {
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        };
-        if (!file) {
-          setfile({ imgEmpty });
-        }
-        const response = await axios.post(
-          "http://localhost:3000/executive",
-          {
-            FullName: name,
-            JobTitle: jobTitle,
-            Organization: organization,
-            Description: description,
-            Image: file,
-          },
-          config
-        );
-        setExecutiveData([...executiveData, response.data]);
-        setInsertSuccess(true);
-        toast.success("New member inserted successfully!!!", {
-          position: toast.POSITION.TOP_CENTER,
-        });
+        const res = await axios.get("http://localhost:3000/research");
+        setResearchData(res.data);
+        console.log(res.data);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
-      e.target.reset();
-      e.target.files = null;
-      setfile(null);
-      setFormErrors({});
-    }
-  };
+    };
+    fetchData();
+  }, []);
 
-  //TESTING
+  // Handle form change
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(name, value);
@@ -175,30 +112,83 @@ const Executive = () => {
     }
   };
 
-  //FETCH CALL FROM SERVER
-  useEffect(() => {
-    const fetchAllExecutive = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000/executive");
-        setExecutiveData(res.data);
-        console.log(res.data);
-      } catch (error) {
-        console.error(error);
+  // Handle form submit
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const title = e.target.Title.value.trim();
+    const description = e.target.Description.value.trim();
+    const link = e.target.Link.value.trim();
+    try {
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      };
+      if (!file) {
+        setfile({ imgEmpty });
       }
-    };
-    fetchAllExecutive();
-  }, []);
+      const response = await axios.post(
+        `http://localhost:3000/research`,
+        {
+          //database feils : input names
+          Title: title,
+          Description: description,
+          Image: file,
+          Link: link,
+        },
+        config
+      );
+
+      setResearchData([...researchData, response.data]);
+      toast.success("Research inserted successfully!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    e.target.reset();
+    e.target.files = null;
+    setfile(null);
+  };
+
+
 
   return (
     <>
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ marginBottom: 3 }}>
-          Executive
+            Researches
         </Typography>
-        <Box onSubmit={handleFormSubmit} component="form" noValidate>
-          <Card sx={{ padding: 3 }}>
-            <CardContent>
-              <Grid container spacing={2}>
+      <Box
+          component="form"
+          noValidate
+          autoComplete="off"
+          onSubmit={handleFormSubmit}
+          sx={{ marginTop: 3 }}
+        >
+        <Card sx={{ padding: 3 }}>
+          <CardContent>
+            <Grid container spacing={2}>
+            <Grid item xs={12} sm={6} md={6}>
+                  <Typography
+                    variant="subtitle1"
+                    style={{
+                      marginBottom: 8,
+                      display: "block",
+                      fontWeight: "500",
+                    }}
+                  >
+                Research Title
+                  </Typography>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Title"
+                    variant="outlined"
+                    name="Title"
+                    onChange={handleChange}
+                  />
+                </Grid>
                 <Grid item xs={12} sm={6} md={6}>
                   <Typography
                     variant="subtitle1"
@@ -208,76 +198,29 @@ const Executive = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Full Name
+                     Research Link 
                   </Typography>
                   <TextField
                     fullWidth
                     id="outlined-basic"
-                    label="Full Name"
+                    label="Link"
                     variant="outlined"
-                    name="FullName"
+                    name="Link"
                     onChange={handleChange}
-                    error={formErrors.name}
-                    helperText={formErrors.name}
-                    autoFocus 
                   />
                 </Grid>
+                <Grid item xs={12}>
+                  <Typography
+                    variant="subtitle1"
+                    style={{
+                      marginBottom: 8,
+                      display: "block",
+                      fontWeight: "500",
+                    }}
+                  >
+                    Research Image
+                  </Typography>
 
-                <Grid item xs={12} sm={6} md={6}>
-                  <Typography
-                    variant="subtitle1"
-                    style={{
-                      marginBottom: 8,
-                      display: "block",
-                      fontWeight: "500",
-                    }}
-                  >
-                    Job Title
-                  </Typography>
-                  <TextField
-                    fullWidth
-                    id="outlined-basic"
-                    label="Job Title"
-                    variant="outlined"
-                    name="JobTitle"
-                    onChange={handleChange}
-                    error={formErrors.jobTitle}
-                    helperText={formErrors.jobTitle}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Typography
-                    variant="subtitle1"
-                    style={{
-                      marginBottom: 8,
-                      display: "block",
-                      fontWeight: "500",
-                    }}
-                  >
-                    Organization
-                  </Typography>
-                  <TextField
-                    fullWidth
-                    id="outlined-basic"
-                    label="Organization"
-                    variant="outlined"
-                    name="Organization"
-                    onChange={handleChange}
-                    error={formErrors.organization}
-                    helperText={formErrors.organization}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Typography
-                    variant="subtitle1"
-                    style={{
-                      marginBottom: 8,
-                      display: "block",
-                      fontWeight: "500",
-                    }}
-                  >
-                    Image
-                  </Typography>
                   <div className="fileInput_wrapp">
                     <label className="fileInput_button" htmlFor="inputTag">
                       Upload File
@@ -311,63 +254,63 @@ const Executive = () => {
                     fullWidth
                     name="Description"
                     onChange={handleChange}
-                    error={formErrors.description}
-                    helperText={formErrors.description}
                   />
                 </Grid>
-
                 <Grid item xs={12}>
-                  <Button type="submit" variant="contained" size="large">
+                <Button type="submit" variant="contained" size="large">
                     Submit
                   </Button>
+                  <ToastContainer />
+
                 </Grid>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Box>
 
-                {insertSuccess ? <ToastContainer /> : <span></span>}
-              </Grid>
-            </CardContent>
-          </Card>
-        </Box>
-
-        <Box sx={{ marginTop: 5 }}>
+ {/* //table */}
+ <Box sx={{ marginTop: 3 }}>
           <Card sx={{ padding: 3 }}>
             <CardContent>
               <Grid container spacing={2}>
                 <Typography variant="h6" sx={{ marginBottom: 3 }}>
-                  Executive List
+                  Research List
                 </Typography>
               </Grid>
               <DataGrid
-                rows={executiveData}
+                rows={researchData}
                 columns={columns}
                 getRowId={(row) => row.Id}
                 initialState={{
-                  ...executiveData.initialState,
+                  ...researchData.initialState,
                   pagination: { paginationModel: { pageSize: 5 } },
                 }}
                 pageSizeOptions={[5, 10, 25]}
                 autoHeight
                 rowHeight={75}
-               
               />
-              <DeleteExecutive
+               <DeleteResearch
                 SelectedItem={selectedRow}
                 handleOpen={handleClickOpen}
                 open={open}
                 handleClose={handleClose}
-              ></DeleteExecutive>
-              {openModal && (
-                <EditExecutive
-                  ExecutiveItem={selectedRow}
+              ></DeleteResearch>
+               {openModal && (
+                <ModifyResearch
+                  ResearchItem={selectedRow}
                   toggleModal={handleOpenModal}
-                ></EditExecutive>
-              )}
-              {/* clickedRow: {selectedRow ? `${selectedRow.FullName}` : null} */}
+                ></ModifyResearch>
+              )}  
+              {/* clickedRow: {selectedRow ? `${selectedRow}` : null} */}
             </CardContent>
           </Card>
         </Box>
+
+
+
       </Container>
     </>
   );
 };
 
-export default Executive;
+export default Research;

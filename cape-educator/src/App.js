@@ -16,7 +16,7 @@ import AdminLayout from './layouts/admin-layout';
 import Dashboard from './admin-pages/Dashboard';
 import Banner from './admin-pages/Banner';
 import ExecutiveDashboard from './admin-pages/executive';
-import ResearchDashboard from './admin-pages/Research';
+import ResearchDashboard from './admin-pages/research/Research';
 import ConferenceDashboard from './admin-pages/Conference/Conference';
 import SpeakersDashboard from './admin-pages/speaker/Speaker';
 import SponsorDashboard from './admin-pages/sponsor/Sponsor';

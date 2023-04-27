@@ -1,14 +1,14 @@
-import React, { useState,useEffect} from "react";
+import React, { useState } from "react";
 import Modal from "@mui/material/Modal";
 import { Grid, Container, Typography, Card, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
 import axios from "axios";
-import imgEmpty from "../../assets/images/EmptyUser.jpg";
+import imgEmpty from "../../assets/images/EmptyConference.png";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
+const ResearchItem = ({ ResearchItem, toggleModal }) => {
   const modal = {
     position: "absolute",
     top: "50%",
@@ -29,7 +29,6 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
       },
     },
   });
-  const [formErrors, setFormErrors] = useState({});
   const [isOpen, setIsOpen] = useState(true);
 
   const toggleIt = () => {
@@ -37,33 +36,15 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
     toggleModal();
   };
 
-  const [executiveData, setExecutiveData] = useState([]);
+  const [ResearchData, setResearchData] = useState([]);
   const [newFile, setNewFile] = useState(null);
 
   const handleFormSubmit = async (e) => {
-    const name = e.target.FullName.value.trim();
-    const jobTitle = e.target.JobTitle.value.trim();
-    const organization = e.target.Organization.value.trim();
+    const title = e.target.Title.value.trim();
     const description = e.target.Description.value.trim();
+    const link = e.target.Link.value.trim();
     //VERIFY THAT ALL INPUT FIELDS ARE FILLED IN
 
-    const errors = {};
-    if (!name) {
-      errors.name = "Name is required";
-    }
-    if (!jobTitle) {
-      errors.jobTitle = "Job title is required";
-    }
-    if (!organization) {
-      errors.organization = "Organization is required";
-    }
-    if (!description) {
-      errors.description = "Description is required";
-    }
-
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-    } else {
       try {
         const config = {
           headers: {
@@ -74,18 +55,17 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
           setNewFile({ imgEmpty });
         }
         const response = await axios.put(
-          `http://localhost:3000/executive/${ExecutiveItem.Id}`,
+          `http://localhost:3000/research/${ResearchItem.Id}`,
           {
-            FullName: name,
-            JobTitle: jobTitle,
-            Organization: organization,
+            Title: title,
             Description: description,
             Image: newFile,
+            Link:link
           },
           config
         );
 
-        setExecutiveData([...executiveData, response.data]);
+        setResearchData([...ResearchData, response.data]);
       } catch (error) {
         console.log(error);
       }
@@ -94,9 +74,8 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
       setNewFile(null);
       e.target.Image.value = null;
 
-      setFormErrors({});
       toggleIt();
-    }
+
   };
 
   const handleChange = (e) => {
@@ -124,7 +103,9 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
       >
         <Box sx={modal} onSubmit={handleFormSubmit}>
           <Box component="form" noValidate autoComplete="off">
-            <Card sx={{ padding: 3 }}>
+          
+
+          <Card sx={{ padding: 3 }}>
                   <Grid sx={{ marginBottom: 3 }}
                     item
                     xs={12} 
@@ -134,7 +115,7 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                     <div className="executive_img_edit_wrapper me-3">
                       <img 
                         className="executive_image"
-                        src={`http://localhost:3000/executive/${ExecutiveItem.Image}`}
+                        src={`http://localhost:3000/research/${ResearchItem.Image}`}
                       />
                     </div>
                     <Typography
@@ -145,7 +126,7 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                         display: "block",
                       }}
                     >
-                      Edit {ExecutiveItem.FullName} Information
+                      Edit {ResearchItem.Title} Information
                     </Typography>
                   </Grid>
                    <Grid container spacing={2}>
@@ -158,40 +139,16 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                         fontWeight: "500",
                       }}
                     >
-                      Full Name
+                     Research Title
                     </Typography>
                     <TextField
                       fullWidth
-                      label="Full Name"
+                      id="outlined-basic"
+                      label="Title"
                       variant="outlined"
-                      name="FullName"
-                      defaultValue={ExecutiveItem.FullName}
+                      name="Title"
+                      defaultValue={ResearchItem.Title}
                       onChange={handleChange}
-                      error={formErrors.name}
-                      helperText={formErrors.name}
-                     />
-                 
-                  </Grid>
-                  <Grid item xs={12} sm={6} md={6}>
-                    <Typography
-                      variant="subtitle1"
-                      style={{
-                        marginBottom: 8,
-                        display: "block",
-                        fontWeight: "500",
-                      }}
-                    >
-                      Job Title
-                    </Typography>
-                    <TextField
-                      fullWidth
-                      label="Job Title"
-                      variant="outlined"
-                      name="JobTitle"
-                      onChange={handleChange}
-                      defaultValue={ExecutiveItem.JobTitle}
-                      error={formErrors.jobTitle}
-                      helperText={formErrors.jobTitle}
                     />
                   </Grid>
                   <Grid item xs={6}>
@@ -203,17 +160,17 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                         fontWeight: "500",
                       }}
                     >
-                      Organization
+                      Research Link
                     </Typography>
                     <TextField
                       fullWidth
-                      label="Organization"
+                      id="outlined-basic"
+                      label="Link"
                       variant="outlined"
-                      name="Organization"
+                      name="Link"
                       onChange={handleChange}
-                      defaultValue={ExecutiveItem.Organization}
-                      error={formErrors.organization}
-                      helperText={formErrors.organization}
+                      defaultValue={ResearchItem.Link}
+                     
                     />
                   </Grid>
                   <Grid item xs={6}>
@@ -243,30 +200,27 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                     </div>
                   </Grid>
                   <Grid item xs={12}>
-                    <Typography
-                      variant="subtitle1"
-                      style={{
-                        marginBottom: 8,
-                        display: "block",
-                        fontWeight: "500",
-                      }}
-                    >
-                      Description
-                    </Typography>
-                    <TextField
-                      label="Description"
-                      multiline
-                      rows={5}
-                      variant="outlined"
-                      fullWidth
-                      name="Description"
-                      onChange={handleChange}
-                      defaultValue={ExecutiveItem.Description}
-                      error={formErrors.description}
-                      helperText={formErrors.description}
-                    />
-                  </Grid>
-
+                  <Typography
+                    variant="subtitle1"
+                    style={{
+                      marginBottom: 8,
+                      display: "block",
+                      fontWeight: "500",
+                    }}
+                  >
+                    Description
+                  </Typography>
+                  <TextField
+                    id="outlined-multiline-static"
+                    label="Description"
+                    multiline
+                    rows={5}
+                    variant="outlined"
+                    fullWidth
+                    onChange={handleChange}
+                    defaultValue={ResearchItem.Description}
+                  />
+                </Grid>
                   <Grid item xs={12} container justifyContent="flex-end">
                     <ThemeProvider theme={theme}>
                       <Button
@@ -291,6 +245,10 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                   </Grid>
                    </Grid>
             </Card>
+
+
+
+
           </Box>
         </Box>
       </Modal>
@@ -298,4 +256,4 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
   );
 };
 
-export default EditExecutive;
+export default ResearchItem;
