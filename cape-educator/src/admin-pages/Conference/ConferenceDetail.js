@@ -189,7 +189,7 @@ const handleConferenceId = (data) => {
                       Banner Image
                     </Typography>
                     <div className="fileInput_wrapp">
-                      <label className="fileInput_button" for="inputTag">
+                      <label className="fileInput_button" htmlFor="inputTag">
                         Upload File
                       </label>
                       <input
@@ -277,7 +277,7 @@ const handleConferenceId = (data) => {
                       About Event Image
                     </Typography>
                     <div className="fileInput_wrapp">
-                      <label className="fileInput_button" for="inputTag1">
+                      <label className="fileInput_button" htmlFor="inputTag1">
                         Upload File
                       </label>
                       <input

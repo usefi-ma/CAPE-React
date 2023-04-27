@@ -120,7 +120,6 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
         aria-labelledby="keep-mounted-modal-title"
         aria-describedby="keep-mounted-modal-description"
         onClose={() => setIsOpen(false)}
-        onOpen={() => setIsOpen(true)}
         open={isOpen}
       >
         <Box sx={modal} onSubmit={handleFormSubmit}>
@@ -163,7 +162,6 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                     </Typography>
                     <TextField
                       fullWidth
-                      id="outlined-basic"
                       label="Full Name"
                       variant="outlined"
                       name="FullName"
@@ -186,7 +184,6 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                     </Typography>
                     <TextField
                       fullWidth
-                      id="outlined-basic"
                       label="Job Title"
                       variant="outlined"
                       name="JobTitle"
@@ -209,7 +206,6 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                     </Typography>
                     <TextField
                       fullWidth
-                      id="outlined-basic"
                       label="Organization"
                       variant="outlined"
                       name="Organization"
@@ -232,7 +228,7 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                     </Typography>
 
                     <div className="fileInput_wrapp">
-                      <label className="fileInput_button" for="inputTag1">
+                      <label className="fileInput_button" htmlFor="inputTag1">
                         {" "}
                         Upload File
                       </label>
@@ -257,7 +253,6 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                       Description
                     </Typography>
                     <TextField
-                      id="outlined-multiline-static"
                       label="Description"
                       multiline
                       rows={5}

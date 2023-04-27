@@ -278,7 +278,7 @@ const Executive = () => {
                     Image
                   </Typography>
                   <div className="fileInput_wrapp">
-                    <label className="fileInput_button" for="inputTag">
+                    <label className="fileInput_button" htmlFor="inputTag">
                       Upload File
                     </label>
                     <input
