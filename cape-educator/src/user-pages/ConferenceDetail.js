@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState,useEffect } from 'react';
+import axios from "axios";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -38,32 +39,55 @@ const options = {
     },
   },
 };
-
+  {/* <button onClick={()=>navigate(-1)}> Back</button>
+    {id} */}
 const ConferenceDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
+
+  const [conItem,setConItem]=useState({});
+  const [conSpeaker,setConSpeaker]=useState([]);
+  const [conSponsor,setConSponsor]=useState([]);
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(`http://localhost:3000/conference/${id}`);
+      setConItem(res.data);
+      console.log(res.data);
+
+      const res2 = await axios.get(`http://localhost:3000/speaker/${id}`);
+      setConSpeaker(res2.data);
+
+      const res3 = await axios.get(`http://localhost:3000/sponsor/${id}`);
+      setConSponsor(res3.data);
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  fetchData();
+}, []);
+
   return (
     <>
-      {/* <button onClick={()=>navigate(-1)}> Back</button>
-    {id} */}
-      <section className="topbar conference_topbar">
-        <div className="intro" id="Home">
+     <section className="topbar conference_topbar">
+        <div className="intro" id="Home"  style={{background: `linear-gradient(180deg, rgba(31,41,69,.55) 50%, rgb(31,41,69) 100%),center / cover no-repeat url(http://localhost:3000/conference/${conItem.BannerImage})`}}>
           <UserHeader></UserHeader>
           <div className="container">
             <div className="row">
               <div className="col-12 col-md-11 col-lg-9">
                 <h2 className="">
-                  C.A.P.E. 2022 FALL CONFERENCE
+                  {conItem.BannerTitle}
                   <span className="blue d-block">
-                    In NIAGARA Falls, Ontario
+                  {conItem.EventVenue}
                   </span>
                 </h2>
-                <p>
-                  In partnership with{" "}
-                  <strong className="blue">
-                    Niagara Regional Police Service & Niagara College
-                  </strong>
-                </p>
+                <strong className="blue">
+                 {conItem.BannerDescription}
+                  
+                </strong>
                 <div className="conference_dates mb-4">
                   <div className="conference_date mx-4">
                     <div className="intro_icon_wrapper">
@@ -78,7 +102,7 @@ const ConferenceDetail = () => {
                         <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zm-2.6 5.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
                       </svg>
                     </div>
-                    <p>October 25th-27th 2022</p>
+                    <p>{conItem.Date}</p>
                   </div>
 
                   <div className="conference_date mt-1">
@@ -94,7 +118,7 @@ const ConferenceDetail = () => {
                         <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
                       </svg>
                     </div>
-                    <p>In NIAGARA falls, Ontario</p>
+                    <p>{conItem.EventVenue}</p>
                   </div>
                 </div>
                 <a href="#About" className="button button-transparent">
@@ -116,16 +140,12 @@ const ConferenceDetail = () => {
               <div className="about_content">
                 <div className="title">
                   <span>About Conference</span>
-                  <h2 className="title">Welcome to the Conference 2022</h2>
+                  <h2 className="title">{conItem.AboutTitle}</h2>
                 </div>
                 <p className="p_about">
-                  The CAPE Executive team would like to invite you and your
-                  colleagues to attend the 2022 Fall CAPE Conference in Niagara
-                  Falls, Ontario. We are excited to have the opportunity to
-                  connect, learn and socialize in person for the first time
-                  since 2019.
+                {conItem.AboutDescription}
                 </p>
-                <p className="p_about">
+                {/* <p className="p_about">
                   We will have a number of outstanding speakers joining us in
                   Niagara Falls to talk about the importance of education and
                   continuous learning in policing.
@@ -136,8 +156,8 @@ const ConferenceDetail = () => {
                   conference as our opening keynote speaker on Day 1, followed
                   by our second keynote, OPP Commissioner Thomas Carrique on Day
                   2.
-                </p>
-                <p className="p_about">
+                </p> */}
+                {/* <p className="p_about">
                   We know that the chance to re-connect with your colleagues,
                   learn from our engaging line-up of speakers and visit the
                   Niagara College and Niagara Regional Police Training Center
@@ -145,13 +165,13 @@ const ConferenceDetail = () => {
                 </p>
                 <p className="p_about">
                   An agenda is now available (click here).
-                </p>
+                </p> */}
               </div>
             </div>
 
             <div className="col-12 col-md-6 p-0 d-flex">
               <div className="about_img">
-                <img src={aboutConference} alt="" />
+              <img src={`http://localhost:3000/conference/${conItem.AboutImage}`} alt={`${conItem.AboutImage}`}/>
                 <div className="img_overlay"></div>
               </div>
             </div>
@@ -173,51 +193,16 @@ const ConferenceDetail = () => {
               className="slider-items owl-carousel conference_owl_carousel"
               {...options}
             >
+        {conSponsor.map((data) => (
               <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box item">
-                <a href="https://www.tps.ca/" target="_blank">
+                <a href={data.Link} target="_blank">
                   <div className="network_img_wrapp">
-                    <img
-                      src={"../network/TorontoPolice.png"}
-                      alt="Toronto Police Service"
-                    />
+                    <img src={`http://localhost:3000/sponsor/${data.Image}`} alt={`${data.Name}`}/>
                   </div>
-
-                  <h2>Toronto Police Service</h2>
+                  <h2>{data.Name}</h2>
                 </a>
               </div>
-              <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box item">
-                <a href="http://www.opconline.ca/" target="_blank">
-                  <div className="network_img_wrapp">
-                    <img src={"../network/Ontorio.png"} alt="Ontorio Police" />
-                  </div>
-                  <h2>opconline.ca</h2>
-                </a>
-              </div>
-              <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box item">
-                <a href="https://www.oape.org/" target="_blank">
-                  <div className="network_img_wrapp">
-                    <img
-                      src={"../network/OntarioAssociation.png"}
-                      alt="Ontario Association"
-                    />
-                  </div>
-                  <h2>Ontario Association of Police Educators</h2>
-                </a>
-              </div>
-              <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 network_box item">
-                <a
-                  href="https://www.saskatchewan.ca/residents/justice-crime-and-the-law/saskatchewan-police-college"
-                  target="_blank"
-                >
-                  <div className="network_img_wrapp">
-                    <img
-                      src={"../network/Saskatchewan.png"}
-                      alt="Saskatchewan Police College"
-                    />
-                  </div>
-                  <h2>Saskatchewan Police College</h2>
-                </a>
-              </div>
+           ))}
             </OwlCarousel>
           </div>
         </div>
@@ -229,72 +214,37 @@ const ConferenceDetail = () => {
             <div className="col-md-12">
               <div className="title">
                 <span className="blue">Our Speakers</span>
-                <h3>Who's Speaking?</h3>
-                <p>
+                <h3 className='mb-5'>Who's Speaking?</h3>
+                {/* <p>
                   There is a text for team.There is a text for team.There is a
                   text for team.There is a text for team.
-                </p>
+                </p> */}
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div className="speaker_box">
-                <div className="speaker_header">
-                  <div
-                    className="speaker_wrap_img"
-                    style={{ backgroundImage: `url(${Chief})` }}
-                  ></div>
-                </div>
+          <div className="row mb-5 pb-5">
+          {conSpeaker.map((data) => (
+             <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-3">
+             <div className="speaker_box">
+               <div className="speaker_header">
+                 <div
+                   className="speaker_wrap_img"
+                   style={{backgroundImage: `url(http://localhost:3000/speaker/${data.Image})`}}
+                 ></div>
+               </div>
 
-                <h3>Chief Nishan Duraiappah</h3>
-                <p>The place he is working on</p>
-              </div>
-            </div>
-            <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div className="speaker_box">
-                <div className="speaker_header">
-                  <div
-                    className="speaker_wrap_img"
-                    style={{ backgroundImage: `url(${Chief})` }}
-                  ></div>
-                </div>
-
-                <h3> Johannes Hammerstein</h3>
-                <p>The place he is working on</p>
-              </div>
-            </div>
-            <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div className="speaker_box">
-                <div className="speaker_header">
-                  <div
-                    className="speaker_wrap_img"
-                    style={{ backgroundImage: `url(${Chief})` }}
-                  ></div>
-                </div>
-
-                <h3>Chief Nishan Duraiappah</h3>
-                <p>The place he is working on</p>
-              </div>
-            </div>
-            <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
-              <div className="speaker_box">
-                <div className="speaker_header">
-                  <div
-                    className="speaker_wrap_img"
-                    style={{ backgroundImage: `url(${Chief})` }}
-                  ></div>
-                </div>
-
-                <h3> Johannes Hammerstein</h3>
-                <p>The place he is working on</p>
-              </div>
-            </div>
+               <h3>{data.FullName}</h3>
+               <p>{data.Organization}</p>
+        </div>
+      </div>
+      ))}
+           
+        
           </div>
         </div>
       </div>
 
-      <div className="price" id="Price">
+      {/* <div className="price" id="Price">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
@@ -478,7 +428,7 @@ const ConferenceDetail = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <section className="additional_info">
         <div className="container">
@@ -486,7 +436,8 @@ const ConferenceDetail = () => {
             <div className="col-12">
               <div className="additional_info_box">
                 <h3>Additional Information</h3>
-                <ul>
+                {conItem.AdditionalInfo}
+                {/* <ul>
                   <li>
                     <p>
                       All individual reservations for{" "}
@@ -530,7 +481,7 @@ const ConferenceDetail = () => {
                       </li>
                     </ul>
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>
@@ -545,8 +496,7 @@ const ConferenceDetail = () => {
                 <div className="title">
                   <h3>Contact Info</h3>
                   <p>
-                    If you have any questions or concerns, Feel free to reach
-                    out to the conference organizers
+                    {conItem.ContactDescription}
                   </p>
                 </div>
               </div>
@@ -574,8 +524,7 @@ const ConferenceDetail = () => {
                 <div className="contact_info_content">
                   <b className="mb-2">Address</b>
                   <p>
-                    1916 McCall Landing NE, Calgary, AB T2E 9B5, Canada Areo
-                    Center SAIT.
+                  {conItem.ContactAddress}
                   </p>
                 </div>
               </div>
@@ -593,11 +542,8 @@ const ConferenceDetail = () => {
                 <div className="contact_info_content">
                   <b className="mb-2">E-mail</b>
                   <p>
-                    Sara.Ashoori@sait.ca
-                    <br></br>
-                    mishal.arif@sait.ca
-                    <br></br>
-                    Rick.Duchscher@sait.ca
+                  {conItem.ContactEmail}
+
                   </p>
                 </div>
               </div>
@@ -615,9 +561,7 @@ const ConferenceDetail = () => {
                 <div className="contact_info_content">
                   <b className="mb-2">Phone</b>
                   <p>
-                    Sara:<a href="tel:+14037146613"> (403) 714 - 6613</a>
-                    <br></br>
-                    Mishal:<a href="tel:+13138001133"> (313) 800 - 1133</a>
+                    <a href={`tel:${conItem.ContactPhone}`}>  {conItem.ContactPhone}</a>
                   </p>
                 </div>
               </div>
@@ -635,8 +579,8 @@ const ConferenceDetail = () => {
                 </svg>
                 <div className="contact_info_content">
                   <b className="mb-2">Conference Will Start</b>
-                  <p>Day 1: Monday May 2, 2022 7:30 am to 8:30 pm</p>
-                  <p>Day 2: Tuesday May 3rd, 2022 8:00am to 4:00pm</p>
+                  <p>{conItem.ContactEventDate}</p>
+             
                 </div>
               </div>
             </div>
@@ -644,7 +588,7 @@ const ConferenceDetail = () => {
         </div>
         <div className="map conference_map">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2507.4462547599937!2d-114.0923187842463!3d51.06331177956471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2143bc8e7397787f!2sSAIT%20Campus%20Centre!5e0!3m2!1sen!2sca!4v1642129597073!5m2!1sen!2sca"
+            src={conItem.MapLocation}
             width="600"
             height="450"
             allowfullscreen=""
@@ -653,24 +597,9 @@ const ConferenceDetail = () => {
         </div>
       </div>
 
-      {/* <div className="gotop" id="gotop">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          className="bi bi-chevron-up"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
-          />
-        </svg>
-      </div> */}
-
+   
       <section className="footer">
-        {/* <svg viewbox="0 0 100 25">
-            <path fill="#1f2945" d="M0 30 V12 Q30 17 55 12 T100 11 V30z" />
-        </svg> */}
+  
         <div className="container">
           <div className="row menu_footer">
             <nav className="navbar navbar-expand-lg navbar-light">

@@ -49,7 +49,7 @@ export default class Conference {
   // Get single conference for conference page
   static async Get(req, res) {
     try {
-      const [row] = await pool.execute("Select * FROM confernce WHERE Id = ?", [
+      const [row] = await pool.execute("Select * FROM conference WHERE Id = ?", [
         req.params.Id,
       ]);
       return res.json(row[0]);

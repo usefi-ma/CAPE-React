@@ -3,7 +3,7 @@ import { Grid, Container, Typography, Card, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
-import ConferenceSelector from "./ConferenceSelector";
+import ConferenceSelector from "../Conference/ConferenceSelector";
 import axios from "axios";
 import imgEmpty from "../../assets/images/EmptyUser.jpg";
 import IconButton from "@mui/material/IconButton";
@@ -12,11 +12,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import { DataGrid } from "@mui/x-data-grid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import DeleteSpeaker from "./DeleteSpeaker.js";
-import EditSpeaker from "./EditSpeaker.js";
+import DeleteSponsor from "./DeleteSponsor.js";
+import ModifySponsor from "./ModifySponsor.js";
 
-const Speaker = () => {
-  const [speakerData, setSpeakerData] = useState([]);
+
+
+const Sponsor = () => {
+  const [sponsorData, setSponsorData] = useState([]);
   const [file, setfile] = useState(null);
   const [selectedRow, setSelectedRow] = useState();
   const [openModal, setOpenModal] = useState(false);
@@ -57,14 +59,14 @@ const Speaker = () => {
       renderCell: (params) => (
         <div className="executive_img_wrapper">
           <img
-            src={`http://localhost:3000/speaker/${params.row.Image}`}
+            src={`http://localhost:3000/sponsor/${params.row.Image}`}
             className="executive_image"
           />
         </div>
       ), // renderCell will render the component
     },
-    { field: "FullName", headerName: "Full Name", flex: 1 },
-    { field: "Organization", headerName: "Organization", flex: 1 },
+    { field: "Name", headerName: "Sponsor Name", flex: 1 },
+    { field: "Link", headerName: "Website Link", flex: 1 },
     {
       field: "Actions",
       headerName: "Actions",
@@ -101,8 +103,8 @@ const Speaker = () => {
         setConferenceData(res.data);
         console.log(res.data);
 
-        const res2 = await axios.get("http://localhost:3000/speaker");
-        setSpeakerData(res2.data);
+        const res2 = await axios.get("http://localhost:3000/sponsor");
+        setSponsorData(res2.data);
       } catch (error) {
         console.error(error);
       }
@@ -122,8 +124,8 @@ const Speaker = () => {
   // Handle form submit
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const fullName = e.target.FullName.value.trim();
-    const organization = e.target.Organization.value.trim();
+    const name = e.target.Name.value.trim();
+    const link = e.target.Link.value.trim();
     const conferenceSelectedId = conferenceSelected;
     try {
       const config = {
@@ -135,19 +137,19 @@ const Speaker = () => {
         setfile({ imgEmpty });
       }
       const response = await axios.post(
-        `http://localhost:3000/speaker`,
+        `http://localhost:3000/sponsor`,
         {
           //database feils : input names
-          FullName: fullName,
-          Organization: organization,
+          Name: name,
+          Link: link,
           Image: file,
           ConferenceId: conferenceSelectedId,
         },
         config
       );
 
-      setSpeakerData([...speakerData, response.data]);
-      toast.success("Speaker inserted successfully!!!", {
+      setSponsorData([...sponsorData, response.data]);
+      toast.success("Sponsor inserted successfully!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
     } catch (error) {
@@ -158,30 +160,38 @@ const Speaker = () => {
     setfile(null);
   };
 
+
+
   return (
     <>
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ marginBottom: 3 }}>
-          Speakers
+        Sponsors
         </Typography>
-
-        {/* //conference selected */}
-        <ConferenceSelector
+      
+      <Box component="form" noValidate autoComplete="off">
+        <Card sx={{ padding: 3 }}>
+          <CardContent>
+       {/* //conference selected */}
+       <ConferenceSelector
           conferenceData={conferenceData}
           ConferenceId={handleConferenceId}
         />
-        {/* <p>Data from child: {conferenceSelected}</p> */}
-        <Box
+       <p>Data from child: {conferenceSelected}</p> 
+          </CardContent>
+        </Card>
+      </Box>
+      <Box
           component="form"
           noValidate
           autoComplete="off"
           onSubmit={handleFormSubmit}
           sx={{ marginTop: 3 }}
         >
-          <Card sx={{ padding: 3 }}>
-            <CardContent>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6} md={6}>
+        <Card sx={{ padding: 3 }}>
+          <CardContent>
+            <Grid container spacing={2}>
+            <Grid item xs={12} sm={6} md={6}>
                   <Typography
                     variant="subtitle1"
                     style={{
@@ -190,14 +200,14 @@ const Speaker = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Full Name
+                 Sponsor Name
                   </Typography>
                   <TextField
                     fullWidth
                     id="outlined-basic"
-                    label="Full Name"
+                    label="Sponsor Name"
                     variant="outlined"
-                    name="FullName"
+                    name="Name"
                     onChange={handleChange}
                   />
                 </Grid>
@@ -210,18 +220,19 @@ const Speaker = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Organization
+                  Link URL
+
                   </Typography>
                   <TextField
                     fullWidth
                     id="outlined-basic"
-                    label="Organization"
+                    label="Link URL"
                     variant="outlined"
-                    name="Organization"
+                    name="Link"
                     onChange={handleChange}
                   />
                 </Grid>
-                <Grid item xs={12} sm={12} md={12}>
+                <Grid item xs={12}>
                   <Typography
                     variant="subtitle1"
                     style={{
@@ -230,11 +241,11 @@ const Speaker = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Image
+                    Sponsor Logo
                   </Typography>
 
                   <div className="fileInput_wrapp">
-                    <label className="fileInput_button" htmlFor="inputTag">
+                    <label className="fileInput_button" for="inputTag">
                       Upload File
                     </label>
                     <input
@@ -246,59 +257,61 @@ const Speaker = () => {
                     />
                   </div>
                 </Grid>
-
-                <Grid item xs={12} sm={12} md={12}>
-                  <Button type="submit" variant="contained" size="large">
+                <Grid item xs={12}>
+                <Button type="submit" variant="contained" size="large">
                     Submit
                   </Button>
                   <ToastContainer />
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-        </Box>
 
-        {/* //table */}
-        <Box sx={{ marginTop: 5 }}>
+                </Grid>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Box>
+
+ {/* //table */}
+ <Box sx={{ marginTop: 3 }}>
           <Card sx={{ padding: 3 }}>
             <CardContent>
               <Grid container spacing={2}>
                 <Typography variant="h6" sx={{ marginBottom: 3 }}>
-                  Speakers List
+                  Sponsors List
                 </Typography>
               </Grid>
               <DataGrid
-                rows={speakerData}
+                rows={sponsorData}
                 columns={columns}
                 getRowId={(row) => row.Id}
                 initialState={{
-                  ...speakerData.initialState,
+                  ...sponsorData.initialState,
                   pagination: { paginationModel: { pageSize: 5 } },
                 }}
                 pageSizeOptions={[5, 10, 25]}
                 autoHeight
                 rowHeight={75}
               />
-              <DeleteSpeaker
+              <DeleteSponsor
                 SelectedItem={selectedRow}
                 handleOpen={handleClickOpen}
                 open={open}
                 handleClose={handleClose}
-              ></DeleteSpeaker>
+              ></DeleteSponsor>
             {openModal && (
-                <EditSpeaker
+                <ModifySponsor
                   SponsorItem={selectedRow}
                   toggleModal={handleOpenModal}
-                ></EditSpeaker>
-              )} 
-  
-              clickedRow: {selectedRow ? `${selectedRow.FullName}` : null} 
+                ></ModifySponsor>
+              )}  
+              clickedRow: {selectedRow ? `${selectedRow}` : null}
             </CardContent>
           </Card>
         </Box>
+
+
+
       </Container>
     </>
   );
 };
 
-export default Speaker;
+export default Sponsor;

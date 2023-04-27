@@ -41,10 +41,10 @@ export const uploadImage = upload.single("Image");
 export default class Sponsor {
   static async Get(req, res) {
     try {
-      const [row] = await pool.execute("Select * FROM sponsor WHERE Id = ?", [
+      const [rows] = await pool.execute("Select * FROM sponsor WHERE ConferenceId = ?", [
         req.params.Id,
       ]);
-      return res.json(row[0]);
+      return res.json(rows);
     } catch (error) {
       console.error(error);
       return res.status(500).send("Internal Server Error");
@@ -96,7 +96,6 @@ export default class Sponsor {
   }
 
 
-
   static async Update(req, res) {
     const { ConferenceId, Name, Link } = req.body;
     let Image = "EmptyUser.jpg";
@@ -126,7 +125,6 @@ export default class Sponsor {
       return res.status(500).send("Internal Server Error");
     }
   }
-
 
 
   static async Delete(req, res) {

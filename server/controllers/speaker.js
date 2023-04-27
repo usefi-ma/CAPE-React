@@ -15,7 +15,7 @@ const pool = mysql.createPool({
 
 const multerConfig = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "public/speaker");
+    callback(null, "public/sponsor");
   },
   filename: (req, file, callback) => {
     const ext = file.mimetype.split("/")[1];
@@ -43,10 +43,10 @@ export const uploadImage = upload.single("Image");
 export default class Speaker {
   static async Get(req, res) {
     try {
-      const [row] = await pool.execute("Select * FROM speaker WHERE Id = ?", [
+      const [rows] = await pool.execute("Select * FROM speaker WHERE ConferenceId = ?", [
         req.params.Id,
       ]);
-      return res.json(row[0]);
+      return res.json(rows);
     } catch (error) {
       console.error(error);
       return res.status(500).send("Internal Server Error");
