@@ -228,5 +228,48 @@ export default class Conference {
     }
   }
 
+   // Add contact conference 
+   static async UpdateContactConference(req, res) {
+    console.log("Attempting to Update one conference Contact");
+
+    const {
+      ContactDescription,
+      ContactAddress ,
+      ContactEmail,
+      ContactPhone,
+      ContactEventDate,
+      MapLocation,
+    } = req.body;
+
+
+    try {
+      const conn = await pool.getConnection();
+      await conn.beginTransaction();
+      const [result] = await conn.execute(
+        "UPDATE conference SET `ContactDescription`=?,`ContactAddress`=?,`ContactEmail`=?,`ContactPhone`=?,`ContactEventDate`=?,`MapLocation`=? WHERE Id=?",
+        [
+            ContactDescription || null,
+            ContactAddress || null,
+            ContactEmail || null,
+            ContactPhone || null,
+            ContactEventDate || null,
+            MapLocation || null,
+            req.params.Id || null,
+        ]
+      );
+      const [row] = await conn.execute(
+        "Select * FROM conference WHERE Id = ?",
+        [req.params.Id]
+      );
+      console.log([result]);
+      await conn.commit();
+      conn.release();
+      return res.json(row[0]);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal Server Error");
+    }
+  }
+
 
 }

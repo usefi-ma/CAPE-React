@@ -9,6 +9,7 @@ router.get("/conference/:Id", ConferenceController.Get);
 router.post("/conference", uploadImage, ConferenceController.Add);
 router.put("/conference/:Id", uploadImage, ConferenceController.Update);
 router.put("/conferencedetail/:Id",uploadImages,ConferenceController.UpdateOne);
+router.put("/conferenceContact/:Id",ConferenceController.UpdateContactConference);
 router.delete("/conference/:Id", ConferenceController.Delete);
 
 export default router;

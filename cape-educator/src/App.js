@@ -19,7 +19,7 @@ import ExecutiveDashboard from './admin-pages/executive';
 import ResearchDashboard from './admin-pages/Research';
 import ConferenceDashboard from './admin-pages/Conference/Conference';
 import SpeakersDashboard from './admin-pages/Conference/Speaker';
-import SponsersDashboard from './admin-pages/Conference/Sponsers';
+import SponsorDashboard from './admin-pages/Conference/Sponsor';
 import ContactDashboard from './admin-pages/Conference/Contact';
 import Contactbook from './admin-pages/Contactbook';
 import ConferenceDetailDashboard from './admin-pages/Conference/ConferenceDetail';
@@ -38,7 +38,7 @@ function App() {
                 <Route path="conferences" element={<ConferenceDashboard />} />
                 <Route path="conferenceDetail" element={<ConferenceDetailDashboard />} />
                 <Route path="speaker" element={<SpeakersDashboard />} />
-                <Route path="sponsers" element={<SponsersDashboard />} />
+                <Route path="sponsor" element={<SponsorDashboard />} />
                 <Route path="contactdashboard" element={<ContactDashboard />} />
                 <Route path="Contactbook" element={<Contactbook />} />
             </Route>

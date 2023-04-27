@@ -42,8 +42,8 @@ const navConfig = [
     icon: icon('ic_user'),
   },  
   {
-    title: 'Conference Sponsers',
-    path: '/sponsers',
+    title: 'Conference Sponsors',
+    path: '/sponsor',
     icon: icon('ic_user'),
   },
   {
