@@ -58,8 +58,7 @@ export default function Dashboard() {
     };
     fetchData();
   }, []);
-  //  const location = useLocation();
-  //    const user = location.state.user;
+  
   const [userData, setUserData] = useState({});
   useEffect(() => {
     const storedUserData = localStorage.getItem("userData");
@@ -72,8 +71,7 @@ export default function Dashboard() {
       <Box sx={{ my: 1.5, px: 0 }}>
         <Link underline="none">
           <StyledAccount>
-            {/* <Avatar src={account.photoURL} alt="photoURL" /> */}
-
+          
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
                 {userData.FullName}

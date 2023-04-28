@@ -56,7 +56,7 @@ function UserFooter() {
                       </svg>
                     </a>
                   </div>
-                  <div className="offcanvas-body p-lg-0">
+                  <div className="offcanvas-body p-lg-0 justify-content-end">
                     <ul className="navbar-nav nav justify-content-center">
                       <li className="nav-item">
                         <NavLink

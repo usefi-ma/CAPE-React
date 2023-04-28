@@ -6,7 +6,7 @@ import { v4 as uuidv4, v4 } from "uuid";
 const pool = mysql.createPool({
   host: "localhost",
   user: "Cape",
-  password: "Mendoza89",
+  password: "",
   database: "cape",
   waitForConnections: true,
   connectionLimit: 10,
