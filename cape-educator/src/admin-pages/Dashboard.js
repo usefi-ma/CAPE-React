@@ -10,7 +10,7 @@ import {
 
 import { styled, alpha } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
-import { Grid, Container, Typography } from "@mui/material";
+import { Grid, Container } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import axios from "axios";

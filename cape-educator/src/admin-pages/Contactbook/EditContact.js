@@ -5,10 +5,10 @@ import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
 import axios from "axios";
-import imgEmpty from "../../assets/images/EmptyUser.jpg";
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-const EditContact = ({ ExecutiveItem, toggleModal }) => {
+const EditContact = ({ ContactItem, toggleModal }) => {
   const modal = {
     position: "absolute",
     top: "50%",
@@ -37,28 +37,24 @@ const EditContact = ({ ExecutiveItem, toggleModal }) => {
     toggleModal();
   };
 
-  const [executiveData, setExecutiveData] = useState([]);
+  const [contactData, setContactData] = useState([]);
   const [newFile, setNewFile] = useState(null);
 
   const handleFormSubmit = async (e) => {
-    const name = e.target.FullName.value.trim();
-    const jobTitle = e.target.JobTitle.value.trim();
-    const organization = e.target.Organization.value.trim();
-    const description = e.target.Description.value.trim();
+    const fullName = e.target.FullName.value.trim();
+    const titleRank = e.target.TitleRank.value.trim();
+    const email = e.target.Email.value.trim();
     //VERIFY THAT ALL INPUT FIELDS ARE FILLED IN
 
     const errors = {};
-    if (!name) {
-      errors.name = "Name is required";
+    if (!fullName) {
+      errors.fullName = "Name is required";
     }
-    if (!jobTitle) {
-      errors.jobTitle = "Job title is required";
+    if (!titleRank) {
+      errors.titleRank = "Job title is required";
     }
-    if (!organization) {
-      errors.organization = "Organization is required";
-    }
-    if (!description) {
-      errors.description = "Description is required";
+    if (!email) {
+      errors.email = "Organization is required";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -70,29 +66,25 @@ const EditContact = ({ ExecutiveItem, toggleModal }) => {
             "content-type": "multipart/form-data",
           },
         };
-        if (!newFile) {
-          setNewFile({ imgEmpty });
-        }
+
         const response = await axios.put(
-          `http://localhost:3000/executive/${ExecutiveItem.Id}`,
+          `http://localhost:3000/contactbook/${ContactItem.Id}`,
           {
-            FullName: name,
-            JobTitle: jobTitle,
-            Organization: organization,
-            Description: description,
-            Image: newFile,
+            FullName: fullName,
+            TitleRank: titleRank,
+            Email: email
           },
           config
         );
 
-        setExecutiveData([...executiveData, response.data]);
+        setContactData([...contactData, response.data]);
       } catch (error) {
         console.log(error);
       }
       e.target.reset();
       e.target.files = null;
       setNewFile(null);
-      e.target.Image.value = null;
+
 
       setFormErrors({});
       toggleIt();
@@ -131,12 +123,7 @@ const EditContact = ({ ExecutiveItem, toggleModal }) => {
                     container
                     alignItems="center"
                     className="w-100" >
-                    <div className="executive_img_edit_wrapper me-3">
-                      <img 
-                        className="executive_image"
-                        src={`http://localhost:3000/executive/${ExecutiveItem.Image}`}
-                      />
-                    </div>
+                    
                     <Typography
                       variant="h4"
                       style={{
@@ -145,7 +132,7 @@ const EditContact = ({ ExecutiveItem, toggleModal }) => {
                         display: "block",
                       }}
                     >
-                      Edit {ExecutiveItem.FullName} Information
+                      Edit {ContactItem.FullName} Information
                     </Typography>
                   </Grid>
                    <Grid container spacing={2}>
@@ -165,7 +152,7 @@ const EditContact = ({ ExecutiveItem, toggleModal }) => {
                       label="Full Name"
                       variant="outlined"
                       name="FullName"
-                      defaultValue={ExecutiveItem.FullName}
+                      defaultValue={ContactItem.FullName}
                       onChange={handleChange}
                       error={formErrors.name}
                       helperText={formErrors.name}
@@ -180,17 +167,17 @@ const EditContact = ({ ExecutiveItem, toggleModal }) => {
                         fontWeight: "500",
                       }}
                     >
-                      Job Title
+                      Title/Rank
                     </Typography>
                     <TextField
                       fullWidth
-                      label="Job Title"
+                      label="Title/Rank"
                       variant="outlined"
-                      name="JobTitle"
+                      name="TitleRank"
                       onChange={handleChange}
-                      defaultValue={ExecutiveItem.JobTitle}
-                      error={formErrors.jobTitle}
-                      helperText={formErrors.jobTitle}
+                      defaultValue={ContactItem.TitleRank}
+                      error={formErrors.titleRank}
+                      helperText={formErrors.titleRank}
                     />
                   </Grid>
                   <Grid item xs={6}>
@@ -202,67 +189,17 @@ const EditContact = ({ ExecutiveItem, toggleModal }) => {
                         fontWeight: "500",
                       }}
                     >
-                      Organization
+                      Email
                     </Typography>
                     <TextField
                       fullWidth
-                      label="Organization"
+                      label="Email"
                       variant="outlined"
-                      name="Organization"
+                      name="Email"
                       onChange={handleChange}
-                      defaultValue={ExecutiveItem.Organization}
-                      error={formErrors.organization}
-                      helperText={formErrors.organization}
-                    />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Typography
-                      variant="subtitle1"
-                      style={{
-                        marginBottom: 8,
-                        display: "block",
-                        fontWeight: "500",
-                      }}
-                    >
-                      Image
-                    </Typography>
-
-                    <div className="fileInput_wrapp">
-                      <label className="fileInput_button" htmlFor="inputTag1">
-                        {" "}
-                        Upload File
-                      </label>
-                      <input
-                        id="inputTag1"
-                        type="file"
-                        className="fileInput_custom"
-                        name="Image"
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Typography
-                      variant="subtitle1"
-                      style={{
-                        marginBottom: 8,
-                        display: "block",
-                        fontWeight: "500",
-                      }}
-                    >
-                      Description
-                    </Typography>
-                    <TextField
-                      label="Description"
-                      multiline
-                      rows={5}
-                      variant="outlined"
-                      fullWidth
-                      name="Description"
-                      onChange={handleChange}
-                      defaultValue={ExecutiveItem.Description}
-                      error={formErrors.description}
-                      helperText={formErrors.description}
+                      defaultValue={ContactItem.Email}
+                      error={formErrors.email}
+                      helperText={formErrors.email}
                     />
                   </Grid>
 

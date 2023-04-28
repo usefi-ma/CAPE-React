@@ -107,7 +107,7 @@ export default function Header({ onOpenNav }) {
       </Box>
 
           <Logout></Logout>
-        </div>
+        
         {/* <Searchbar /> */}
         <Box sx={{ flexGrow: 1 }} />
 

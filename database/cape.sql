@@ -221,6 +221,32 @@ INSERT INTO `user` (`Id`, `FullName`, `Email`, `Password`) VALUES
 (8, 'Mohammad', 'Zamani.md@gmail.com', '$2b$10$eHDQp36L1m9jqB2fQr//D.GNc3B2zZpnLXhb.hKM.8kzus/wNtd/G'),
 (7, 'Mahya', 'usefi.ma@gmail.com', '$2b$10$oodUzCBOlsa6XfsGbTtX/eJRVtNsJAHau17WDMh4/x1AwmdQL0bSe'),
 (9, 'Mark Mendoza', 'usef@gmail.com', '$2b$10$Ok0bIx4vDvlnExCJA3Ujxu/7eequSnB2gezzGdsXU5feuEstnpWz2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `executive`
+--
+
+DROP TABLE IF EXISTS `contacts`;
+CREATE TABLE IF NOT EXISTS `contacts` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `FullName` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
+  `TitleRank` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
+  `Email` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=188 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `executive`
+--
+
+INSERT INTO `contacts` (`Id`, `FullName`, `TitleRank`, `Email`) VALUES
+(1, 'Jane Doe', 'Sergeant', 'example@email.com');
+-- --------------------------------------------------------
+
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

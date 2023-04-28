@@ -68,24 +68,9 @@ const Contactbook = () => {
   };
 
   const columns = [
-    {
-      field: "Image",
-      headerName: "Image",
-      width: 80,
-      editable: true,
-      renderCell: (params) => (
-        <div className="executive_img_wrapper">
-        <img
-          src={`http://localhost:3000/executive/${params.row.Image}`}
-          className="executive_image"
-        />
-        </div>
-      ), // renderCell will render the component
-    },
     { field: "FullName", headerName: "Full Name", flex: 1 },
-    { field: "JobTitle", headerName: "Job Title", flex: 1 },
-    { field: "Organization", headerName: "Organization", flex: 1 },
-    { field: "Description", headerName: "Description", flex: 1 },
+    { field: "TitleRank", headerName: "Title/Rank", flex: 1 },
+    { field: "Email", headerName: "Email", flex: 1 },
     {
       field: "Actions",
       headerName: "Actions",
@@ -118,24 +103,20 @@ const Contactbook = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const name = e.target.FullName.value.trim();
-    const jobTitle = e.target.JobTitle.value.trim();
-    const organization = e.target.Organization.value.trim();
-    const description = e.target.Description.value.trim();
+    const fullName = e.target.FullName.value.trim();
+    const titleRank = e.target.TitleRank.value.trim();
+    const email = e.target.Email.value.trim();
 
     //VERIFY THAT ALL INPUT FIELDS ARE FILLED IN
     const errors = {};
-    if (!name) {
-      errors.name = "Name is required";
+    if (!fullName) {
+      errors.fullName = "Name is required";
     }
-    if (!jobTitle) {
-      errors.jobTitle = "Job title is required";
+    if (!titleRank) {
+      errors.jobTitle = "Title or rank is required";
     }
-    if (!organization) {
-      errors.organization = "Organization is required";
-    }
-    if (!description) {
-      errors.description = "Description is required";
+    if (!email) {
+      errors.email = "Email is required";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -147,17 +128,12 @@ const Contactbook = () => {
             "content-type": "multipart/form-data",
           },
         };
-        if (!file) {
-          setfile({ imgEmpty });
-        }
         const response = await axios.post(
-          "http://localhost:3000/executive",
+          "http://localhost:3000/contactbook",
           {
-            FullName: name,
-            JobTitle: jobTitle,
-            Organization: organization,
-            Description: description,
-            Image: file,
+            FullName: fullName,
+            TitleRank: titleRank,
+            Email: email,
           },
           config
         );
@@ -189,7 +165,7 @@ const Contactbook = () => {
   useEffect(() => {
     const fetchAllExecutive = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/executive");
+        const res = await axios.get("http://localhost:3000/contactbook");
         setContactData(res.data);
         console.log(res.data);
       } catch (error) {
@@ -228,8 +204,8 @@ const Contactbook = () => {
                     variant="outlined"
                     name="FullName"
                     onChange={handleChange}
-                    error={formErrors.name}
-                    helperText={formErrors.name}
+                    error={formErrors.fullName}
+                    helperText={formErrors.fullName}
                   />
                 </Grid>
 
@@ -242,17 +218,17 @@ const Contactbook = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Job Title
+                    Title/Rank
                   </Typography>
                   <TextField
                     fullWidth
                     id="outlined-basic"
-                    label="Job Title"
+                    label="Title or Rank"
                     variant="outlined"
-                    name="JobTitle"
+                    name="TitleRank"
                     onChange={handleChange}
-                    error={formErrors.jobTitle}
-                    helperText={formErrors.jobTitle}
+                    error={formErrors.titleRank}
+                    helperText={formErrors.titleRank}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -264,42 +240,18 @@ const Contactbook = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Organization
+                    Email
                   </Typography>
                   <TextField
                     fullWidth
                     id="outlined-basic"
-                    label="Organization"
+                    label="Email"
                     variant="outlined"
-                    name="Organization"
+                    name="Email"
                     onChange={handleChange}
-                    error={formErrors.organization}
-                    helperText={formErrors.organization}
+                    error={formErrors.email}
+                    helperText={formErrors.email}
                   />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Typography
-                    variant="subtitle1"
-                    style={{
-                      marginBottom: 8,
-                      display: "block",
-                      fontWeight: "500",
-                    }}
-                  >
-                    Image
-                  </Typography>
-                  <div className="fileInput_wrapp">
-                    <label className="fileInput_button" htmlFor="inputTag">
-                      Upload File
-                    </label>
-                    <input
-                      id="inputTag"
-                      type="file"
-                      className="fileInput_custom"
-                      name="Image"
-                      onChange={handleChange}
-                    />
-                  </div>
                 </Grid>
 
                 <Grid item xs={12}>

@@ -58,15 +58,6 @@ export default class Conference {
       return res.status(500).send("Internal Server Error");
     }
   }
-  static async GetAll(req, res) {
-    try {
-      const [rows, fields] = await pool.execute("SELECT * FROM conference");
-      return res.json(rows);
-    } catch (error) {
-      console.error(error);
-      return res.status(500).send("Internal Server Error");
-    }
-  }
 
   // Get all conferences for conference list page
   static async GetAll(req, res) {
