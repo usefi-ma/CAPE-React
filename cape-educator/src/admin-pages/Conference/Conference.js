@@ -13,11 +13,11 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import DeleteConference from "./DeleteConference";
-import EditConference from "./EditConference";
 
 
 // Change to default conference image
-import imgEmpty from "../../assets/images/EmptyUser.jpg";
+import imgEmpty from "../../assets/images/EmptyConference.png";
+import ModifyConference from "./ModifyConference";
 
 
 
@@ -74,7 +74,7 @@ const Conference = () => {
         <div className="executive_img_wrapper">
         <img
           src={`http://localhost:3000/conference/${params.row.Image}`}
-          className="executive_image"
+          className="grid_image"
         />
         </div>
       ), // renderCell will render the component
@@ -335,10 +335,10 @@ const Conference = () => {
                 handleClose={handleClose}
               ></DeleteConference>
               {openModal && (
-                <EditConference
-                  ExecutiveItem={selectedRow}
+                <ModifyConference
+                  ConferenceItem={selectedRow}
                   toggleModal={handleOpenModal}
-                ></EditConference>
+                ></ModifyConference>
               )}
               {/* clickedRow: {selectedRow ? `${selectedRow.FullName}` : null} */}
             </CardContent>
