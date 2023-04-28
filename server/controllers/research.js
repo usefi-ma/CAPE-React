@@ -60,7 +60,7 @@ export default class Research {
 
   static async Add(req, res) {
     //Parameters expected
-    const { Title, Description, Link  } = req.body;
+    const { Title, Description, Link } = req.body;
 
     let Image = "EmptyConference.jpg";
     try {
@@ -70,92 +70,85 @@ export default class Research {
       console.log("error from catch" + error);
     }
 
-    if (!Title || !Description || !Link ) {
+    if (!Title || !Description || !Link) {
       return res.status(400).send("Please ensure you have added all fields");
     }
- 
+
     try {
-        const conn = await pool.getConnection();
-        await conn.beginTransaction();
-        const [result] = await conn.execute(
-            "INSERT INTO research (Title, Description, Link,Image) VALUES(?, ?, ?, ?)",
-            [Title, Description, Link, Image]
-          );
-          const [row] = await conn.execute(
-            "SELECT * FROM research WHERE Id = ?",
-            [result.insertId]
-          );
+      const conn = await pool.getConnection();
+      await conn.beginTransaction();
+      const [result] = await conn.execute(
+        "INSERT INTO research (Title, Description, Link,Image) VALUES(?, ?, ?, ?)",
+        [Title, Description, Link, Image]
+      );
+      const [row] = await conn.execute("SELECT * FROM research WHERE Id = ?", [
+        result.insertId,
+      ]);
+
+      await conn.commit();
+      conn.release();
+      return res.json(row[0]);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal Server Error");
+    }
+  }
+
   
-          await conn.commit();
-          conn.release();
-          return res.json(row[0]);
-        } catch (error) {
-          console.error(error);
-          return res.status(500).send("Internal Server Error");
-        }
-}
-
-
-static async Update(req, res) {
-  const { Title, Link, Description } = req.body;
-  let Image = "EmptyConference.png";
-  try{
-    Image = req.file.filename;
-  }catch(error){
-    Image = "EmptyConference.png";
-    console.log("error from catch"+error)
+  static async Update(req, res) {
+    const { Title, Link, Description } = req.body;
+    let Image = "EmptyConference.png";
+    try {
+      Image = req.file.filename;
+    } catch (error) {
+      Image = "EmptyConference.png";
+    }
+    if (!Title || !Link || !Description) {
+      return res.status(400).send("Please ensure you have added all fields");
+    }
+    try {
+      const conn = await pool.getConnection();
+      await conn.beginTransaction();
+      const [result] = await conn.execute(
+        "UPDATE research SET `Title`=?, `Link`=?,`Description`=?, `Image`=? WHERE Id=?",
+        [Title, Link, Description, Image, req.params.Id]
+      );
+      const [row] = await conn.execute("Select * FROM research WHERE Id = ?", [
+        req.params.Id,
+      ]);
+      console.log([result]);
+      await conn.commit();
+      conn.release();
+      return res.json(row[0]);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal Server Error");
+    }
   }
 
-  try {
-    const conn = await pool.getConnection();
-    await conn.beginTransaction();
-    const [result] = await conn.execute(
-      "UPDATE research SET `Title`=?, `Link`=?,`Description`=?, `Image`=? WHERE Id=?",
-      [Title, Link, Description, Image, req.params.Id]
-    );
-    const [row] = await conn.execute("Select * FROM research WHERE Id = ?", [
-      req.params.Id,
-    ]);
-    console.log([result]);
-    await conn.commit();
-    conn.release();
-    return res.json(row[0]);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).send("Internal Server Error");
+  static async Delete(req, res) {
+    try {
+      const conn = await pool.getConnection();
+      await conn.beginTransaction();
+      const [result] = await conn.execute("DELETE FROM research WHERE Id=?", [
+        req.params.Id,
+      ]);
+      await conn.commit();
+      conn.release();
+      return res.send(result);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal Server Error");
+    }
   }
-}
 
-
-
-static async Delete(req, res) {
-  try {
-    const conn = await pool.getConnection();
-    await conn.beginTransaction();
-    const [result] = await conn.execute("DELETE FROM research WHERE Id=?", [
-      req.params.Id,
-    ]);
-    await conn.commit();
-    conn.release();
-    return res.send(result);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).send("Internal Server Error");
+  static async countResearch(req, res) {
+    try {
+      const [row] = await pool.execute("Select COUNT(Id) FROM research");
+      return res.json(row[0]);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal Server Error");
+    }
   }
-}
-
-static async countResearch(req, res){
-  try {
-    const [row] = await pool.execute("Select COUNT(Id) FROM research");
-    return res.json(row[0]);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).send("Internal Server Error");
-  }
-}
-
-
-
-
-
 }

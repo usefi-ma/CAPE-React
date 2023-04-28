@@ -9,6 +9,7 @@ import SpeakerRoutes from './routes/speaker.js';
 import SponsorRoutes from './routes/sponsor.js';
 import ResearchRoutes from './routes/research.js';
 
+
 const app = express();
 app.use(express.json());
 
@@ -33,6 +34,8 @@ app.use((req, res, next) => {
     
     next();
   });
+
+
   
 app.use(ExecutiveRoutes);
 app.use(BannerRoutes);
@@ -42,6 +45,8 @@ app.use(ConferenceRoutes);
 app.use(SpeakerRoutes);
 app.use(SponsorRoutes);
 app.use(ResearchRoutes);
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running ${PORT}`);
