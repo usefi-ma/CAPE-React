@@ -68,7 +68,7 @@ export default function Dashboard() {
   }, []);
   return (
     <>
-      <Box sx={{ my: 1.5, px: 0 }}>
+      {/* <Box sx={{ my: 1.5, px: 0 }}>
         <Link underline="none">
           <StyledAccount>
           
@@ -83,11 +83,11 @@ export default function Dashboard() {
             </Box>
           </StyledAccount>
         </Link>
-      </Box>
+      </Box> */}
 
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Dashboard {userData.FullName}
+          Welcome {userData.FullName}
         </Typography>
 
         <Grid container spacing={3}>
