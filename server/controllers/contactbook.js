@@ -6,7 +6,7 @@ import { v4 as uuidv4, v4 } from "uuid";
 const pool = mysql.createPool({
   host: "localhost",
   user: "Cape",
-  password: "",
+  password: "Mendoza89",
   database: "cape",
   waitForConnections: true,
   connectionLimit: 10,
@@ -15,7 +15,7 @@ const pool = mysql.createPool({
 
 const multerConfig = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "public/conference");
+    callback(null, "public/contactbook");
   },
   filename: (req, file, callback) => {
     const ext = file.mimetype.split("/")[1];

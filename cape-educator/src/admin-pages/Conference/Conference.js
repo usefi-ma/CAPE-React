@@ -183,7 +183,7 @@ const Conference = () => {
     
   }
   useEffect(() => {
-    const fetchAllExecutive = async () => {
+    const fetchAllConferences = async () => {
       try {
         const res = await axios.get("http://localhost:3000/conference");
         setConferenceData(res.data);
@@ -192,10 +192,9 @@ const Conference = () => {
         console.error(error);
       }
     };
-    fetchAllExecutive();
+    fetchAllConferences();
   }, []);
 
-  // Make list like executive page??
 
   return (
     <>

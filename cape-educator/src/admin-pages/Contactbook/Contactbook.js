@@ -163,7 +163,7 @@ const Contactbook = () => {
 
   //FETCH CALL FROM SERVER
   useEffect(() => {
-    const fetchAllExecutive = async () => {
+    const fetchAllContacts = async () => {
       try {
         const res = await axios.get("http://localhost:3000/contactbook");
         setContactData(res.data);
@@ -172,7 +172,7 @@ const Contactbook = () => {
         console.error(error);
       }
     };
-    fetchAllExecutive();
+    fetchAllContacts();
   }, []);
 
   return (
@@ -295,7 +295,7 @@ const Contactbook = () => {
               ></DeleteContact>
               {openModal && (
                 <EditContact
-                  ExecutiveItem={selectedRow}
+                  ContactItem={selectedRow}
                   toggleModal={handleOpenModal}
                 ></EditContact>
               )}
