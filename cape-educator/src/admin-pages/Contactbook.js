@@ -5,5 +5,3 @@ const Contactbook = () => {
     <div>Contact List</div>
   )
 }
-
-export default Contactbook

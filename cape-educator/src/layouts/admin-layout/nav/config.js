@@ -32,22 +32,27 @@ const navConfig = [
     icon: icon('ic_lock'),
   },
   {
-    title: 'Speakers',
-    path: '/speakers',
+    title: 'Conference Details',
+    path: '/ConferenceDetail',
+    icon: icon('ic_lock'),
+  },
+  {
+    title: 'Conference Speakers',
+    path: '/speaker',
     icon: icon('ic_user'),
   },  
   {
-    title: 'Sponsers',
-    path: '/sponsers',
+    title: 'Conference Sponsors',
+    path: '/sponsor',
     icon: icon('ic_user'),
   },
   {
-    title: 'Contact',
+    title: 'Conference Contact',
     path: '/contactdashboard',
     icon: icon('ic_lock'),
   },
   {
-    title: 'Contactbook',
+    title: 'Contact book',
     path: '/Contactbook',
     icon: icon('ic_lock'),
   },

@@ -95,7 +95,7 @@ export default function Header({ onOpenNav }) {
                     variant="subtitle2"
                     sx={{ color: 'text.primary' }}
                   >
-                    {user.FullName}
+                    {/* {user.FullName} */}
                   </Typography>
 
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -107,7 +107,7 @@ export default function Header({ onOpenNav }) {
           </Box>
 
           <Logout></Logout>
-        </div>
+        
         {/* <Searchbar /> */}
         <Box sx={{ flexGrow: 1 }} />
 

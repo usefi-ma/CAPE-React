@@ -3,8 +3,8 @@ import bcrypt from "bcrypt";
 
 const pool = mysql.createPool({
   host: "localhost",
-  user: "Cape",
-  password: "Mendoza89",
+  user: "root",
+  password: "",
   database: "cape",
   waitForConnections: true,
   connectionLimit: 10,
@@ -54,7 +54,7 @@ export default class User {
 
   static async Login(req, res) {
     const { Email, Pwd } = req.body;
-
+    console.log(Email+Pwd)
     try {
       const conn = await pool.getConnection();
       const [result] = await conn.execute(
@@ -81,4 +81,18 @@ export default class User {
       res.status(500).send("Internal Server Error");
     }
   }
+
+  static async countUser(req, res){
+    try {
+      const [row] = await pool.execute("Select COUNT(Id) FROM user");
+      return res.json(row[0]);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal Server Error");
+    }
+  }
+  
+
+
+
 }

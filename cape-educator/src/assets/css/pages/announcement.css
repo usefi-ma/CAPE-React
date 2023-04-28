@@ -41,7 +41,8 @@
     padding: 35px 30px;
     display: flex;
     flex-flow: wrap;
-    height: 426px;
+    height: auto;
+    min-height: 426px;
      
  }
      .news_desc h4 {

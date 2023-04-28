@@ -6,10 +6,13 @@ import "../assets/css/pages/announcement.css";
 import UserHeader from "../layouts/user-layout/UserHeader";
 import UserFooter from "../layouts/user-layout/UserFooter";
 
+import Conference2023 from "../assets/images/conference/Conference2023.jpg";
+import Conference2022 from "../assets/images/conference/ConferenceBanner.jpg";
+import Conference2019 from "../assets/images/announcement/1.jpg";
+
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import axios from "axios";
-
 
 const Conferences = () => {
   const [conference, setConference] = useState([]);
@@ -45,7 +48,7 @@ const Conferences = () => {
         <div className="container">
           <div className="row">
             {conference.slice(0).reverse().map((item) => (
-              <div className="col-12 col-md-4">
+              <div className="col-12 col-md-6 col-lg-4 mb-4">
                 <div className="news_box">
                   <div className="news_img_wrapp">
                     <img src={`http://localhost:3000/conference/${item.Image}`} />
@@ -70,7 +73,7 @@ const Conferences = () => {
                         {item.ConferenceTitle}
                       </Link>
                     </h4>
-                    <p>{item.Description}</p>
+                    <p >{item.Description}</p>
                     <div className="news_footer">
                       <Link
                         to={`/conferenceDetail/${item.Id}`}

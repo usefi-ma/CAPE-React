@@ -39,7 +39,7 @@ const Signin = () => {
       setFormErrors(errors);
     } else {
       try {
-        const response = await axios.post("http://localhost:3000/login", {
+        const response = await axios.post("http://localhost:3000/user/login", {
           Email: email,
           Pwd: pwd,
         });
