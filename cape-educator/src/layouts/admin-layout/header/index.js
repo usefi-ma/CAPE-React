@@ -64,7 +64,7 @@ Header.propTypes = {
 
 export default function Header({ onOpenNav }) {
   const location = useLocation();
-  const user = location.state.user;
+  // const user = location.state.user;
   const userData = JSON.parse(localStorage.getItem('sessionData'));
   return (
     <StyledRoot>
@@ -88,10 +88,10 @@ export default function Header({ onOpenNav }) {
           <Box sx={{ my: 1.5, px: 0 }}>
             <Link underline="none">
               <StyledAccount>
-                <Avatar src={account.photoURL} alt="photoURL" />
+                {/* <Avatar src={account.photoURL} alt="photoURL" /> */}
 
                 <Box sx={{ ml: 2 }}>
-                  <Typography
+                  {/* <Typography
                     variant="subtitle2"
                     sx={{ color: 'text.primary' }}
                   >
@@ -100,7 +100,7 @@ export default function Header({ onOpenNav }) {
 
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                     {user.Email}
-                  </Typography>
+                  </Typography> */}
                 </Box>
               </StyledAccount>
             </Link>

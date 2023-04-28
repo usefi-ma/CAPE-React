@@ -3,10 +3,10 @@ import { Grid, Container, Typography } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 
-import { AppWidgetSummary } from "../sections/@dashboard/app";
+// import { AppWidgetSummary } from "../sections/@dashboard/app";
 
 
-import { AppWidgetSummary } from '../sections/@dashboard/app';
+ //import { AppWidgetSummary } from '../sections/@dashboard/app';
 
 
 // ----------------------------------------------------------------------
@@ -19,7 +19,7 @@ export default function Dashboard() {
         <Typography variant="h4" sx={{ mb: 5 }}>
           Dashboard
         </Typography>
-        <Grid container spacing={3}>
+        {/* <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary
               title="Conferences"
@@ -54,7 +54,7 @@ export default function Dashboard() {
               icon={'ant-design:team-outlined'}
             />
           </Grid>
-        </Grid>
+        </Grid> */}
       </Container>
     </>
   );
