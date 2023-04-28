@@ -25,7 +25,7 @@ const Logout = () => {
           onClick={() => handleLogout()}
         >
           Logout
-        </Typography> */}
+        </Typography> 
       </Box>
     </>
   );

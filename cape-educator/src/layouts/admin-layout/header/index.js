@@ -95,11 +95,11 @@ export default function Header({ onOpenNav }) {
                     variant="subtitle2"
                     sx={{ color: 'text.primary' }}
                   >
-                    {/* {user.FullName} */}
-                  </Typography>
+                    {/* {user.FullName} 
+                  </Typography>*/}
 
-                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    {user.Email}
+                  {/* <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                    {userData.Email}
                   </Typography> */}
                 </Box>
               </StyledAccount>
@@ -107,7 +107,7 @@ export default function Header({ onOpenNav }) {
           </Box>
 
           <Logout></Logout>
-        
+        </div>
         {/* <Searchbar /> */}
         <Box sx={{ flexGrow: 1 }} />
 
