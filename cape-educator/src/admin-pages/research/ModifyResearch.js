@@ -5,10 +5,10 @@ import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
 import axios from "axios";
-import imgEmpty from "../../assets/images/EmptyConference.png";
+import imgEmpty from "../../assets/images/EmptyUser.jpg";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-const ResearchItem = ({ ResearchItem, toggleModal }) => {
+const ModifyResearch = ({ ResearchItem, toggleModal }) => {
   const modal = {
     position: "absolute",
     top: "50%",
@@ -16,7 +16,7 @@ const ResearchItem = ({ ResearchItem, toggleModal }) => {
     transform: "translate(-50%, -50%)",
     width: "70%",
     bgcolor: "background.paper",
-    borderRadius:"8px",
+    borderRadius: "8px",
     boxShadow: 24,
     p: 4,
   };
@@ -41,41 +41,40 @@ const ResearchItem = ({ ResearchItem, toggleModal }) => {
 
   const handleFormSubmit = async (e) => {
     const title = e.target.Title.value.trim();
-    const description = e.target.Description.value.trim();
     const link = e.target.Link.value.trim();
+    const description = e.target.Description.value.trim();
     //VERIFY THAT ALL INPUT FIELDS ARE FILLED IN
 
-      try {
-        const config = {
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        };
-        if (!newFile) {
-          setNewFile({ imgEmpty });
-        }
-        const response = await axios.put(
-          `http://localhost:3000/research/${ResearchItem.Id}`,
-          {
-            Title: title,
-            Description: description,
-            Image: newFile,
-            Link:link
-          },
-          config
-        );
-
-        setResearchData([...ResearchData, response.data]);
-      } catch (error) {
-        console.log(error);
+    try {
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      };
+      if (!newFile) {
+        setNewFile({ imgEmpty });
       }
-      e.target.reset();
-      e.target.files = null;
-      setNewFile(null);
-      e.target.Image.value = null;
+      const response = await axios.put(
+        `http://localhost:3000/research/${ResearchItem.Id}`,
+        {
+          Title: title,
+          Link:link,
+          Image: newFile,
+          Description: description,
+        },
+        config
+      );
 
-      toggleIt();
+      setResearchData([...ResearchData, response.data]);
+    } catch (error) {
+      console.log(error);
+    }
+    e.target.reset();
+    e.target.files = null;
+    setNewFile(null);
+    e.target.Image.value = null;
 
+    toggleIt();
   };
 
   const handleChange = (e) => {
@@ -103,103 +102,34 @@ const ResearchItem = ({ ResearchItem, toggleModal }) => {
       >
         <Box sx={modal} onSubmit={handleFormSubmit}>
           <Box component="form" noValidate autoComplete="off">
-          
-
-          <Card sx={{ padding: 3 }}>
-                  <Grid sx={{ marginBottom: 3 }}
-                    item
-                    xs={12} 
-                    container
-                    alignItems="center"
-                    className="w-100" >
-                    <div className="executive_img_edit_wrapper me-3">
-                      <img 
-                        className="executive_image"
-                        src={`http://localhost:3000/research/${ResearchItem.Image}`}
-                      />
-                    </div>
-                    <Typography
-                      variant="h4"
-                      style={{
-                        marginBottom: 8,
-                        fontWeight:900,
-                        display: "block",
-                      }}
-                    >
-                      Edit {ResearchItem.Title} Information
-                    </Typography>
-                  </Grid>
-                   <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6} md={6}>
-                    <Typography
-                      variant="subtitle1"
-                      style={{
-                        marginBottom: 8,
-                        display: "block",
-                        fontWeight: "500",
-                      }}
-                    >
-                     Research Title
-                    </Typography>
-                    <TextField
-                      fullWidth
-                      id="outlined-basic"
-                      label="Title"
-                      variant="outlined"
-                      name="Title"
-                      defaultValue={ResearchItem.Title}
-                      onChange={handleChange}
-                    />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Typography
-                      variant="subtitle1"
-                      style={{
-                        marginBottom: 8,
-                        display: "block",
-                        fontWeight: "500",
-                      }}
-                    >
-                      Research Link
-                    </Typography>
-                    <TextField
-                      fullWidth
-                      id="outlined-basic"
-                      label="Link"
-                      variant="outlined"
-                      name="Link"
-                      onChange={handleChange}
-                      defaultValue={ResearchItem.Link}
-                     
-                    />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Typography
-                      variant="subtitle1"
-                      style={{
-                        marginBottom: 8,
-                        display: "block",
-                        fontWeight: "500",
-                      }}
-                    >
-                      Image
-                    </Typography>
-
-                    <div className="fileInput_wrapp">
-                      <label className="fileInput_button" htmlFor="inputTag1">
-                        {" "}
-                        Upload File
-                      </label>
-                      <input
-                        id="inputTag1"
-                        type="file"
-                        className="fileInput_custom"
-                        name="Image"
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </Grid>
-                  <Grid item xs={12}>
+            <Card sx={{ padding: 3 }}>
+              <Grid
+                sx={{ marginBottom: 3 }}
+                item
+                xs={12}
+                container
+                alignItems="center"
+                className="w-100"
+              >
+                <div className="executive_img_edit_wrapper me-3">
+                  <img
+                    className="grid_image"
+                    src={`http://localhost:3000/research/${ResearchItem.Image}`}
+                  />
+                </div>
+                <Typography
+                  variant="h4"
+                  style={{
+                    marginBottom: 8,
+                    fontWeight: 900,
+                    display: "block",
+                  }}
+                >
+                  Edit {ResearchItem.Title} Information
+                </Typography>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6} md={6}>
                   <Typography
                     variant="subtitle1"
                     style={{
@@ -208,47 +138,109 @@ const ResearchItem = ({ ResearchItem, toggleModal }) => {
                       fontWeight: "500",
                     }}
                   >
-                    Description
+                    Research Title
                   </Typography>
                   <TextField
-                    id="outlined-multiline-static"
-                    label="Description"
-                    multiline
-                    rows={5}
-                    variant="outlined"
                     fullWidth
+                    id="outlined-basic"
+                    label="Title"
+                    variant="outlined"
+                    name="Title"
+                    defaultValue={ResearchItem.Title}
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography
+                    variant="subtitle1"
+                    style={{
+                      marginBottom: 8,
+                      display: "block",
+                      fontWeight: "500",
+                    }}
+                  >
+                    Research Link
+                  </Typography>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Link"
+                    variant="outlined"
+                    name="Link"
+                    onChange={handleChange}
+                    defaultValue={ResearchItem.Link}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography
+                    variant="subtitle1"
+                    style={{
+                      marginBottom: 8,
+                      display: "block",
+                      fontWeight: "500",
+                    }}
+                  >
+                   Description
+                  </Typography>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Description"
+                    variant="outlined"
+                    name="Description"
                     onChange={handleChange}
                     defaultValue={ResearchItem.Description}
                   />
                 </Grid>
-                  <Grid item xs={12} container justifyContent="flex-end">
-                    <ThemeProvider theme={theme}>
-                      <Button
-                        type="button"
-                        size="large"
-                        variant="outlined"
-                        color="neutral"
-                        onClick={() => toggleIt()}
-                      >
-                        Cancel
-                      </Button>
-                    </ThemeProvider>
-
+                <Grid item xs={6}>
+                  <Typography
+                    variant="subtitle1"
+                    style={{
+                      marginBottom: 8,
+                      display: "block",
+                      fontWeight: "500",
+                    }}
+                  >
+                    Image
+                  </Typography>
+                  <div className="fileInput_wrapp">
+                    <label className="fileInput_button" htmlFor="inputTag1">
+                      {" "}
+                      Upload File
+                    </label>
+                    <input
+                      id="inputTag1"
+                      type="file"
+                      className="fileInput_custom"
+                      name="Image"
+                      onChange={handleChange}
+                    />
+                  </div>
+                </Grid>
+                <Grid item xs={12} container justifyContent="flex-end">
+                  <ThemeProvider theme={theme}>
                     <Button
-                      type="submit"
-                      variant="contained"
+                      type="button"
                       size="large"
-                      className="ms-2"
+                      variant="outlined"
+                      color="neutral"
+                      onClick={() => toggleIt()}
                     >
-                      Save
+                      Cancel
                     </Button>
-                  </Grid>
-                   </Grid>
+                  </ThemeProvider>
+
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    size="large"
+                    className="ms-2"
+                  >
+                    Save
+                  </Button>
+                </Grid>
+              </Grid>
             </Card>
-
-
-
-
           </Box>
         </Box>
       </Modal>
@@ -256,4 +248,4 @@ const ResearchItem = ({ ResearchItem, toggleModal }) => {
   );
 };
 
-export default ResearchItem;
+export default ModifyResearch;

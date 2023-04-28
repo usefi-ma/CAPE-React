@@ -43,6 +43,7 @@ const Signin = () => {
           Email: email,
           Pwd: pwd,
         });
+        localStorage.setItem('userData', JSON.stringify(response.data));
         console.log(response.data);
         setUserData(response.data);
         if (typeof response.data === "object") {

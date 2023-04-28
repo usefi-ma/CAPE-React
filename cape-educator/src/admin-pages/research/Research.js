@@ -53,7 +53,7 @@ const Research = () => {
         <div className="executive_img_wrapper">
           <img
             src={`http://localhost:3000/research/${params.row.Image}`}
-            className="executive_image"
+            className="grid_image"
           />
         </div>
       ), // renderCell will render the component

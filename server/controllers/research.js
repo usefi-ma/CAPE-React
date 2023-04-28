@@ -79,7 +79,7 @@ export default class Research {
       await conn.beginTransaction();
       const [result] = await conn.execute(
         "INSERT INTO research (Title, Description, Link,Image) VALUES(?, ?, ?, ?)",
-        [Title, Description, Link, Image]
+        [Title || null, Description || null, Link || null, Image]
       );
       const [row] = await conn.execute("SELECT * FROM research WHERE Id = ?", [
         result.insertId,

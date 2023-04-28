@@ -821,7 +821,14 @@ body:has(.signin-section){
     position: absolute;
     top: 0;
    
-  } .executive_img_edit_wrapper{
+  } 
+  .grid_image{
+    max-width: 100%;
+    position: absolute;
+  }
+  
+  
+  .executive_img_edit_wrapper{
     width: 80px;
     height: 80px;
 box-shadow: 0 3px 10px #ccc;
