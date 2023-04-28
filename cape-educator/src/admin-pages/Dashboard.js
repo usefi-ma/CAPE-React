@@ -12,7 +12,7 @@ import { styled, alpha } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import { Grid, Container } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useEffect ,useState} from "react";
 import axios from "axios";
 
 
@@ -76,11 +76,11 @@ export default function Dashboard() {
 
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {user.FullName}
+                {userData.FullName}
               </Typography>
 
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {user.Email}
+                {userData.Email}
               </Typography>
             </Box>
           </StyledAccount>
