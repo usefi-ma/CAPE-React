@@ -835,3 +835,29 @@ box-shadow: 0 3px 10px #ccc;
     font-size: 15px;
     text-align: center;
   }
+  /*#region 404 page*/
+  .P_404{
+    height: 100vh;
+    width: 100%;
+    background-color: var(--navy);
+    color:white;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-flow: column;
+  }
+  .P_404 h1{
+    font-size: 150px;
+    font-weight: 900;
+  }
+  .P_404 h3{
+    font-size: 50px;
+    font-weight:700;
+  }
+ 
+  .P_404 p{
+ margin-top: 20px;
+    color: #828FA0;
+    font-size: 19px;
+  }
+  /*#endregion*/
