@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 
 const pool = mysql.createPool({
   host: "localhost",
-  user: "Cape",
+  user: "root",
   password: "Mendoza89",
   database: "cape",
   waitForConnections: true,
@@ -14,7 +14,7 @@ const pool = mysql.createPool({
 export default class User {
   static async GetAll(req, res) {
     try {
-      const [rows, fields] = await pool.execute("SELECT * FROM user");
+      const [rows, fields] = await pool.execute("SELECT * FROM users");
       res.json(rows);
     } catch (error) {
       console.error(error);
@@ -37,10 +37,10 @@ export default class User {
       // console.log(salt);
       // console.log(hashPwd);
       const [result] = await conn.execute(
-        "INSERT INTO user (FullName, Email, Password) VALUES(?, ?, ?)",
+        "INSERT INTO users (FullName, Email, Pwd) VALUES(?, ?, ?)",
         [FullName, Email, hashPwd]
       );
-      const [row] = await conn.execute("Select * FROM user WHERE Id = ?", [
+      const [row] = await conn.execute("Select * FROM users WHERE Id = ?", [
         result.insertId,
       ]);
       await conn.commit();
@@ -58,7 +58,7 @@ export default class User {
     try {
       const conn = await pool.getConnection();
       const [result] = await conn.execute(
-        "SELECT * FROM user WHERE Email = ?",
+        "SELECT * FROM users WHERE Email = ?",
         [Email]
       );
       conn.release();
@@ -69,7 +69,7 @@ export default class User {
       const user = result[0];
 
      
-      if(await bcrypt.compare(Pwd, user.Password)){
+      if(await bcrypt.compare(Pwd, user.Pwd)){
         const { FullName, Email } = user;
         console.log(user);
         res.json({ FullName, Email });

@@ -1,17 +1,58 @@
+import {
+  Box,
+  Stack,
+  AppBar,
+  Toolbar,
+  Link,
+  IconButton,
+  Typography,Avatar
+} from "@mui/material";
+
+import { styled, alpha } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
-import { Grid, Container, Typography } from "@mui/material";
+import { Grid, Container } from "@mui/material";
 
 // sections
 import { AppWidgetSummary } from "../sections/@dashboard/app";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useLocation } from "react-router-dom";
 // ----------------------------------------------------------------------
+
+const StyledAccount = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(2, 2.5),
+  borderRadius: Number(theme.shape.borderRadius) * 1.5
+}));
 
 export default function Dashboard() {
   const theme = useTheme();
   const notify = () => toast("Wow so easy!");
+
+  const location = useLocation();
+  const user = location.state.user;
+
   return (
     <>
+      <Box sx={{ my: 1.5, px: 0 }}>
+        <Link underline="none">
+          <StyledAccount>
+            {/* <Avatar src={account.photoURL} alt="photoURL" /> */}
+
+            <Box sx={{ ml: 2 }}>
+              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
+                {user.FullName}
+              </Typography>
+
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                {user.Email}
+              </Typography>
+            </Box>
+          </StyledAccount>
+        </Link>
+      </Box>
+
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
          Dashboard

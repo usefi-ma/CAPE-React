@@ -32,7 +32,7 @@ const Register = () => {
       console.log("Passwords match");
     }
     try {
-      const response = await axios.post("http://localhost:3000/user", {
+      const response = await axios.post("http://localhost:3000/users", {
         FullName: fullName,
         Email: email,
         Pwd: pwd,

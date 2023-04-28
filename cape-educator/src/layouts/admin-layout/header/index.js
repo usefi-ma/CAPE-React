@@ -78,7 +78,7 @@ export default function Header({ onOpenNav }) {
           </Box> */}
 
 
-      <Box sx={{ my: 1.5, px: 0 }}>
+      {/* <Box sx={{ my: 1.5, px: 0 }}>
         <Link underline="none">
           <StyledAccount>
             <Avatar src={account.photoURL} alt="photoURL" />
@@ -94,7 +94,7 @@ export default function Header({ onOpenNav }) {
             </Box>
           </StyledAccount>
         </Link>
-      </Box>
+      </Box> */}
 
 
 
