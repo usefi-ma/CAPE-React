@@ -3,6 +3,7 @@ import {NavLink } from 'react-router-dom'
 import logo from "../../assets/images/logo.png";
 import menu_icon from "../../assets/images/menu_icon.svg";
 import Scroll from "./Scroll";
+import "../../assets/css/index.css";
 
 
 function UserFooter() {
@@ -12,7 +13,7 @@ function UserFooter() {
       <section className="footer">
         <div className="container">
           <div className="row menu_footer">
-            <nav className="navbar navbar-expand-lg navbar-light">
+            <footer className="navbar navbar-expand-md navbar-light">
               <div className="container-fluid">
                 <a className="navbar-brand text-white" href="#">
                   <div className="logo">
@@ -33,7 +34,7 @@ function UserFooter() {
                   tabIndex="-1"
                   id="offcanvasExample"
                   aria-labelledby="offcanvasExampleLabel"
-                >
+                > 
                   <div className="offcanvas-header d-flex d-lg-none justify-content-end">
                     {/* <!--<h5 className='offcanvas-title text-white' id='offcanvasExampleLabel'>Navbar</h5>--> */}
                     <a
@@ -56,7 +57,7 @@ function UserFooter() {
                     </a>
                   </div>
                   <div className="offcanvas-body p-lg-0">
-                    <ul className="navbar-nav">
+                    <ul className="navbar-nav nav justify-content-center">
                       <li className="nav-item">
                         <NavLink
                           to="/"
@@ -119,14 +120,14 @@ function UserFooter() {
                           className="nav-link"
                           activeclassname="active"
                         >
-                          Sign In
+                          Admin Sign In
                         </NavLink>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
-            </nav>
+            </footer>
           </div>
           <div className="row">
             <p>© 2023 C.A.P.E | Canadian Association of Police Educators </p>

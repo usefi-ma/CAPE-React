@@ -1,28 +1,30 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+// import React from 'react'
+
+// const Contactbook = () => {
+//   return (
+//     <div>Contact List</div>
+//   )
+// }
+
+// export default Contactbook
+
+import React, { useEffect, useState } from "react";
 import { Grid, Container, Typography, Card, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
+import axios from "axios";
+import EditContact from "./EditContact";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import imgEmpty from "../../assets/images/EmptyUser.jpg";
+import DeleteContact from "./DeleteContact";
 import { DataGrid } from "@mui/x-data-grid";
 import { ToastContainer, toast } from "react-toastify";
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import DeleteConference from "./DeleteConference";
-import EditConference from "./EditConference";
+import "react-toastify/dist/ReactToastify.css";
 
-
-// Change to default conference image
-import imgEmpty from "../../assets/images/EmptyUser.jpg";
-
-
-
-const Conference = () => {
-  // For list of conferences in dashboard
+const Contactbook = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -35,15 +37,16 @@ const Conference = () => {
     setPage(0);
   };
 
-  // Form data fields
-  const [conferenceData, setConferenceData] = useState([]);
+  //Form Data handle
+  const [contactData, setContactData] = useState([]);
   const [formErrors, setFormErrors] = useState({});
   const [selectedRow, setSelectedRow] = useState();
   const [insertSuccess, setInsertSuccess] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [open, setOpen] = React.useState(false);
-  const [file, setFile] = useState(null);
+  const [file, setfile] = useState(null);
 
+  console.log("contactData" + contactData);
   const handleOpenModal = () => {
     setOpenModal(!openModal);
   };
@@ -73,15 +76,15 @@ const Conference = () => {
       renderCell: (params) => (
         <div className="executive_img_wrapper">
         <img
-          src={`http://localhost:3000/conference/${params.row.Image}`}
+          src={`http://localhost:3000/executive/${params.row.Image}`}
           className="executive_image"
         />
         </div>
       ), // renderCell will render the component
     },
-    //title, desc, date
-    { field: "ConferenceTitle", headerName: "Title", flex: 1 },
-    { field: "Date", headerName: "Date", flex: 1 },
+    { field: "FullName", headerName: "Full Name", flex: 1 },
+    { field: "JobTitle", headerName: "Job Title", flex: 1 },
+    { field: "Organization", headerName: "Organization", flex: 1 },
     { field: "Description", headerName: "Description", flex: 1 },
     {
       field: "Actions",
@@ -111,43 +114,32 @@ const Conference = () => {
       },
     },
   ];
-
-
-
-
-  // Handle form change
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    console.log(name, value);
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-    }
-  };
-
-  // Handle form submit
+  //saving an item
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const conferenceTitle = e.target.ConferenceTitle.value.trim();
+    const name = e.target.FullName.value.trim();
+    const jobTitle = e.target.JobTitle.value.trim();
+    const organization = e.target.Organization.value.trim();
     const description = e.target.Description.value.trim();
-    const date = e.target.Date.value.trim();
 
-
+    //VERIFY THAT ALL INPUT FIELDS ARE FILLED IN
     const errors = {};
+    if (!name) {
+      errors.name = "Name is required";
+    }
+    if (!jobTitle) {
+      errors.jobTitle = "Job title is required";
+    }
+    if (!organization) {
+      errors.organization = "Organization is required";
+    }
+    if (!description) {
+      errors.description = "Description is required";
+    }
 
-    if(!conferenceTitle) {
-      errors.conferenceTitle = "Title is required."
-    }
-    if(!description) {
-      errors.description = "Description is required."
-    }
-    if(!date) {
-      errors.date = "Date is required."
-    }
-
-    if (Object.keys(errors).length > 0){
-      // Create set form errors
-      console.log("Errors");
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
     } else {
       try {
         const config = {
@@ -156,21 +148,22 @@ const Conference = () => {
           },
         };
         if (!file) {
-          setFile({ imgEmpty });
+          setfile({ imgEmpty });
         }
         const response = await axios.post(
-          "http://localhost:3000/conference",
+          "http://localhost:3000/executive",
           {
-            ConferenceTitle: conferenceTitle,
+            FullName: name,
+            JobTitle: jobTitle,
+            Organization: organization,
             Description: description,
-            Date: date,
             Image: file,
           },
           config
         );
-        setConferenceData([...conferenceData, response.data]);
+        setContactData([...contactData, response.data]);
         setInsertSuccess(true);
-        toast.success("Conference added successfully!", {
+        toast.success("New member inserted successfully!!!", {
           position: toast.POSITION.TOP_CENTER,
         });
       } catch (error) {
@@ -178,15 +171,26 @@ const Conference = () => {
       }
       e.target.reset();
       e.target.files = null;
-      setFile(null);
+      setfile(null);
+      setFormErrors({});
     }
-    
-  }
+  };
+
+  //TESTING
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    if (e.target.files) {
+      setfile(e.target.files[0]);
+    }
+  };
+
+  //FETCH CALL FROM SERVER
   useEffect(() => {
     const fetchAllExecutive = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/conference");
-        setConferenceData(res.data);
+        const res = await axios.get("http://localhost:3000/executive");
+        setContactData(res.data);
         console.log(res.data);
       } catch (error) {
         console.error(error);
@@ -195,19 +199,18 @@ const Conference = () => {
     fetchAllExecutive();
   }, []);
 
-  // Make list like executive page??
-
   return (
     <>
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ marginBottom: 3 }}>
-          Conference
+          Contactbook
         </Typography>
-        <Box onSubmit={handleFormSubmit} component="form" noValidate autoComplete="off">
+        
+        <Box onSubmit={handleFormSubmit} component="form" noValidate>
           <Card sx={{ padding: 3 }}>
             <CardContent>
               <Grid container spacing={2}>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={6} md={6}>
                   <Typography
                     variant="subtitle1"
                     style={{
@@ -216,18 +219,21 @@ const Conference = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Conference Title
+                    Full Name
                   </Typography>
                   <TextField
                     fullWidth
                     id="outlined-basic"
-                    label="Title"
+                    label="Full Name"
                     variant="outlined"
-                    name="ConferenceTitle"
+                    name="FullName"
                     onChange={handleChange}
+                    error={formErrors.name}
+                    helperText={formErrors.name}
                   />
                 </Grid>
-                <Grid item xs={12}>
+
+                <Grid item xs={12} sm={6} md={6}>
                   <Typography
                     variant="subtitle1"
                     style={{
@@ -236,21 +242,20 @@ const Conference = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Description
+                    Job Title
                   </Typography>
                   <TextField
-                    id="outlined-multiline-static"
-                    label="Description"
-                    multiline
-                    rows={5}
-                    variant="outlined"
-                    name="Description"
-                    onChange={handleChange}
                     fullWidth
+                    id="outlined-basic"
+                    label="Job Title"
+                    variant="outlined"
+                    name="JobTitle"
+                    onChange={handleChange}
+                    error={formErrors.jobTitle}
+                    helperText={formErrors.jobTitle}
                   />
                 </Grid>
-              
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6}>
                   <Typography
                     variant="subtitle1"
                     style={{
@@ -259,19 +264,20 @@ const Conference = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Dates
+                    Organization
                   </Typography>
                   <TextField
-                    id="outlined-multiline-static"
-                    label="Date(s)"
-                    variant="outlined"
-                    name="Date"
-                    onChange={handleChange}
                     fullWidth
+                    id="outlined-basic"
+                    label="Organization"
+                    variant="outlined"
+                    name="Organization"
+                    onChange={handleChange}
+                    error={formErrors.organization}
+                    helperText={formErrors.organization}
                   />
                 </Grid>
-               
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6}>
                   <Typography
                     variant="subtitle1"
                     style={{
@@ -280,10 +286,10 @@ const Conference = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Thumbnail Image
+                    Image
                   </Typography>
                   <div className="fileInput_wrapp">
-                    <label className="fileInput_button" for="inputTag">
+                    <label className="fileInput_button" htmlFor="inputTag">
                       Upload File
                     </label>
                     <input
@@ -294,33 +300,34 @@ const Conference = () => {
                       onChange={handleChange}
                     />
                   </div>
-              
                 </Grid>
-<ToastContainer></ToastContainer>
+
                 <Grid item xs={12}>
                   <Button type="submit" variant="contained" size="large">
                     Submit
                   </Button>
                 </Grid>
+
+                {insertSuccess ? <ToastContainer /> : <span></span>}
               </Grid>
             </CardContent>
           </Card>
         </Box>
-
+          
         <Box sx={{ marginTop: 5 }}>
           <Card sx={{ padding: 3 }}>
             <CardContent>
               <Grid container spacing={2}>
                 <Typography variant="h6" sx={{ marginBottom: 3 }}>
-                  Conference List
+                  Contacts
                 </Typography>
               </Grid>
               <DataGrid
-                rows={conferenceData}
+                rows={contactData}
                 columns={columns}
                 getRowId={(row) => row.Id}
                 initialState={{
-                  ...conferenceData.initialState,
+                  ...contactData.initialState,
                   pagination: { paginationModel: { pageSize: 5 } },
                 }}
                 pageSizeOptions={[5, 10, 25]}
@@ -328,17 +335,17 @@ const Conference = () => {
                 rowHeight={75}
                
               />
-              <DeleteConference
+              <DeleteContact
                 SelectedItem={selectedRow}
                 handleOpen={handleClickOpen}
                 open={open}
                 handleClose={handleClose}
-              ></DeleteConference>
+              ></DeleteContact>
               {openModal && (
-                <EditConference
+                <EditContact
                   ExecutiveItem={selectedRow}
                   toggleModal={handleOpenModal}
-                ></EditConference>
+                ></EditContact>
               )}
               {/* clickedRow: {selectedRow ? `${selectedRow.FullName}` : null} */}
             </CardContent>
@@ -349,4 +356,4 @@ const Conference = () => {
   );
 };
 
-export default Conference;
+export default Contactbook;
