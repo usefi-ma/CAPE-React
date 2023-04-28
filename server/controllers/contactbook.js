@@ -1,10 +1,11 @@
 import mysql from "mysql2/promise";
 import multer from "multer";
-import { v4 as uuidv4, v4} from 'uuid';
+import { v4 as uuidv4, v4 } from "uuid";
+//import ConferenceDetail from "../../cape-educator/src/user-pages/ConferenceDetail";
 
 const pool = mysql.createPool({
   host: "localhost",
-  user: "root",
+  user: "Cape",
   password: "Mendoza89",
   database: "cape",
   waitForConnections: true,
@@ -12,18 +13,14 @@ const pool = mysql.createPool({
   queueLimit: 0,
 });
 
-
-
 const multerConfig = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "public/executive");
+    callback(null, "public/conference");
   },
   filename: (req, file, callback) => {
     const ext = file.mimetype.split("/")[1];
     callback(null, `image-${uuidv4()}.${ext}`);
-
   },
-  
 });
 
 const isImage = (req, file, callback) => {
@@ -39,13 +36,15 @@ const upload = multer({
   fileFilter: isImage,
 });
 
-export const uploadImage = upload.single("Image");
 
-export default class Executive {
-  //every middleware which is related to executives, write here
+
+export default class Contactbook {
+  // ! Assumes database table is named 'contacts'
+
+  // Get single contact
   static async Get(req, res) {
     try {
-      const [row] = await pool.execute("Select * FROM executive WHERE Id = ?", [
+      const [row] = await pool.execute("Select * FROM contacts WHERE Id = ?", [
         req.params.Id,
       ]);
       return res.json(row[0]);
@@ -54,9 +53,11 @@ export default class Executive {
       return res.status(500).send("Internal Server Error");
     }
   }
+
+  // Get all contacts for list
   static async GetAll(req, res) {
     try {
-      const [rows, fields] = await pool.execute("SELECT * FROM executive");
+      const [rows, fields] = await pool.execute("SELECT * FROM contacts");
       return res.json(rows);
     } catch (error) {
       console.error(error);
@@ -64,34 +65,26 @@ export default class Executive {
     }
   }
 
+  // Add new contact from dashboard
   static async Add(req, res) {
-    //Parameters expected
-    const { FullName, JobTitle, Organization, Description } = req.body;
-
-    let Image = "EmptyUser.jpg";
-    try{
-      Image = req.file.filename;
-    }catch(error){
-      Image = "EmptyUser.jpg";
-      console.log("error from catch"+error)
-    }
-
-
-    if (!FullName || !JobTitle || !Organization || !Description) {
+    console.log("Attempting to add");
+    const { FullName, TitleRank, Email } = req.body;
+    
+    if (!FullName || !TitleRank || !Email) {
       return res.status(400).send("Please ensure you have added all fields");
     }
     try {
-      
       const conn = await pool.getConnection();
       await conn.beginTransaction();
       const [result] = await conn.execute(
-        "INSERT INTO executive (FullName, JobTitle, Organization, Description,Image) VALUES(?, ?, ?, ?,?)",
-        [FullName, JobTitle, Organization, Description, Image]
+        "INSERT INTO contacts (FullName, TitleRank, Email) VALUES(?, ?, ?)",
+        [FullName, TitleRank, Email]
       );
 
-      const [row] = await conn.execute("Select * FROM executive WHERE id = ?", [
-        result.insertId,
-      ]);
+      const [row] = await conn.execute(
+        "SELECT * FROM contacts WHERE id = ?",
+        [result.insertId]
+      );
       await conn.commit();
       conn.release();
       return res.json(row[0]);
@@ -102,15 +95,9 @@ export default class Executive {
   }
 
   static async Update(req, res) {
-    const { FullName, JobTitle, Organization, Description } = req.body;
-    let Image = "EmptyUser.jpg";
-    try{
-      Image = req.file.filename;
-    }catch(error){
-      Image = "EmptyUser.jpg";
-    }
+    const { FullName, Email, TitleRank } = req.body;
 
-    if (!FullName || !JobTitle || !Organization || !Description) {
+    if (!FullName || !Email || !TitleRank) {
       return res.status(400).send("Please ensure you have added all fields");
     }
 
@@ -118,13 +105,14 @@ export default class Executive {
       const conn = await pool.getConnection();
       await conn.beginTransaction();
       const [result] = await conn.execute(
-        "UPDATE executive SET `FullName`=?, `JobTitle`=?,`Organization`=?,`Description`=?, `Image`=? WHERE Id=?",
-        [FullName, JobTitle, Organization, Description, Image, req.params.Id]
+        "UPDATE contacts SET `FullName`=?, `Email`=?,`TitleRank`=? WHERE Id=?",
+        [FullName, Email, TitleRank, req.params.Id]
       );
-      const [row] = await conn.execute("Select * FROM executive WHERE Id = ?", [
-        req.params.Id,
-      ]);
-      
+      const [row] = await conn.execute(
+        "Select * FROM contacts WHERE Id = ?",
+        [req.params.Id]
+      );
+      console.log([result]);
       await conn.commit();
       conn.release();
       return res.json(row[0]);
@@ -138,7 +126,7 @@ export default class Executive {
     try {
       const conn = await pool.getConnection();
       await conn.beginTransaction();
-      const [result] = await conn.execute("DELETE FROM executive WHERE Id=?", [
+      const [result] = await conn.execute("DELETE FROM contacts WHERE Id=?", [
         req.params.Id,
       ]);
       await conn.commit();
@@ -150,17 +138,16 @@ export default class Executive {
     }
   }
 
-  static async countExecutive(req, res){
-    try {
-      const [row] = await pool.execute("Select COUNT(Id) FROM executive");
-      return res.json(row[0]);
-    } catch (error) {
-      console.error(error);
-      return res.status(500).send("Internal Server Error");
-    }
+  
+//count
+static async countConference(req, res){
+  try {
+    const [row] = await pool.execute("Select COUNT(Id) FROM contacts");
+    return res.json(row[0]);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("Internal Server Error");
   }
-
-
-
+}
 
 }

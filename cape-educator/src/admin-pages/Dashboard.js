@@ -1,13 +1,34 @@
+import {
+  Box,
+  Stack,
+  AppBar,
+  Toolbar,
+  Link,
+  IconButton,
+  Typography,Avatar
+} from "@mui/material";
+
+import { styled, alpha } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
-import { Grid, Container, Typography } from "@mui/material";
+import { Grid, Container } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import axios from "axios";
 
+
 import { AppWidgetSummary } from "../sections/@dashboard/app";
-import { useState } from "react";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // ----------------------------------------------------------------------
+
+const StyledAccount = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(2, 2.5),
+  borderRadius: Number(theme.shape.borderRadius) * 1.5
+}));
 
 export default function Dashboard() {
   const theme = useTheme();
@@ -48,6 +69,24 @@ export default function Dashboard() {
   }, []);
   return (
     <>
+      <Box sx={{ my: 1.5, px: 0 }}>
+        <Link underline="none">
+          <StyledAccount>
+            {/* <Avatar src={account.photoURL} alt="photoURL" /> */}
+
+            <Box sx={{ ml: 2 }}>
+              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
+                {user.FullName}
+              </Typography>
+
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                {user.Email}
+              </Typography>
+            </Box>
+          </StyledAccount>
+        </Link>
+      </Box>
+
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
           Dashboard {userData.FullName}

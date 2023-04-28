@@ -21,7 +21,7 @@ import ConferenceDashboard from './admin-pages/Conference/Conference';
 import SpeakersDashboard from './admin-pages/speaker/Speaker';
 import SponsorDashboard from './admin-pages/sponsor/Sponsor';
 import ContactDashboard from './admin-pages/Conference/Contact';
-import Contactbook from './admin-pages/Contactbook';
+import Contactbook from './admin-pages/Contactbook/Contactbook';
 import ConferenceDetailDashboard from './admin-pages/Conference/ConferenceDetail';
 
 function App() {
