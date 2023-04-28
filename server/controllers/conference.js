@@ -271,5 +271,15 @@ export default class Conference {
     }
   }
 
+//count
+static async countConference(req, res){
+  try {
+    const [row] = await pool.execute("Select COUNT(Id) FROM conference");
+    return res.json(row[0]);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("Internal Server Error");
+  }
+}
 
 }

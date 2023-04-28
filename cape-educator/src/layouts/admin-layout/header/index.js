@@ -84,11 +84,11 @@ export default function Header({ onOpenNav }) {
            
           </Box> */}
 
-        <div className="d-flex justify-content-between w-100 align-item-center">
-          <Box sx={{ my: 1.5, px: 0 }}>
-            <Link underline="none">
-              <StyledAccount>
-                <Avatar src={account.photoURL} alt="photoURL" />
+
+      <Box sx={{ my: 1.5, px: 0 }}>
+        <Link underline="none">
+          <StyledAccount>
+            <Avatar src={account.photoURL} alt="photoURL" />
 
                 <Box sx={{ ml: 2 }}>
                   <Typography
@@ -98,13 +98,13 @@ export default function Header({ onOpenNav }) {
                     {/* {user.FullName} */}
                   </Typography>
 
-                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    {/* {user.Email} */}
-                  </Typography>
-                </Box>
-              </StyledAccount>
-            </Link>
-          </Box>
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                {account.email}
+              </Typography>
+            </Box>
+          </StyledAccount>
+        </Link>
+      </Box>
 
           <Logout></Logout>
         </div>

@@ -9,24 +9,24 @@ import UserFooter from '../layouts/user-layout/UserFooter';
 
 import DaveTutte from '../assets/images/executive/Dave-Tutte.jpg';
 const ExecutiveDetail = () => {
-    const {id}=useParams();
+
     const navigate=useNavigate();
 
+    const {id}=useParams();
     const [executiveItem,setExecutiveItem]=useState({});
-    //FETCH CALL FROM SERVER
-useEffect(() => {
-  const fetchAllExecutive = async () => {
-    try {
-      const res = await axios.get(`http://localhost:3000/executive/${id}`);
-      setExecutiveItem(res.data);
-      console.log(res.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  fetchAllExecutive();
-}, []);
-
+    
+    useEffect(() => {
+      const fetchAllExecutive = async () => {
+        try {
+          const res = await axios.get(`http://localhost:3000/executive/${id}`);
+          setExecutiveItem(res.data);
+          console.log(res.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchAllExecutive();
+    }, [id]); // set id as dependency
 
 
   return (

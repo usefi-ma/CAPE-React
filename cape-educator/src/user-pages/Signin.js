@@ -38,11 +38,8 @@ const Signin = () => {
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
     } else {
-      try {
-        const response = await axios.post("http://localhost:3000/login", {
-          Email: email,
-          Pwd: pwd,
-        });
+      try{
+        const response = await axios.post("http://localhost:3000/GetAll/login", {Email: email, Pwd: pwd});
         console.log(response.data);
         setUserData(response.data);
         if (typeof response.data === "object") {
