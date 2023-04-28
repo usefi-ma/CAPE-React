@@ -124,7 +124,7 @@ export default class Executive {
       const [row] = await conn.execute("Select * FROM executive WHERE Id = ?", [
         req.params.Id,
       ]);
-      console.log([result]);
+      
       await conn.commit();
       conn.release();
       return res.json(row[0]);
@@ -149,4 +149,18 @@ export default class Executive {
       return res.status(500).send("Internal Server Error");
     }
   }
+
+  static async countExecutive(req, res){
+    try {
+      const [row] = await pool.execute("Select COUNT(Id) FROM executive");
+      return res.json(row[0]);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal Server Error");
+    }
+  }
+
+
+
+
 }

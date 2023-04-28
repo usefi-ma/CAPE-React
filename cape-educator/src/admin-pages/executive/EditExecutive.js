@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import Modal from "@mui/material/Modal";
 import { Grid, Container, Typography, Card, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
@@ -120,7 +120,6 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
         aria-labelledby="keep-mounted-modal-title"
         aria-describedby="keep-mounted-modal-description"
         onClose={() => setIsOpen(false)}
-        onOpen={() => setIsOpen(true)}
         open={isOpen}
       >
         <Box sx={modal} onSubmit={handleFormSubmit}>
@@ -163,7 +162,6 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                     </Typography>
                     <TextField
                       fullWidth
-                      id="outlined-basic"
                       label="Full Name"
                       variant="outlined"
                       name="FullName"
@@ -171,7 +169,8 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                       onChange={handleChange}
                       error={formErrors.name}
                       helperText={formErrors.name}
-                    />
+                     />
+                 
                   </Grid>
                   <Grid item xs={12} sm={6} md={6}>
                     <Typography
@@ -186,7 +185,6 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                     </Typography>
                     <TextField
                       fullWidth
-                      id="outlined-basic"
                       label="Job Title"
                       variant="outlined"
                       name="JobTitle"
@@ -209,7 +207,6 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                     </Typography>
                     <TextField
                       fullWidth
-                      id="outlined-basic"
                       label="Organization"
                       variant="outlined"
                       name="Organization"
@@ -232,7 +229,7 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                     </Typography>
 
                     <div className="fileInput_wrapp">
-                      <label className="fileInput_button" for="inputTag1">
+                      <label className="fileInput_button" htmlFor="inputTag1">
                         {" "}
                         Upload File
                       </label>
@@ -257,7 +254,6 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                       Description
                     </Typography>
                     <TextField
-                      id="outlined-multiline-static"
                       label="Description"
                       multiline
                       rows={5}
@@ -280,7 +276,7 @@ const EditExecutive = ({ ExecutiveItem, toggleModal }) => {
                         color="neutral"
                         onClick={() => toggleIt()}
                       >
-                        cancle
+                        Cancel
                       </Button>
                     </ThemeProvider>
 

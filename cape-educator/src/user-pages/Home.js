@@ -44,20 +44,20 @@ function Home() {
             <div className="row align-center ">
                 <div className="col-12 col-md-10 col-lg-7 banner_content">
                       
-                    <h1 className="first_h1"> {data.BannerTitle}</h1>
+                    <h1 className="first_h1 mb-3"> {data.BannerTitle}</h1>
                     <h3>
                        {data.EventTitle}
                     </h3>
-                    <p>
+                    <p className="mb-1">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-calendar3" viewBox="0 0 16 16">
                             <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
                             <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                         </svg>
                         {data.Date}
                     </p>
-                    <span className="benner_span">
+                    <strong className="benner_span text_gradient w-100 d-block mb-3">
                        {data.Description}
-                    </span>
+                    </strong>
                     <Link to={data.BannerLink} className="btn btn_custom " target='_blank'>Discover More </Link>
                 </div>
             </div>
@@ -574,7 +574,7 @@ function Home() {
                 </div>
                <div className="col-12 col-lg-7">
                     <div className="map">
-                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.3339541282853!2d-114.05819134822391!3d51.046921179461776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53717ad00ad231a9%3A0x34c6c179aae00af8!2sBow%20Valley%20College%2C%20South%20Campus!5e0!3m2!1sen!2sca!4v1678123972520!5m2!1sen!2sca" width="600" height="450" allowFullScreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                     
+                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2841.6668649940634!2d-79.43139718447185!3d44.58338427910034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4d2aabe26666e323%3A0xd665a2971948eb29!2sThe%20Canadian%20Association%20of%20Police%20Educators!5e0!3m2!1sen!2sca!4v1682356757560!5m2!1sen!2sca" width="600" height="450" allowFullScreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                     
                         </div>
                 </div> 
             </div>

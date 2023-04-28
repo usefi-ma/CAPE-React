@@ -16,14 +16,13 @@ import AdminLayout from './layouts/admin-layout';
 import Dashboard from './admin-pages/Dashboard';
 import Banner from './admin-pages/Banner';
 import ExecutiveDashboard from './admin-pages/executive';
-import ResearchDashboard from './admin-pages/Research';
+import ResearchDashboard from './admin-pages/research/Research';
 import ConferenceDashboard from './admin-pages/Conference/Conference';
-import SpeakersDashboard from './admin-pages/Conference/Speakers';
-import SponsersDashboard from './admin-pages/Conference/Sponsers';
+import SpeakersDashboard from './admin-pages/speaker/Speaker';
+import SponsorDashboard from './admin-pages/sponsor/Sponsor';
 import ContactDashboard from './admin-pages/Conference/Contact';
-import Contactbook from './admin-pages/Contactbook'
-
-
+import Contactbook from './admin-pages/Contactbook';
+import ConferenceDetailDashboard from './admin-pages/Conference/ConferenceDetail';
 
 function App() {
   return (
@@ -37,8 +36,9 @@ function App() {
                 <Route path="executivedashboard" element={<ExecutiveDashboard />} />
                 <Route path="researchdashboard" element={<ResearchDashboard />} />
                 <Route path="conferences" element={<ConferenceDashboard />} />
-                <Route path="speakers" element={<SpeakersDashboard />} />
-                <Route path="sponsers" element={<SponsersDashboard />} />
+                <Route path="conferenceDetail" element={<ConferenceDetailDashboard />} />
+                <Route path="speaker" element={<SpeakersDashboard />} />
+                <Route path="sponsor" element={<SponsorDashboard />} />
                 <Route path="contactdashboard" element={<ContactDashboard />} />
                 <Route path="Contactbook" element={<Contactbook />} />
             </Route>

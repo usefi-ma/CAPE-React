@@ -54,7 +54,7 @@ export default class User {
 
   static async Login(req, res) {
     const { Email, Pwd } = req.body;
-    
+
     try {
       const conn = await pool.getConnection();
       const [result] = await conn.execute(
@@ -69,7 +69,7 @@ export default class User {
       const user = result[0];
 
      
-      if(await bcrypt.compare(Pwd, user.Pwd)){
+      if(await bcrypt.compare(Pwd, user.Password)){
         const { FullName, Email } = user;
         console.log(user);
         res.json({ FullName, Email });
@@ -82,4 +82,19 @@ export default class User {
       res.status(500).send("Internal Server Error");
     }
   }
+
+
+  static async countUser(req, res){
+    try {
+      const [row] = await pool.execute("Select COUNT(Id) FROM user");
+      return res.json(row[0]);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal Server Error");
+    }
+  }
+  
+
+
+
 }

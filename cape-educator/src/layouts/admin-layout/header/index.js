@@ -1,4 +1,5 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+
 // @mui
 import { styled, alpha } from '@mui/material/styles';
 import {
@@ -8,17 +9,20 @@ import {
   Toolbar,
   Link,
   IconButton,
-  Typography,Avatar
-} from "@mui/material";
+  Typography,
+  Avatar,
+} from '@mui/material';
 // utils
-import { bgBlur } from "../../../utils/cssStyles";
+import { bgBlur } from '../../../utils/cssStyles';
 // components
-import Iconify from "../../../components/iconify";
+import Iconify from '../../../components/iconify';
 //
-import Searchbar from "./Searchbar";
-import AccountPopover from "./AccountPopover";
-import LanguagePopover from "./LanguagePopover";
-import account from "../../../_mock/account";
+import Searchbar from './Searchbar';
+import AccountPopover from './AccountPopover';
+import LanguagePopover from './LanguagePopover';
+import account from '../../../_mock/account';
+import Logout from './Logout';
+import { useLocation, useNavigate } from 'react-router-dom';
 // import NotificationsPopover from './NotificationsPopover';
 
 // ----------------------------------------------------------------------
@@ -31,15 +35,15 @@ const HEADER_DESKTOP = 92;
 
 const StyledRoot = styled(AppBar)(({ theme }) => ({
   ...bgBlur({ color: theme.palette.background.default }),
-  boxShadow: "none",
-  [theme.breakpoints.up("lg")]: {
+  boxShadow: 'none',
+  [theme.breakpoints.up('lg')]: {
     width: `calc(100% - ${NAV_WIDTH + 1}px)`,
   },
 }));
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   minHeight: HEADER_MOBILE,
-  [theme.breakpoints.up("lg")]: {
+  [theme.breakpoints.up('lg')]: {
     minHeight: HEADER_DESKTOP,
     padding: theme.spacing(0, 5),
   },
@@ -49,7 +53,7 @@ const StyledAccount = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(2, 2.5),
-  borderRadius: Number(theme.shape.borderRadius) * 1.5
+  borderRadius: Number(theme.shape.borderRadius) * 1.5,
 }));
 
 // ----------------------------------------------------------------------
@@ -59,6 +63,9 @@ Header.propTypes = {
 };
 
 export default function Header({ onOpenNav }) {
+  // const location = useLocation();
+  // const user = location.state.user;
+  // const userData = JSON.parse(localStorage.getItem('sessionData'));
   return (
     <StyledRoot>
       <StyledToolbar>
@@ -66,8 +73,8 @@ export default function Header({ onOpenNav }) {
           onClick={onOpenNav}
           sx={{
             mr: 1,
-            color: "text.primary",
-            display: { lg: "none" },
+            color: 'text.primary',
+            display: { lg: 'none' },
           }}
         >
           <Iconify icon="eva:menu-2-fill" />
@@ -78,15 +85,18 @@ export default function Header({ onOpenNav }) {
           </Box> */}
 
 
-      {/* <Box sx={{ my: 1.5, px: 0 }}>
+      <Box sx={{ my: 1.5, px: 0 }}>
         <Link underline="none">
           <StyledAccount>
             <Avatar src={account.photoURL} alt="photoURL" />
 
-            <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {account.displayName}
-              </Typography>
+                <Box sx={{ ml: 2 }}>
+                  <Typography
+                    variant="subtitle2"
+                    sx={{ color: 'text.primary' }}
+                  >
+                    {/* {user.FullName} */}
+                  </Typography>
 
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 {account.email}
@@ -94,10 +104,10 @@ export default function Header({ onOpenNav }) {
             </Box>
           </StyledAccount>
         </Link>
-      </Box> */}
+      </Box>
 
-
-
+          <Logout></Logout>
+        </div>
         {/* <Searchbar /> */}
         <Box sx={{ flexGrow: 1 }} />
 
@@ -112,16 +122,6 @@ export default function Header({ onOpenNav }) {
           {/* <LanguagePopover /> */}
           {/* <NotificationsPopover /> */}
           {/* <AccountPopover /> */}
-
-          <Box sx={{ my: 1.5, px: 2.5 }}>
-            <Typography
-              variant="subtitle2"
-              sx={{ color: "text.secondary" }}
-              wrap>
-              Logout
-            </Typography>
-          </Box>
-
         </Stack>
       </StyledToolbar>
     </StyledRoot>

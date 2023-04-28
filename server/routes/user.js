@@ -6,8 +6,8 @@ import UserController from '../controllers/user.js';
 const router=express.Router();
 
 
-router.post('/users',UserController.Add)
-router.get('/users' , UserController.GetAll)
-router.post('/users/login',UserController.Login)
+router.post('/user',UserController.Add)
+router.get('/user' , UserController.GetAll)
+ router.post('/user/login',UserController.Login)
 
 export default router;
