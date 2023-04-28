@@ -149,4 +149,18 @@ export default class Executive {
       return res.status(500).send("Internal Server Error");
     }
   }
+
+  static async countExecutive(req, res){
+    try {
+      const [row] = await pool.execute("Select COUNT(Id) FROM executive");
+      return res.json(row[0]);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal Server Error");
+    }
+  }
+
+
+
+
 }

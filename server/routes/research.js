@@ -10,5 +10,6 @@ const router=express.Router();
 router.post('/research',uploadImage,ResearchController.Add);
 router.put('/research/:Id',uploadImage,ResearchController.Update)
 router.delete('/research/:Id',ResearchController.Delete)
+router.get('/countresearch',ResearchController.countResearch)
 
 export default router;

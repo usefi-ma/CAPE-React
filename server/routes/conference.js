@@ -11,5 +11,6 @@ router.put("/conference/:Id", uploadImage, ConferenceController.Update);
 router.put("/conferencedetail/:Id",uploadImages,ConferenceController.UpdateOne);
 router.put("/conferenceContact/:Id",ConferenceController.UpdateContactConference);
 router.delete("/conference/:Id", ConferenceController.Delete);
+router.get("/conferenceCount", ConferenceController.countConference);
 
 export default router;

@@ -81,4 +81,19 @@ export default class User {
       res.status(500).send("Internal Server Error");
     }
   }
+
+
+  static async countUser(req, res){
+    try {
+      const [row] = await pool.execute("Select COUNT(Id) FROM user");
+      return res.json(row[0]);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Internal Server Error");
+    }
+  }
+  
+
+
+
 }
